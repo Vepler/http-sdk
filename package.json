@@ -43,7 +43,7 @@
     "@typescript-eslint/parser": "^7.4.0",
     "@semantic-release/commit-analyzer": "^13.0.1",
     "@semantic-release/github": "^9.2.6",
-    "@semantic-release/npm": "^11.0.2",
+    "@semantic-release/npm": "^12.0.1",
     "@semantic-release/release-notes-generator": "^14.0.3",
     "eslint": "^8.57.0",
     "eslint-config-prettier": "^9.1.0",
