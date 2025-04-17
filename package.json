@@ -33,8 +33,7 @@
   },
   "dependencies": {
     "@vepler/http-client": "^1.0.2",
-    "@vepler/logger": "^1.0.0",
-    "axios": "^1.8.2"
+    "@vepler/logger": "^1.0.0"
   },
   "devDependencies": {
     "@vepler/schools-types": "^1.0.0",
