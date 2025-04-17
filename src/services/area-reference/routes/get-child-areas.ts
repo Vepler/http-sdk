@@ -12,9 +12,9 @@ export interface GetChildAreasParams {
 export interface GetChildAreasResponse {
   success: boolean;
   result: {
-    parent: any;
+    parent: Record<string, unknown>;
     childType: string;
-    children: any[];
+    children: Record<string, unknown>[];
     total: number;
     limit: number;
     offset: number;

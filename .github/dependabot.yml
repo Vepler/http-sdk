@@ -4,5 +4,13 @@ updates:
     directory: "/"
     schedule:
       interval: "weekly"
+    target-branch: "develop"
+    labels:
+      - "dependencies"
+    commit-message:
+      prefix: "chore"
+      include: "scope"
     open-pull-requests-limit: 10
+    pull-request-branch-name:
+      separator: "-"
     versioning-strategy: increase

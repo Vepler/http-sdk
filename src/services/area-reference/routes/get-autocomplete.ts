@@ -9,7 +9,7 @@ export interface LocationResult {
   id: string;
   name: string;
   type: string;
-  [key: string]: any;
+  [key: string]: string | number | boolean | null | object;
 }
 
 export interface GetAutocompleteResponse {

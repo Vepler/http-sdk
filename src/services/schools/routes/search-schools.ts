@@ -1,5 +1,6 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { SchoolSearchQueryParams, SchoolSearchResponse } from '@vepler/schools-types/api/endpoints/search';
+import { QueryParams } from '../../../types';
 
 export async function searchSchools(
   params: SchoolSearchQueryParams
@@ -14,7 +15,7 @@ export async function searchSchools(
   const api = getApiInstance('schools');
   const endpoint = '/search/schools';
 
-  const queryParams: Record<string, any> = {
+  const queryParams: QueryParams = {
     query,
     limit,
     page

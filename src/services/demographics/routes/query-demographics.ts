@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { JsonObject } from '../../../types';
 
 interface DemographicsQueryParams {
   geography_type: string;
@@ -11,7 +12,7 @@ interface DemographicsQueryParams {
 }
 
 export interface GetDemographicsResponse {
-  result: Record<string, any>[] | Record<string, any>;
+  result: JsonObject[] | JsonObject;
   success: boolean;
 }
 

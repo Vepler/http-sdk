@@ -1,5 +1,6 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { SchoolAutocompleteQueryParams, SchoolAutocompleteResponse } from '@vepler/schools-types/api/endpoints/search';
+import { QueryParams } from '../../../types';
 
 export async function autocompleteSchools(
   params: SchoolAutocompleteQueryParams
@@ -14,7 +15,7 @@ export async function autocompleteSchools(
   const api = getApiInstance('schools');
   const endpoint = '/search/schools/autocomplete';
 
-  const queryParams: Record<string, any> = {
+  const queryParams: QueryParams = {
     prefix,
     limit
   };
