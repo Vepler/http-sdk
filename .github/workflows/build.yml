@@ -34,12 +34,6 @@ jobs:
         ADMIN_API_KEY: ${{ secrets.ADMIN_API_KEY }}
       run: yarn test:coverage
 
-    - name: SonarCloud Scan
-      uses: SonarSource/sonarcloud-github-action@master
-      env:
-        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
-
     # Only run release step on push to master branch, not for PRs
     - name: Release
       if: github.event_name == 'push' && github.ref == 'refs/heads/master'
