@@ -1,0 +1,31 @@
+* text=auto eol=lf
+*.{cmd,[cC][mM][dD]} text eol=crlf
+*.{bat,[bB][aA][tT]} text eol=crlf
+
+# Graphics
+*.png binary
+*.jpg binary
+*.jpeg binary
+*.gif binary
+*.ico binary
+*.svg text
+
+# Archives
+*.7z binary
+*.gz binary
+*.jar binary
+*.rar binary
+*.tar binary
+*.zip binary
+
+# Documents
+*.pdf binary
+
+# TypeScript/JavaScript specific
+*.ts linguist-language=TypeScript
+*.js linguist-language=JavaScript
+*.json linguist-language=JSON
+
+# Exclude build output from language stats
+dist/** linguist-generated=true
+node_modules/** linguist-vendored=true

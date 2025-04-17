@@ -1,0 +1,37 @@
+# Source
+src/
+tests/
+*.ts
+!*.d.ts
+
+# Config files
+.eslintrc*
+.prettierrc*
+.editorconfig
+.gitattributes
+.github
+tsconfig.json
+jest.config.js
+*.config.js
+*.config.ts
+
+# Build related
+coverage/
+.nyc_output
+.github/
+.husky/
+.vscode/
+
+# Documentation
+docs/
+examples/
+example-*.ts
+CONTRIBUTING.md
+CODE_OF_CONDUCT.md
+SECURITY.md
+CHANGELOG.md
+test-*.js
+
+# Misc
+.DS_Store
+*.log
