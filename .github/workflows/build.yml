@@ -56,4 +56,5 @@ jobs:
         NPM_TOKEN: ${{ secrets.NPM_TOKEN }}
         NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
         GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        ADMIN_API_KEY: ${{ secrets.ADMIN_API_KEY }}
       run: yarn semantic-release
