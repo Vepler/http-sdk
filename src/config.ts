@@ -25,7 +25,7 @@ const defaultConfig = {
     areaReferenceHost: 'https://api2.propbar.co.uk/area-reference',
     crimeHost: 'https://api2.propbar.co.uk/crime',
     roverHost: 'https://api2.propbar.co.uk/rover',
-    schoolsHost: 'https://api2.vepler.co.uk/schools',
+    schoolsHost: 'https://api2.propbar.co.uk/schools',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -37,7 +37,7 @@ const defaultConfig = {
     areaReferenceHost: 'https://api2.propbar.co.uk/area-reference',
     crimeHost: 'https://api2.propbar.co.uk/crime',
     roverHost: 'https://api2.propbar.co.uk/rover',
-    schoolsHost: 'https://api2.vepler.co.uk/schools',
+    schoolsHost: 'https://api2.propbar.co.uk/schools',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
