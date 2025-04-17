@@ -35,7 +35,7 @@ export async function getSchools(
   }
 
   const api = getApiInstance('schools');
-  const endpoint = '/schools';
+  const endpoint = '/';
 
   const queryParams: QueryParams = {
     page,

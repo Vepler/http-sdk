@@ -16,10 +16,10 @@ export async function getSchoolById(
   }
 
   const api = getApiInstance('schools');
-  const endpoint = `/schools/${id}`;
+  const endpoint = `/${id}`;
 
   const queryParams: Record<string, string | number | boolean> = {};
-  
+
   if (includeReports !== undefined) {
     queryParams.includeReports = includeReports;
   }
