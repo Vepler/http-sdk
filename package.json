@@ -39,7 +39,7 @@
   "devDependencies": {
     "@vepler/schools-types": "^1.0.0",
     "@types/jest": "^29.5.12",
-    "@types/node": "^14.14.31",
+    "@types/node": "^22.14.1",
     "@typescript-eslint/eslint-plugin": "^7.4.0",
     "@typescript-eslint/parser": "^7.4.0",
     "@semantic-release/commit-analyzer": "^11.1.0",
