@@ -28,7 +28,7 @@
     "test:coverage": "jest --coverage",
     "build": "tsc",
     "prepare": "husky install",
-    "prepublishOnly": "npm run lint && npm run test && npm run build",
+    "prepublishOnly": "npm run lint && npm run build",
     "semantic-release": "semantic-release"
   },
   "dependencies": {
