@@ -15,9 +15,10 @@ export async function getGeographicMetrics(
   const api = getApiInstance('schools');
   const endpoint = '/metrics/geographic';
 
+  // Convert the typed body to a Record<string, unknown> to satisfy TypeScript
   return await api.post(
     endpoint,
-    body,
+    body as unknown as Record<string, unknown>,
     {
       apiKey: initialisedConfig.apiKey
     }

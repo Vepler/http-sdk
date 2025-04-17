@@ -14,8 +14,9 @@ interface SDKConfig {
   headers?: Record<string, string>;
 }
 
-export let initialisedConfig: any = {};
-const apiInstances: { [key: string]: any } = {};
+export let initialisedConfig: Record<string, unknown> = {};
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+const apiInstances: Record<string, any> = {};
 let isInitialized = false;
 
 const defaultConfig = {
@@ -102,7 +103,8 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
   }
 };
 
-export const getApiInstance = (service: string) => {
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
+export const getApiInstance = (service: string): any => {
   // Check if SDK is initialized
   if (!isInitialized) {
     throw new Error(

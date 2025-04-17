@@ -1,5 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { SchoolByIdPathParams, SchoolByIdQueryParams, SchoolByIdResponse } from '@vepler/schools-types/api/endpoints/schools-by-id';
+import { SchoolByIdQueryParams, SchoolByIdResponse } from '@vepler/schools-types/api/endpoints/schools-by-id';
 
 export interface GetSchoolByIdParams extends SchoolByIdQueryParams {
   id: number;
@@ -18,7 +18,7 @@ export async function getSchoolById(
   const api = getApiInstance('schools');
   const endpoint = `/schools/${id}`;
 
-  const queryParams: Record<string, any> = {};
+  const queryParams: Record<string, string | number | boolean> = {};
   
   if (includeReports !== undefined) {
     queryParams.includeReports = includeReports;

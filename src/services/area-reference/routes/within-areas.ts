@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { Geometry } from '../../../types';
 
 export interface WithinAreasParams {
   lat: number;
@@ -20,7 +21,7 @@ export interface AreaResult {
   name: string;
   type: string;
   distance: number;
-  geometry?: any;
+  geometry?: Geometry;
 }
 
 // Unified response format for all queries

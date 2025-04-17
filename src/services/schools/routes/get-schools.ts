@@ -1,5 +1,6 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { SchoolsQueryParams, SchoolsResponse } from '@vepler/schools-types/api/endpoints/schools';
+import { QueryParams } from '../../../types';
 
 export interface GetSchoolsParams extends Omit<SchoolsQueryParams, 'coordinates' | 'bbox'> {
   coordinates?: number[];
@@ -36,7 +37,7 @@ export async function getSchools(
   const api = getApiInstance('schools');
   const endpoint = '/schools';
 
-  const queryParams: Record<string, any> = {
+  const queryParams: QueryParams = {
     page,
     limit
   };

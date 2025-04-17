@@ -1,5 +1,6 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { MetricsQueryParams, MetricsResponse } from '@vepler/schools-types/api/endpoints/metrics';
+import { QueryParams } from '../../../types';
 
 export async function getMetrics(
   params: MetricsQueryParams
@@ -25,7 +26,7 @@ export async function getMetrics(
   const api = getApiInstance('schools');
   const endpoint = '/metrics';
 
-  const queryParams: Record<string, any> = {
+  const queryParams: QueryParams = {
     schoolIds: Array.isArray(schoolIds) ? schoolIds.join(',') : schoolIds
   };
 
