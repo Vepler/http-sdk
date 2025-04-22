@@ -1282,10 +1282,10 @@
   dependencies:
     pino "^9.6.0"
 
-"@vepler/schools-types@^1.5.0":
-  version "1.5.0"
-  resolved "https://registry.yarnpkg.com/@vepler/schools-types/-/schools-types-1.5.0.tgz#0536f15539f4cea1cd4109bf060bc7e398c8a872"
-  integrity sha512-ymaqaQZ/3Qx2cd2+9e9tBEYE9yk20GzLEsNHp+cZzKtmcA1w9ip3HhxoWDKH6n+bguKhYpx+wX1UCbpKkJ/o/Q==
+"@vepler/schools-types@^1.5.1":
+  version "1.5.1"
+  resolved "https://registry.yarnpkg.com/@vepler/schools-types/-/schools-types-1.5.1.tgz#953875312237cffb5c9802a46fb11031240a7eb3"
+  integrity sha512-Bdr1J6Y97YKsFzXWg/Civcoo/U36hJw22WXWV3tucKsdJ0N/sTqUdgH5AyJvyYoSRYAMtujXONybR/vyQCCJeQ==
 
 abbrev@^3.0.0:
   version "3.0.1"
