@@ -20,9 +20,8 @@ export type { GeographicEntity, QueryByTypeParams, QueryByTypeResponse } from '.
 export type { BorderAreasParams, BorderAreasResponse } from './services/area-reference/routes/border-areas';
 
 // Schools types
-export type { SchoolsResponse } from '@vepler/schools-types/api/endpoints/schools';
+export type { SchoolsQueryParams, SchoolsResponse } from '@vepler/schools-types/api/endpoints/schools';
 export type { SchoolByIdResponse } from '@vepler/schools-types/api/endpoints/schools-by-id';
-export type { GetSchoolsParams } from './services/schools/routes/get-schools';
 export type { GetSchoolByIdParams } from './services/schools/routes/get-school-by-id';
 export type { SchoolSearchQueryParams, SchoolSearchResponse } from '@vepler/schools-types/api/endpoints/search';
 export type { SchoolAutocompleteQueryParams, SchoolAutocompleteResponse } from '@vepler/schools-types/api/endpoints/search';

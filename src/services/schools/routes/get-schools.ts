@@ -2,17 +2,8 @@ import { getApiInstance, initialisedConfig } from '../../../config';
 import { SchoolsQueryParams, SchoolsResponse } from '@vepler/schools-types/api/endpoints/schools';
 import { QueryParams } from '../../../types';
 
-export interface GetSchoolsParams extends Omit<SchoolsQueryParams, 'coordinates' | 'bbox'> {
-  coordinates?: number[];
-  bbox?: number[];
-  type?: string;
-  rating?: string;
-  status?: string;
-  slug?: string;
-}
-
 export async function getSchools(
-  params: GetSchoolsParams
+  params: SchoolsQueryParams
 ): Promise<SchoolsResponse> {
   const {
     name,
@@ -25,10 +16,7 @@ export async function getSchools(
     page = 1,
     limit = 20,
     sort,
-    fields,
-    type,
-    rating,
-    status = 'open'
+    fields
   } = params;
 
   // Validate coordinates and radius are provided together
@@ -47,15 +35,12 @@ export async function getSchools(
   if (name) queryParams.name = name;
   if (urn) queryParams.urn = urn;
   if (slug) queryParams.slug = slug;
-  if (coordinates) queryParams.coordinates = coordinates.join(',');
+  if (coordinates) queryParams.coordinates = coordinates;
   if (radius) queryParams.radius = radius;
-  if (bbox) queryParams.bbox = bbox.join(',');
+  if (bbox) queryParams.bbox = bbox;
   if (filter) queryParams.filter = filter;
   if (sort) queryParams.sort = sort;
-  if (fields && Array.isArray(fields)) queryParams.fields = fields.join(',');
-  if (type) queryParams.type = type;
-  if (rating) queryParams.rating = rating;
-  if (status) queryParams.status = status;
+  if (fields) queryParams.fields = fields;
 
   return await api.query(
     endpoint,
