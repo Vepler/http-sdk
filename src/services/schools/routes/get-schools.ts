@@ -8,6 +8,7 @@ export interface GetSchoolsParams extends Omit<SchoolsQueryParams, 'coordinates'
   type?: string;
   rating?: string;
   status?: string;
+  slug?: string;
 }
 
 export async function getSchools(
@@ -16,6 +17,7 @@ export async function getSchools(
   const {
     name,
     urn,
+    slug,
     coordinates,
     radius,
     bbox,
@@ -44,6 +46,7 @@ export async function getSchools(
 
   if (name) queryParams.name = name;
   if (urn) queryParams.urn = urn;
+  if (slug) queryParams.slug = slug;
   if (coordinates) queryParams.coordinates = coordinates.join(',');
   if (radius) queryParams.radius = radius;
   if (bbox) queryParams.bbox = bbox.join(',');
