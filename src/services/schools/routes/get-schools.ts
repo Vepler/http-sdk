@@ -42,7 +42,10 @@ export async function getSchools(
   if (filter) queryParams.filter = filter;
   if (sort) queryParams.sort = sort;
   if (fields) queryParams.fields = fields;
-  if (overlay) queryParams.overlay = overlay;
+  // Convert overlay array to comma-separated string if needed
+  if (overlay) {
+    queryParams.overlay = Array.isArray(overlay) ? overlay.join(',') : overlay;
+  }
 
   return await api.query(
     endpoint,
