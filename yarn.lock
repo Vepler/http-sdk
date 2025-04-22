@@ -1282,7 +1282,7 @@
   dependencies:
     pino "^9.6.0"
 
-"@vepler/schools-types@^":
+"@vepler/schools-types@^1.5.3":
   version "1.5.3"
   resolved "https://registry.yarnpkg.com/@vepler/schools-types/-/schools-types-1.5.3.tgz#d950217bb5a014fe5454c132a1461569533e8bd2"
   integrity sha512-ZqCxN7eumumTPX/rlk6eaueffPuazEDT6Ou0ZlviUnziCeLWQG1PEHhAdrFGIfJZ9GE0iRKrnzS5wds4VV8Whg==
