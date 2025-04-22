@@ -16,7 +16,8 @@ export async function getSchools(
     page = 1,
     limit = 20,
     sort,
-    fields
+    fields,
+    overlay
   } = params;
 
   // Validate coordinates and radius are provided together
@@ -41,6 +42,7 @@ export async function getSchools(
   if (filter) queryParams.filter = filter;
   if (sort) queryParams.sort = sort;
   if (fields) queryParams.fields = fields;
+  if (overlay) queryParams.overlay = overlay;
 
   return await api.query(
     endpoint,
