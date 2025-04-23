@@ -17,3 +17,13 @@ export interface Geometry {
   type: string;
   coordinates: number[] | number[][] | number[][][] | number[][][][];
 }
+
+// Common geographic entity fields with status and metadata
+export interface GeographicEntityBase {
+  id: string;
+  code: string;
+  name: string;
+  type: string;
+  status: string;
+  metadata: JsonObject | null;
+}

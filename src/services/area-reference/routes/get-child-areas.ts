@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { GeographicEntityBase } from '../../../types';
 
 export interface GetChildAreasParams {
   parentCode: string;
@@ -7,14 +8,20 @@ export interface GetChildAreasParams {
   includeGeometry?: boolean;
   limit?: number;
   offset?: number;
+  status?: string; // Parameter is defined but ignored by the API
+}
+
+export interface ChildAreaEntity extends GeographicEntityBase {
+  geometry?: object;
+  hierarchy?: object;
 }
 
 export interface GetChildAreasResponse {
   success: boolean;
   result: {
-    parent: Record<string, unknown>;
+    parent: ChildAreaEntity;
     childType: string;
-    children: Record<string, unknown>[];
+    children: ChildAreaEntity[];
     total: number;
     limit: number;
     offset: number;

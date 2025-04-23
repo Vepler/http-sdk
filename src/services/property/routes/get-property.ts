@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { JsonObject } from '../../../types';
 
 export interface GetPropertyByPropertyIdParams {
   propertyIds: string[];
@@ -7,8 +8,22 @@ export interface GetPropertyByPropertyIdParams {
   includeGeometry?: boolean;
 }
 
+export interface PropertyEntity {
+  id: string;
+  uprn?: string;
+  address?: string;
+  location?: {
+    lat: number;
+    long: number;
+  };
+  geometry?: object;
+  status: string;
+  metadata: JsonObject | null;
+  // Additional property-specific fields
+}
+
 export interface PropertyResponse {
-  result: object[];
+  result: PropertyEntity[];
   success: boolean;
 }
 

@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { GeographicEntityBase } from '../../../types';
 
 export interface QueryByTypeParams {
   type: string;
@@ -7,13 +8,10 @@ export interface QueryByTypeParams {
   includeRelationships?: boolean;
   includeHierarchy?: boolean;
   includeGeometry?: boolean;
+  status?: string;
 }
 
-export interface GeographicEntity {
-  id: string;
-  code: string;
-  name: string;
-  type: string;
+export interface GeographicEntity extends GeographicEntityBase {
   lat: number;
   long: number;
   geometry?: object;
@@ -40,7 +38,8 @@ export async function queryByType(params: QueryByTypeParams): Promise<QueryByTyp
     offset = 0, 
     includeRelationships = false,
     includeHierarchy = false,
-    includeGeometry = false 
+    includeGeometry = false,
+    status = 'active'
   } = params;
 
   const api = getApiInstance('area-reference');
@@ -53,7 +52,8 @@ export async function queryByType(params: QueryByTypeParams): Promise<QueryByTyp
       offset,
       includeRelationships,
       includeHierarchy,
-      includeGeometry
+      includeGeometry,
+      status
     },
     {
       apiKey: initialisedConfig.apiKey

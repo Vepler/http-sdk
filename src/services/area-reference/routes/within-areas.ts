@@ -1,5 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { Geometry } from '../../../types';
+import { Geometry, GeographicEntityBase } from '../../../types';
 
 export interface WithinAreasParams {
   lat: number;
@@ -13,13 +13,10 @@ export interface WithinAreasParams {
    */
   type: string | string[];
   includeGeometry?: boolean;
+  status?: string;
 }
 
-export interface AreaResult {
-  id: string;
-  code: string;
-  name: string;
-  type: string;
+export interface AreaResult extends GeographicEntityBase {
   distance: number;
   geometry?: Geometry;
 }
@@ -32,7 +29,7 @@ export interface WithinAreasResponse {
 export async function withinAreas(
   params: WithinAreasParams
 ): Promise<WithinAreasResponse> {
-  const { lat, lng, radius = 1, type, includeGeometry = false } = params;
+  const { lat, lng, radius = 1, type, includeGeometry = false, status = 'active' } = params;
 
   // Validate type parameter is provided
   if (!type) {
@@ -54,6 +51,7 @@ export async function withinAreas(
       radius,
       type: typeParam,
       includeGeometry,
+      status,
     },
     {
       apiKey: initialisedConfig.apiKey
