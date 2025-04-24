@@ -21,7 +21,7 @@ export async function getAutocomplete(params: GetAutocompleteParams): Promise<Ge
   const { query, types } = params;
 
   const api = getApiInstance('area-reference');
-  const endpoint = '/search/locations/autocomplete';
+  const endpoint = '/locations/autocomplete';
 
   return await api.query(
     endpoint,
