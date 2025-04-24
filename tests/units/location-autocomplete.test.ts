@@ -40,7 +40,7 @@ describe('Area Reference Autocomplete API', () => {
     });
 
     expect(mockQueryFn).toHaveBeenCalledWith(
-      '/search/locations/autocomplete',
+      '/locations/autocomplete',
       { query: 'London', types: undefined },
       { apiKey: 'test-api-key' }
     );
@@ -53,7 +53,7 @@ describe('Area Reference Autocomplete API', () => {
     });
 
     expect(mockQueryFn).toHaveBeenCalledWith(
-      '/search/locations/autocomplete',
+      '/locations/autocomplete',
       { query: 'Birmingham', types: 'city' },
       { apiKey: 'test-api-key' }
     );
