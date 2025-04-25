@@ -8,6 +8,7 @@ interface SDKConfig {
   crimeHost?: string;
   roverHost?: string;
   schoolsHost?: string;
+  planningRegisterHost?: string;
   timeout?: number;
   apiKey?: string;
   logLevel?: string;
@@ -26,6 +27,7 @@ const defaultConfig = {
     crimeHost: 'https://api2.propbar.co.uk/crime',
     roverHost: 'https://api2.propbar.co.uk/rover',
     schoolsHost: 'https://api2.propbar.co.uk/schools',
+    planningRegisterHost: 'https://api2.propbar.co.uk/planning-register',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -38,6 +40,7 @@ const defaultConfig = {
     crimeHost: 'https://api2.propbar.co.uk/crime',
     roverHost: 'https://api2.propbar.co.uk/rover',
     schoolsHost: 'https://api2.propbar.co.uk/schools',
+    planningRegisterHost: 'https://api2.propbar.co.uk/planning-register',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
@@ -91,6 +94,11 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
     apiInstances['schools'] = ApiService.create({
       ...commonConfig,
       host: config.schoolsHost || environmentConfig.schoolsHost,
+    });
+    
+    apiInstances['planning-register'] = ApiService.create({
+      ...commonConfig,
+      host: config.planningRegisterHost || environmentConfig.planningRegisterHost,
     });
 
     initialisedConfig = commonConfig;

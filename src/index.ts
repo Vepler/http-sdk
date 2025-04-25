@@ -13,6 +13,7 @@ import * as AreaReferenceService from './services/area-reference/service';
 import * as CrimeService from './services/crime/service';
 import * as RoverService from './services/demographics/service';
 import * as SchoolsService from './services/schools/service';
+import * as PlanningRegisterService from './services/planning-register/service';
 
 // Export types for external usage
 // Area Reference types
@@ -27,6 +28,18 @@ export type { SchoolSearchQueryParams, SchoolSearchResponse } from '@vepler/scho
 export type { SchoolAutocompleteQueryParams, SchoolAutocompleteResponse } from '@vepler/schools-types/api/endpoints/search';
 export type { MetricsQueryParams, MetricsResponse } from '@vepler/schools-types/api/endpoints/metrics';
 export type { MetricsGeographicRequestBody, MetricsGeographicResponse } from '@vepler/schools-types/api/endpoints/metrics-geographic';
+
+// Planning Register types
+export type {
+  ApplicationQuery,
+  QueryApplicationResponse,
+  GetApplicationParams,
+  GetApplicationResponse,
+  GetTilesParams,
+  PlanningApplication,
+  PlanningStatus
+} from '@vepler/planning-register-types';
+
 export {
   initSDK as initializeSDK,
   reset
@@ -37,7 +50,8 @@ const routes = {
   areaReference: AreaReferenceService.default,
   crime: CrimeService.default,
   rover: RoverService.default,
-  schools: SchoolsService.default
+  schools: SchoolsService.default,
+  planningRegister: PlanningRegisterService.default
 }
 
 export const property = routes.property
@@ -45,5 +59,6 @@ export const areaReference = routes.areaReference
 export const crime = routes.crime
 export const rover = routes.rover
 export const schools = routes.schools
+export const planningRegister = routes.planningRegister
 
 export default routes;
