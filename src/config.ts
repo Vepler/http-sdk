@@ -22,12 +22,12 @@ let isInitialized = false;
 
 const defaultConfig = {
   production: {
-    propertyHost: 'https://api2.propbar.co.uk/property',
-    areaReferenceHost: 'https://api2.propbar.co.uk/area-reference',
-    crimeHost: 'https://api2.propbar.co.uk/crime',
-    roverHost: 'https://api2.propbar.co.uk/rover',
-    schoolsHost: 'https://api2.propbar.co.uk/schools',
-    planningRegisterHost: 'https://api2.propbar.co.uk/planning-register',
+    propertyHost: process.env.SVC_PROPERTY_HOST || 'https://api2.propbar.co.uk/property',
+    areaReferenceHost: process.env.AREA_REFERENCE_HOST || 'https://api2.propbar.co.uk/area-reference',
+    crimeHost: process.env.CRIME_HOST || 'https://api2.propbar.co.uk/crime',
+    roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
+    schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
+    planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -35,12 +35,12 @@ const defaultConfig = {
     },
   },
   development: {
-    propertyHost: 'https://api2.propbar.co.uk/property',
-    areaReferenceHost: 'https://api2.propbar.co.uk/area-reference',
-    crimeHost: 'https://api2.propbar.co.uk/crime',
-    roverHost: 'https://api2.propbar.co.uk/rover',
-    schoolsHost: 'https://api2.propbar.co.uk/schools',
-    planningRegisterHost: 'https://api2.propbar.co.uk/planning-register',
+    propertyHost: process.env.SVC_PROPERTY_HOST || 'https://api2.propbar.co.uk/property',
+    areaReferenceHost: process.env.AREA_REFERENCE_HOST || 'https://api2.propbar.co.uk/area-reference',
+    crimeHost: process.env.CRIME_HOST || 'https://api2.propbar.co.uk/crime',
+    roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
+    schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
+    planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
