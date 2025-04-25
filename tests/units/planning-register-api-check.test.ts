@@ -32,7 +32,7 @@ describe('Validate Planning Register API', () => {
         status: 'pending' as any
       },
       sort: {
-        field: 'receivedAt',
+        field: 'receivedDate',
         direction: 'desc'
       }
     });
