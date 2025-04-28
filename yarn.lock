@@ -1287,10 +1287,10 @@
   resolved "https://registry.yarnpkg.com/@vepler/planning-register-types/-/planning-register-types-1.1.1.tgz#323488fdbb49470a611d67bbc481b343136671b8"
   integrity sha512-2Ln487eMPhHu0FJTlBmx/ToMqh++llCX6P4dQzQE+9WVNySQql1qx79j+UpCPF8t6MWnTOpLIvDlqL6Ar8CqxA==
 
-"@vepler/schools-types@^1.8.1":
-  version "1.8.1"
-  resolved "https://registry.yarnpkg.com/@vepler/schools-types/-/schools-types-1.8.1.tgz#2969eccf872d322081e5d30f641d22b6c0118253"
-  integrity sha512-s38ntP6L+mB/lDBValGr34AaKdl3uWKAJWBrfsVsP58KTPJnmONHuVUluUcv4fFuBYd9ksi9Yf2OLtErVkXOFQ==
+"@vepler/schools-types@^1.8.2":
+  version "1.8.2"
+  resolved "https://registry.yarnpkg.com/@vepler/schools-types/-/schools-types-1.8.2.tgz#0c072ab6ab19b548b97d9bc57de6a942498c3961"
+  integrity sha512-ZFwmknWsl+jx7TBa4hoZJw+/gsHsrthRrapYflrfkr+uVJe5Gbsv2FBtKHCBRF1EuVVkZOKOPuw5xMIR9hTkRg==
 
 abbrev@^3.0.0:
   version "3.0.1"

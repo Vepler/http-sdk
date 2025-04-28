@@ -3,32 +3,12 @@ import { SchoolsQueryParams } from '@vepler/schools-types/api/endpoints/schools'
 import { SchoolByIdQueryParams } from '@vepler/schools-types/api/endpoints/schools-by-id';
 import { SchoolSearchQueryParams } from '@vepler/schools-types/api/endpoints/search';
 import { SchoolAutocompleteQueryParams } from '@vepler/schools-types/api/endpoints/search';
-import { MetricsQueryParams } from '@vepler/schools-types/api/endpoints/metrics';
 import { MetricsTimeSeriesQueryOptions } from '@vepler/schools-types/api/endpoints/metrics-timeseries';
-import { MetricsGeographicRequestBody } from '@vepler/schools-types/api/endpoints/metrics-geographic';
+import {
+  GeographicMetricsQueryOptions,
+} from '@vepler/schools-types/api/endpoints/metrics-geographic';
 
-// Create custom types that match our SDK implementation
-interface TimeSeriesMetricsParams {
-  schools: number[] | string;
-  metric: string[] | string;
-  from?: string;
-  to?: string;
-  fields?: string;
-}
-
-interface GeographicMetricsParams {
-  metric: string[] | string;
-  year?: string;
-  areas: Array<{
-    type: string;
-    entityType?: string;
-    ids?: string[];
-    coordinates?: number[] | number[][];
-    radius?: number;
-  }>;
-  profile?: string | string[];
-  fields?: string;
-}
+// Use proper types directly from @vepler/schools-types
 
 // Mock the API service for testing without real API calls
 jest.mock('@vepler/http-client', () => {
@@ -67,7 +47,7 @@ jest.mock('@vepler/http-client', () => {
                   currentRating: 'good',
                   overlays: [
                     {
-                      type: 'lsoa21',
+                      type: 'lsoa',
                       id: 'E01000123'
                     }
                   ]
@@ -124,7 +104,7 @@ jest.mock('@vepler/http-client', () => {
                 ],
                 overlays: [
                   {
-                    type: 'lsoa21',
+                    type: 'lsoa',
                     id: 'E01000123'
                   }
                 ]
@@ -179,7 +159,7 @@ jest.mock('@vepler/http-client', () => {
                       id: 'attendance_overall',
                       name: 'Overall Attendance',
                       value: 95.6,
-                      year: '2022-2023',
+                      academicYears: ['2022-2023'],
                       national: 94.2,
                       category: 'attendance'
                     }
@@ -257,7 +237,7 @@ jest.mock('@vepler/http-client', () => {
                   currentRating: 'good',
                   overlays: [
                     {
-                      type: 'lsoa21',
+                      type: 'lsoa',
                       id: 'E01000123'
                     }
                   ]
@@ -285,7 +265,7 @@ jest.mock('@vepler/http-client', () => {
                       id: 'attendance_overall',
                       name: 'Overall Attendance',
                       value: 94.8,
-                      year: '2022-2023',
+                      academicYears: ['2022-2023'],
                       national: 94.2,
                       count: 85
                     },
@@ -293,7 +273,7 @@ jest.mock('@vepler/http-client', () => {
                       id: 'attainment_reading',
                       name: 'Reading Attainment',
                       value: 73.2,
-                      year: '2022-2023',
+                      academicYears: ['2022-2023'],
                       national: 70.5,
                       count: 85
                     }
@@ -345,7 +325,7 @@ describe('Schools API', () => {
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
       expect(response?.result).toHaveLength(1);
-      
+
       // Using type assertion to handle array access
       const firstResult = (response?.result as any)?.[0];
       expect(firstResult?.id).toBe(601);
@@ -434,7 +414,7 @@ describe('Schools API', () => {
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
       expect(response?.result).toBeDefined();
-      
+
       const school = response?.result;
       expect(school?.id).toBe(601);
       expect(school?.URN).toBe(100601);
@@ -472,7 +452,7 @@ describe('Schools API', () => {
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
       expect(response?.result).toHaveLength(1);
-      
+
       // Using type assertion to handle array access
       const firstResult = (response?.result as any)?.[0];
       expect(firstResult?.id).toBe(601);
@@ -506,7 +486,7 @@ describe('Schools API', () => {
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
       expect(response?.result).toHaveLength(1);
-      
+
       // Using type assertion to handle array access
       const firstResult = (response?.result as any)?.[0];
       expect(firstResult?.id).toBe(601);
@@ -529,9 +509,9 @@ describe('Schools API', () => {
   describe('Get Metrics', () => {
     it('should retrieve metrics for a specific school', async () => {
       const params: any = {
-        schools: [601],
-        metric: ['attendance_overall'],
-        year: '2022-2023'
+        schoolIds: [601],
+        metricCodes: ['attendance_overall'],
+        academicYears: ['2022-2023']
       };
 
       const response = await schools.metrics.get(params);
@@ -539,7 +519,7 @@ describe('Schools API', () => {
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
       expect(response?.result).toHaveLength(1);
-      
+
       // Using type assertion to handle array access
       const firstResult = (response?.result as any)?.[0];
       expect(firstResult?.school.id).toBe(601);
@@ -547,35 +527,35 @@ describe('Schools API', () => {
       expect(firstResult?.metrics).toHaveLength(1);
       expect(firstResult?.metrics[0].id).toBe('attendance_overall');
       expect(firstResult?.metrics[0].value).toBe(95.6);
-      expect(firstResult?.metrics[0].year).toBe('2022-2023');
+      expect(firstResult?.metrics[0].academicYears[0]).toBe('2022-2023');
       expect(firstResult?.metrics[0].national).toBe(94.2);
     });
 
     it('should throw an error if schools parameter is not provided', async () => {
       const params: any = {
-        metric: ['attendance_overall']
+        metricCodes: ['attendance_overall']
       };
 
       await expect(schools.metrics.get(params)).rejects.toThrow(
-        'The "schools" parameter must be provided'
+        'The "schoolIds" parameter must be provided'
       );
     });
 
     it('should throw an error if metric parameter is not provided', async () => {
       const params: any = {
-        schools: [601]
+        schoolIds: [601]
       };
 
       await expect(schools.metrics.get(params)).rejects.toThrow(
-        'The "metric" parameter must be provided'
+        'Either "metricCodes" or "profile" parameter must be provided'
       );
     });
 
     it('should handle string school ID parameter', async () => {
       const params: any = {
-        schools: '601',
-        metric: 'attendance_overall',
-        year: '2022-2023'
+        schoolIds: '601',
+        metricCodes: 'attendance_overall',
+        academicYears: ['2022-2023']
       };
 
       const response = await schools.metrics.get(params);
@@ -588,11 +568,10 @@ describe('Schools API', () => {
 
   describe('Get Time Series Metrics', () => {
     it('should retrieve metrics data in time series format', async () => {
-      const params: TimeSeriesMetricsParams = {
-        schools: [601],
-        metric: ['attendance_overall'],
-        from: '2018-2019',
-        to: '2022-2023'
+      const params: MetricsTimeSeriesQueryOptions = {
+        schoolId: 601,
+        metricCodes: ['attendance_overall'],
+        academicYears: ['2018-2019', '2019-2020', '2020-2021', '2021-2022', '2022-2023']
       };
 
       const response = await schools.metrics.timeSeries(params);
@@ -600,7 +579,7 @@ describe('Schools API', () => {
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
       expect(response?.result).toHaveLength(1);
-      
+
       // Using type assertion to handle array access
       const firstResult = (response?.result as any)?.[0];
       expect(firstResult?.school.id).toBe(601);
@@ -614,48 +593,44 @@ describe('Schools API', () => {
       expect(firstResult?.metrics[0].series[2].year).toBe('2020-2021');
     });
 
-    it('should throw an error if schools parameter is not provided', async () => {
+    it('should throw an error if schoolId parameter is not provided', async () => {
       const params: any = {
-        metric: ['attendance_overall']
+        metricCodes: ['attendance_overall']
       };
 
       await expect(schools.metrics.timeSeries(params)).rejects.toThrow(
-        'The "schools" parameter must be provided'
+        'The "schoolId" parameter must be provided'
       );
     });
 
-    it('should throw an error if metric parameter is not provided', async () => {
+    it('should throw an error if metricCodes parameter is not provided', async () => {
       const params: any = {
-        schools: [601]
+        schoolId: 601
       };
 
       await expect(schools.metrics.timeSeries(params)).rejects.toThrow(
-        'The "metric" parameter must be provided'
+        'Either "metricCodes" or "profile" parameter must be provided'
       );
     });
   });
 
   describe('Get Geographic Metrics', () => {
     it('should retrieve metrics aggregated by geographic areas', async () => {
-      const params: GeographicMetricsParams = {
-        metric: ['attendance_overall', 'attainment_reading'],
-        year: '2022-2023',
-        areas: [
-          {
-            type: 'entity',
-            entityType: 'local_authority_district',
-            ids: ['E09000033']
-          }
-        ]
+      const params: GeographicMetricsQueryOptions = {
+        metricCodes: ['attendance_overall', 'attainment_reading'],
+        academicYearId: 'GB_2022-2023',
+        geography: {
+          type: 'lsoa',
+          codes: ['E09000033']
+        }
       };
 
-      // Using type assertion to match the expected interface
-      const response = await schools.metrics.geographic(params as any);
+      const response = await schools.metrics.geographic(params);
 
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
       expect(response?.result).toHaveLength(1);
-      
+
       // Using type assertion to handle array access
       const firstResult = (response?.result as any)?.[0];
       expect(firstResult?.area.id).toBe('E09000033');
@@ -668,53 +643,43 @@ describe('Schools API', () => {
       expect(firstResult?.metrics[1].id).toBe('attainment_reading');
     });
 
-    it('should throw an error if metric parameter is not provided', async () => {
+    it('should throw an error if metricCodes parameter is not provided', async () => {
       const params: any = {
-        areas: [
-          {
-            type: 'entity',
-            entityType: 'local_authority_district',
-            ids: ['E09000033']
-          }
-        ]
+        geography: {
+          type: 'lsoa',
+          codes: ['E09000033']
+        }
       };
 
       await expect(schools.metrics.geographic(params)).rejects.toThrow(
-        'The "metric" parameter must be provided'
+        'Either "metricCodes" or "profile" parameter must be provided'
       );
     });
 
-    it('should throw an error if areas parameter is not provided', async () => {
+    it('should throw an error if geography parameter is not provided', async () => {
       const params: any = {
-        metric: ['attendance_overall']
+        metricCodes: ['attendance_overall']
       };
 
       await expect(schools.metrics.geographic(params)).rejects.toThrow(
-        'The "areas" parameter must be provided and not empty'
+        'The "geography" parameter must be provided'
       );
     });
 
-    it('should handle multiple metrics and area types', async () => {
-      const params: GeographicMetricsParams = {
-        metric: ['attendance_overall', 'attainment_reading'],
-        year: '2022-2023',
-        areas: [
-          {
-            type: 'entity',
-            entityType: 'local_authority_district',
-            ids: ['E09000033']
-          },
-          {
-            type: 'entity',
-            entityType: 'ward',
-            ids: ['E05000001']
-          }
-        ],
-        profile: 'performance'
+    it('should handle different parameters and options', async () => {
+      const params: GeographicMetricsQueryOptions = {
+        metricCodes: ['attendance_overall', 'attainment_reading'],
+        academicYearId: 'GB_2022-2023',
+        geography: {
+          type: 'lsoa',
+          codes: ['E09000033']
+        },
+        profile: 'ks2',
+        hierarchicalResults: true,
+        includeMetadata: true
       };
 
-      // Using type assertion to match the expected interface
-      const response = await schools.metrics.geographic(params as any);
+      const response = await schools.metrics.geographic(params);
 
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
