@@ -1,55 +1,44 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { SchoolsQueryParams, SchoolsResponse } from '@vepler/schools-types/api/endpoints/schools';
-import { QueryParams } from '../../../types';
+import { 
+  SchoolsQueryParams, 
+  SchoolsResponse
+} from '@vepler/schools-types/api/endpoints/schools';
 
 export async function getSchools(
   params: SchoolsQueryParams
 ): Promise<SchoolsResponse> {
   const {
-    name,
-    urn,
-    slug,
-    coordinates,
-    radius,
-    bbox,
-    filter,
     page = 1,
     limit = 20,
     sort,
     fields,
-    overlay
+    name,
+    urn,
+    slug,
+    area,
+    filter
   } = params;
-
-  // Validate coordinates and radius are provided together
-  if (coordinates && !radius) {
-    throw new Error('The "radius" parameter must be provided when using coordinates');
-  }
 
   const api = getApiInstance('schools');
   const endpoint = '/';
 
-  const queryParams: QueryParams = {
+  // Prepare the request body - reusing SchoolsQueryParams type
+  const requestBody: SchoolsQueryParams = {
     page,
     limit
   };
 
-  if (name) queryParams.name = name;
-  if (urn) queryParams.urn = urn;
-  if (slug) queryParams.slug = slug;
-  if (coordinates) queryParams.coordinates = coordinates;
-  if (radius) queryParams.radius = radius;
-  if (bbox) queryParams.bbox = bbox;
-  if (filter) queryParams.filter = filter;
-  if (sort) queryParams.sort = sort;
-  if (fields) queryParams.fields = fields;
-  // Convert overlay array to comma-separated string if needed
-  if (overlay) {
-    queryParams.overlay = Array.isArray(overlay) ? overlay.join(',') : overlay;
-  }
+  if (name) requestBody.name = name;
+  if (urn) requestBody.urn = urn;
+  if (slug) requestBody.slug = slug;
+  if (area) requestBody.area = area;
+  if (filter) requestBody.filter = filter;
+  if (sort) requestBody.sort = sort;
+  if (fields) requestBody.fields = fields;
 
-  return await api.query(
+  return await api.post(
     endpoint,
-    queryParams,
+    requestBody,
     {
       apiKey: initialisedConfig.apiKey
     }

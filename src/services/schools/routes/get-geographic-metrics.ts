@@ -1,24 +1,64 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { 
   MetricsGeographicRequestBody, 
-  MetricsGeographicResponse 
+  MetricsGeographicResponse,
+  GeographicMetricsQueryOptions 
 } from '@vepler/schools-types/api/endpoints/metrics-geographic';
 
 export async function getGeographicMetrics(
-  body: MetricsGeographicRequestBody
+  params: GeographicMetricsQueryOptions
 ): Promise<MetricsGeographicResponse> {
+  const {
+    metricCodes,
+    academicYearId,
+    geography,
+    profile,
+    cohortType,
+    hierarchicalResults,
+    aggregationLevels,
+    includeMetadata,
+    limit,
+    offset
+  } = params;
+  
   // Validate required parameters
-  if (!body.geography || !body.geography.codes || !body.geography.type) {
-    throw new Error('The geography object with codes and type must be provided');
+  if (!metricCodes && !profile) {
+    throw new Error('Either "metricCodes" or "profile" parameter must be provided');
+  }
+  
+  if (!geography) {
+    throw new Error('The "geography" parameter must be provided');
   }
 
   const api = getApiInstance('schools');
   const endpoint = '/metrics/geographic';
 
-  // Convert the typed body to a Record<string, unknown> to satisfy TypeScript
+  // Prepare the request body with the structure expected by the API
+  const requestBody: MetricsGeographicRequestBody = {
+    geography: geography
+  };
+  
+  if (metricCodes) {
+    requestBody.metricCodes = Array.isArray(metricCodes) ? metricCodes : [metricCodes];
+  }
+  
+  if (academicYearId) requestBody.academicYearId = academicYearId;
+  
+  if (profile) {
+    // The type definition expects a string, but the interface allows an array
+    requestBody.profile = Array.isArray(profile) ? profile[0] : profile;
+  }
+  
+  if (cohortType) requestBody.cohortType = cohortType;
+  if (hierarchicalResults !== undefined) requestBody.hierarchicalResults = hierarchicalResults;
+  if (aggregationLevels) requestBody.aggregationLevels = aggregationLevels;
+  if (includeMetadata !== undefined) requestBody.includeMetadata = includeMetadata;
+  if (limit) requestBody.limit = limit;
+  if (offset) requestBody.offset = offset;
+
   return await api.post(
     endpoint,
-    body as unknown as Record<string, unknown>,
+    requestBody,
     {
       apiKey: initialisedConfig.apiKey
     }
