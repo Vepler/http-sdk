@@ -4,16 +4,16 @@ import { UnifiedSearchInput, UnifiedSearchResponse } from '@vepler/search-types'
 /**
  * Unified Search API
  * GET /search
- * 
+ *
  * Searches across multiple data sources based on query intent.
- * 
+ *
  * @param params Search query parameters
  * @returns Promise containing search results
  */
 export async function search(params: UnifiedSearchInput): Promise<UnifiedSearchResponse> {
-  const { 
-    query, 
-    limit = 10, 
+  const {
+    query,
+    limit = 10,
     offset = 0,
     source
   } = params;
@@ -24,7 +24,7 @@ export async function search(params: UnifiedSearchInput): Promise<UnifiedSearchR
   }
 
   const api = getApiInstance('search');
-  const endpoint = '/search';
+  const endpoint = '';
 
   const queryParams: Record<string, string | number> = {
     query,
@@ -34,7 +34,7 @@ export async function search(params: UnifiedSearchInput): Promise<UnifiedSearchR
   if (offset !== undefined) {
     queryParams.offset = offset;
   }
-  
+
   if (source !== undefined) {
     queryParams.source = source;
   }
