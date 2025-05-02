@@ -14,6 +14,7 @@ import * as CrimeService from './services/crime/service';
 import * as RoverService from './services/demographics/service';
 import * as SchoolsService from './services/schools/service';
 import * as PlanningRegisterService from './services/planning-register/service';
+import * as SearchService from './services/search/service';
 
 // Export types for external usage
 // Area Reference types
@@ -40,6 +41,9 @@ export type {
   PlanningStatus
 } from '@vepler/planning-register-types';
 
+// Search types
+export type { UnifiedSearchInput, UnifiedSearchResponse } from '@vepler/search-types';
+
 export {
   initSDK as initializeSDK,
   reset
@@ -51,7 +55,8 @@ const routes = {
   crime: CrimeService.default,
   rover: RoverService.default,
   schools: SchoolsService.default,
-  planningRegister: PlanningRegisterService.default
+  planningRegister: PlanningRegisterService.default,
+  search: SearchService.default
 }
 
 export const property = routes.property
@@ -60,5 +65,6 @@ export const crime = routes.crime
 export const rover = routes.rover
 export const schools = routes.schools
 export const planningRegister = routes.planningRegister
+export const search = routes.search
 
 export default routes;

@@ -9,6 +9,7 @@ interface SDKConfig {
   roverHost?: string;
   schoolsHost?: string;
   planningRegisterHost?: string;
+  searchHost?: string;
   timeout?: number;
   apiKey?: string;
   logLevel?: string;
@@ -28,6 +29,7 @@ const defaultConfig = {
     roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
+    searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -41,6 +43,7 @@ const defaultConfig = {
     roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
+    searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
@@ -99,6 +102,11 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
     apiInstances['planning-register'] = ApiService.create({
       ...commonConfig,
       host: config.planningRegisterHost || environmentConfig.planningRegisterHost,
+    });
+    
+    apiInstances['search'] = ApiService.create({
+      ...commonConfig,
+      host: config.searchHost || environmentConfig.searchHost,
     });
 
     initialisedConfig = commonConfig;
