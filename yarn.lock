@@ -1270,6 +1270,13 @@
   dependencies:
     pino "^9.6.0"
 
+"@vepler/logger@^3.0.0":
+  version "3.0.0"
+  resolved "https://registry.yarnpkg.com/@vepler/logger/-/logger-3.0.0.tgz#c0886742189a4efa6464af65d4d8c00efb4d8bc3"
+  integrity sha512-B+yiKFtwQNL/6VMu7TS+SkC7qoFbH3Yc0QvKXzqcaerbVyXy6+L7lYIZzApeDxn96wbOvzazkS+t/K8643+aNQ==
+  dependencies:
+    pino "^9.6.0"
+
 "@vepler/planning-register-types@^1.0.13":
   version "1.1.1"
   resolved "https://registry.yarnpkg.com/@vepler/planning-register-types/-/planning-register-types-1.1.1.tgz#323488fdbb49470a611d67bbc481b343136671b8"
