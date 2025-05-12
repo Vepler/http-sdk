@@ -35,6 +35,7 @@
     "@vepler/http-client": "^1.0.2",
     "@vepler/logger": "^1.0.0",
     "@vepler/planning-register-types": "^1.0.13",
+    "@vepler/property-predictor-types": "^1.9.4",
     "@vepler/schools-types": "^1.8.2",
     "@vepler/search-types": "^1.1.0"
   },

@@ -10,6 +10,7 @@ interface SDKConfig {
   schoolsHost?: string;
   planningRegisterHost?: string;
   searchHost?: string;
+  propertyPredictorHost?: string;
   timeout?: number;
   apiKey?: string;
   logLevel?: string;
@@ -30,6 +31,7 @@ const defaultConfig = {
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
+    propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -44,6 +46,7 @@ const defaultConfig = {
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
+    propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
@@ -107,6 +110,11 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
     apiInstances['search'] = ApiService.create({
       ...commonConfig,
       host: config.searchHost || environmentConfig.searchHost,
+    });
+
+    apiInstances['property-predictor'] = ApiService.create({
+      ...commonConfig,
+      host: config.propertyPredictorHost || environmentConfig.propertyPredictorHost,
     });
 
     initialisedConfig = commonConfig;
