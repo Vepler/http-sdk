@@ -1270,10 +1270,10 @@
   dependencies:
     pino "^9.6.0"
 
-"@vepler/planning-register-types@^1.0.13":
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/@vepler/planning-register-types/-/planning-register-types-1.1.1.tgz#323488fdbb49470a611d67bbc481b343136671b8"
-  integrity sha512-2Ln487eMPhHu0FJTlBmx/ToMqh++llCX6P4dQzQE+9WVNySQql1qx79j+UpCPF8t6MWnTOpLIvDlqL6Ar8CqxA==
+"@vepler/planning-register-types@^1.1.5":
+  version "1.1.5"
+  resolved "https://registry.yarnpkg.com/@vepler/planning-register-types/-/planning-register-types-1.1.5.tgz#f5923700b1020ea33d4a9c9189435a94cbdf0006"
+  integrity sha512-6ZT+adywBIFMPOIwhT6DNslxRCBmfyIDFwysmZOoKuJZe3mJ6LlXpLwB8P3Uo8iFRwosqTfGQJN+zqqB1s85Fw==
 
 "@vepler/schools-types@^1.8.2":
   version "1.8.2"
