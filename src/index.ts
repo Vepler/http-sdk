@@ -46,7 +46,7 @@ export type {
 export type { UnifiedSearchInput, UnifiedSearchResponse } from '@vepler/search-types';
 
 // Property Predictor types
-export type { PredictionInput, PredictionResponse } from '@vepler/property-predictor-types';
+export type { IMultiTargetPredictionRequest, IMultiTargetPredictionResponse } from '@vepler/property-predictor-types';
 
 export {
   initSDK as initializeSDK,

@@ -1,7 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { 
-  PredictionInput,
-  PredictionResponse 
+import {
+  IMultiTargetPredictionRequest,
+  IMultiTargetPredictionResponse
 } from '@vepler/property-predictor-types';
 
 /**
@@ -13,7 +13,7 @@ import {
  * @param params Prediction parameters
  * @returns Promise containing prediction results
  */
-export async function predictMultiTarget(params: PredictionInput): Promise<PredictionResponse> {
+export async function predictMultiTarget(params: IMultiTargetPredictionRequest): Promise<IMultiTargetPredictionResponse> {
   const {
     target,
     propertyType,
@@ -44,8 +44,8 @@ export async function predictMultiTarget(params: PredictionInput): Promise<Predi
   const api = getApiInstance('property-predictor');
   const endpoint = '/predict/multi-target';
 
-  // Create the payload
-  const payload = {
+  // Create the payload as specified by the interface
+  const payload: Partial<IMultiTargetPredictionRequest> = {
     target,
     propertyType,
     postcode,
@@ -61,13 +61,6 @@ export async function predictMultiTarget(params: PredictionInput): Promise<Predi
     longitude,
     latitude
   };
-
-  // Remove undefined values from payload
-  Object.keys(payload).forEach(key => {
-    if (payload[key] === undefined) {
-      delete payload[key];
-    }
-  });
 
   return await api.query(
     endpoint,
