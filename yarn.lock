@@ -1282,10 +1282,10 @@
   resolved "https://registry.yarnpkg.com/@vepler/planning-register-types/-/planning-register-types-1.1.1.tgz#323488fdbb49470a611d67bbc481b343136671b8"
   integrity sha512-2Ln487eMPhHu0FJTlBmx/ToMqh++llCX6P4dQzQE+9WVNySQql1qx79j+UpCPF8t6MWnTOpLIvDlqL6Ar8CqxA==
 
-"@vepler/property-predictor-types@^1.9.4":
-  version "1.9.4"
-  resolved "https://registry.yarnpkg.com/@vepler/property-predictor-types/-/property-predictor-types-1.9.4.tgz#cb9f9f45c5290d39023517d4bb6b2a8788838767"
-  integrity sha512-NEE8VVc8fHpLnN+hzYXJblB0ZtxjrLUU0gh7BTOJu0J86fSU3Djjm9/B1xdwbBf+iUKMEPxhupuwS2KGk0+xtg==
+"@vepler/property-predictor-types@^1.10.0":
+  version "1.10.0"
+  resolved "https://registry.yarnpkg.com/@vepler/property-predictor-types/-/property-predictor-types-1.10.0.tgz#fa0e3cba492892d8b41d860de0a252e22d2ff40a"
+  integrity sha512-6Ygo59tthgSYj4x5PJdDPuh4YCOePPRTTTTORTRzRV7UESZq8Rrs0/aZoX64ZJBORO/MK34sM+olBT/46DB1Fg==
 
 "@vepler/schools-types@^1.8.2":
   version "1.8.2"
