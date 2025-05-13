@@ -62,13 +62,11 @@ export async function predictMultiTarget(params: IMultiTargetPredictionRequest):
     latitude
   };
 
-  return await api.query(
+  return await api.post(
     endpoint,
-    {}, // Empty query parameters since we're using POST
+    payload,
     {
-      apiKey: initialisedConfig.apiKey,
-      method: 'POST',
-      body: payload
+      apiKey: initialisedConfig.apiKey
     }
   );
 }
