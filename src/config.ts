@@ -11,6 +11,7 @@ interface SDKConfig {
   planningRegisterHost?: string;
   searchHost?: string;
   propertyPredictorHost?: string;
+  locatorHost?: string;
   timeout?: number;
   apiKey?: string;
   logLevel?: string;
@@ -32,6 +33,7 @@ const defaultConfig = {
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
     propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
+    locatorHost: process.env.SVC_LOCATIONS_HOST || 'https://api2.propbar.co.uk/locator',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -47,6 +49,7 @@ const defaultConfig = {
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
     propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
+    locatorHost: process.env.SVC_LOCATIONS_HOST || 'https://api2.propbar.co.uk/locator',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
@@ -115,6 +118,11 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
     apiInstances['property-predictor'] = ApiService.create({
       ...commonConfig,
       host: config.propertyPredictorHost || environmentConfig.propertyPredictorHost,
+    });
+
+    apiInstances['locator'] = ApiService.create({
+      ...commonConfig,
+      host: config.locatorHost || environmentConfig.locatorHost,
     });
 
     initialisedConfig = commonConfig;

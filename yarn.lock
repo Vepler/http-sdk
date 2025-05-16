@@ -1263,6 +1263,11 @@
     "@vepler/logger" "^1.0.0"
     axios "^1.6.8"
 
+"@vepler/locations-types@^1.5.6":
+  version "1.5.6"
+  resolved "https://registry.yarnpkg.com/@vepler/locations-types/-/locations-types-1.5.6.tgz#f9ea9d5b3d06610794ea9dcfec456ca5cab167d1"
+  integrity sha512-fKe3hG390qa45fuaQkzc2sojz+2i+UbKMWycLuUIPN/hC8ls3NJMNqH1Q0R/jBL0hIUVtsPo9SxUPm9mpm1zIA==
+
 "@vepler/logger@^1.0.0":
   version "1.1.0"
   resolved "https://registry.yarnpkg.com/@vepler/logger/-/logger-1.1.0.tgz#795275c416b96ae3b3480833949fe03c2e93b17d"

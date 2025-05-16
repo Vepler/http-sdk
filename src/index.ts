@@ -16,6 +16,7 @@ import * as SchoolsService from './services/schools/service';
 import * as PlanningRegisterService from './services/planning-register/service';
 import * as SearchService from './services/search/service';
 import * as PropertyPredictorService from './services/property-predictor/service';
+import * as LocationService from './services/location/service';
 
 // Export types for external usage
 // Area Reference types
@@ -48,6 +49,9 @@ export type { UnifiedSearchInput, UnifiedSearchResponse } from '@vepler/search-t
 // Property Predictor types
 export type { IMultiTargetPredictionRequest, IMultiTargetPredictionResponse } from '@vepler/property-predictor-types';
 
+// Location types
+export type { AutocompleteQueryParams, SuccessResponse, AutocompleteResult } from '@vepler/locations-types';
+
 export {
   initSDK as initializeSDK,
   reset
@@ -61,7 +65,8 @@ const routes = {
   schools: SchoolsService.default,
   planningRegister: PlanningRegisterService.default,
   search: SearchService.default,
-  propertyPredictor: PropertyPredictorService.default
+  propertyPredictor: PropertyPredictorService.default,
+  location: LocationService.default
 }
 
 export const property = routes.property
@@ -72,5 +77,6 @@ export const schools = routes.schools
 export const planningRegister = routes.planningRegister
 export const search = routes.search
 export const propertyPredictor = routes.propertyPredictor
+export const location = routes.location
 
 export default routes;
