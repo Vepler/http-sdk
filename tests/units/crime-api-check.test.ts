@@ -77,7 +77,7 @@ describe('Crime API', () => {
         months: 12
       };
 
-      const response = await crime.geography.metrics(params);
+      const response = await crime.metrics(params);
 
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
@@ -102,7 +102,7 @@ describe('Crime API', () => {
         months: 12
       };
 
-      const response = await crime.geography.metrics(params);
+      const response = await crime.metrics(params);
 
       expect(response).toBeDefined();
       expect(response?.success).toBe(true);
@@ -118,7 +118,7 @@ describe('Crime API', () => {
         geographicCodes: 'E01000001,E01000002'
       };
 
-      await expect(crime.geography.metrics(params)).rejects.toThrow(
+      await expect(crime.metrics(params)).rejects.toThrow(
         'Either "periods" or both "startDate" and "endDate" must be provided'
       );
     });
@@ -129,7 +129,7 @@ describe('Crime API', () => {
         startDate: '2022-01'
       };
 
-      await expect(crime.geography.metrics(params)).rejects.toThrow(
+      await expect(crime.metrics(params)).rejects.toThrow(
         'Either "periods" or both "startDate" and "endDate" must be provided'
       );
     });
