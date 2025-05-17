@@ -96,8 +96,7 @@ export const queryGeographyMetricsValidation = {
   },
   // This is a pseudo representation of Joi's .or() and .and() methods
   validationRules: [
-    { type: 'or', fields: ['periods', 'startDate'] },
-    { type: 'and', fields: ['startDate', 'endDate'] }
+    { type: 'or', fields: ['periods', 'startDate'] }
   ]
 };
 
