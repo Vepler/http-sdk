@@ -12,8 +12,11 @@ export interface GetChildAreasParams {
 }
 
 export interface ChildAreaEntity extends GeographicEntityBase {
+  lat: number;
+  long: number;
   geometry?: object;
-  hierarchy?: object;
+  hierarchy?: object[];
+  sourceRelationships?: object[];
 }
 
 export interface GetChildAreasResponse {
@@ -25,6 +28,8 @@ export interface GetChildAreasResponse {
     total: number;
     limit: number;
     offset: number;
+    includeIntersections: boolean;
+    includeCoverage: boolean;
   };
 }
 

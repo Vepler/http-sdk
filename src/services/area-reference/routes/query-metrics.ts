@@ -22,6 +22,7 @@ export interface GetPropertyByPropertyIdParams {
 export interface GetAreasResponse {
   result: object[];
   success: boolean;
+  count: number;
 }
 
 export async function queryMetrics(params: GetPropertyByPropertyIdParams): Promise<GetAreasResponse> {
