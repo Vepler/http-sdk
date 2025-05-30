@@ -17,6 +17,8 @@ export interface WithinAreasParams {
 }
 
 export interface AreaResult extends GeographicEntityBase {
+  type: string;
+  status: string;
   distance: number;
   geometry?: Geometry;
 }
@@ -24,6 +26,7 @@ export interface AreaResult extends GeographicEntityBase {
 // Unified response format for all queries
 export interface WithinAreasResponse {
   results: AreaResult[];
+  count: number;
 }
 
 export async function withinAreas(

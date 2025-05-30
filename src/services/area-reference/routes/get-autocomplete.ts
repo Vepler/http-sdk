@@ -13,8 +13,8 @@ export interface LocationResult {
 }
 
 export interface GetAutocompleteResponse {
-  results: LocationResult[];
-  success: boolean;
+  suggestions: LocationResult[];
+  total: number;
 }
 
 export async function getAutocomplete(params: GetAutocompleteParams): Promise<GetAutocompleteResponse> {

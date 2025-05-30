@@ -12,12 +12,14 @@ export interface QueryByTypeParams {
 }
 
 export interface GeographicEntity extends GeographicEntityBase {
+  status: string;
   lat: number;
   long: number;
   geometry?: object;
   hierarchy?: object;
   breadcrumb?: object;
-  // Relationships fields if included
+  relationships?: object[];
+  sourceRelationships?: object[];
 }
 
 export interface QueryByTypeResponse {
