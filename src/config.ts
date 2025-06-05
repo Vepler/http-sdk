@@ -12,6 +12,7 @@ interface SDKConfig {
   searchHost?: string;
   propertyPredictorHost?: string;
   locatorHost?: string;
+  councilRegisterHost?: string;
   timeout?: number;
   apiKey?: string;
   logLevel?: string;
@@ -34,6 +35,7 @@ const defaultConfig = {
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
     propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
     locatorHost: process.env.SVC_LOCATIONS_HOST || 'https://api2.propbar.co.uk/locator',
+    councilRegisterHost: process.env.SVC_COUNCIL_TAX_HOST || 'https://api2.propbar.co.uk/council-tax',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -50,6 +52,7 @@ const defaultConfig = {
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
     propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
     locatorHost: process.env.SVC_LOCATIONS_HOST || 'https://api2.propbar.co.uk/locator',
+    councilRegisterHost: process.env.SVC_COUNCIL_TAX_HOST || 'https://api2.propbar.co.uk/council-tax',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
@@ -123,6 +126,11 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
     apiInstances['locator'] = ApiService.create({
       ...commonConfig,
       host: config.locatorHost || environmentConfig.locatorHost,
+    });
+    
+    apiInstances['council-register'] = ApiService.create({
+      ...commonConfig,
+      host: config.councilRegisterHost || environmentConfig.councilRegisterHost,
     });
 
     initialisedConfig = commonConfig;

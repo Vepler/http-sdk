@@ -17,6 +17,7 @@ import * as PlanningRegisterService from './services/planning-register/service';
 import * as SearchService from './services/search/service';
 import * as PropertyPredictorService from './services/property-predictor/service';
 import * as LocationService from './services/location/service';
+import * as CouncilRegisterService from './services/council-tax-register/service';
 
 // Export types for external usage
 // Area Reference types
@@ -50,7 +51,21 @@ export type { UnifiedSearchInput, UnifiedSearchResponse } from '@vepler/search-t
 export type { IMultiTargetPredictionRequest, IMultiTargetPredictionResponse } from '@vepler/property-predictor-types';
 
 // Location types
-export type { AutocompleteQueryParams, SuccessResponse, AutocompleteResult } from '@vepler/locations-types';
+export type {
+  AutocompleteQueryParams,
+  SuccessResponse,
+  AutocompleteResult,
+  StreetAutocompleteQueryParams,
+  StreetAutocompleteResult
+} from '@vepler/locations-types';
+
+// Council Register types
+export type {
+  GetPropertyRequest,
+  GetPropertyResponse,
+  PropertyDetail,
+  PropertyTaxBandDetail
+} from '@vepler/council-register-types';
 
 export {
   initSDK as initializeSDK,
@@ -66,7 +81,8 @@ const routes = {
   planningRegister: PlanningRegisterService.default,
   search: SearchService.default,
   propertyPredictor: PropertyPredictorService.default,
-  location: LocationService.default
+  location: LocationService.default,
+  councilRegister: CouncilRegisterService.default
 }
 
 export const property = routes.property
@@ -78,5 +94,6 @@ export const planningRegister = routes.planningRegister
 export const search = routes.search
 export const propertyPredictor = routes.propertyPredictor
 export const location = routes.location
+export const councilRegister = routes.councilRegister
 
 export default routes;
