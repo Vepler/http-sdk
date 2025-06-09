@@ -1,5 +1,4 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { GeographicEntityBase } from '../../../types';
 
 // Connectivity service uses the area-reference API for all endpoints
 
