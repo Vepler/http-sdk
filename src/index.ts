@@ -18,6 +18,8 @@ import * as SearchService from './services/search/service';
 import * as PropertyPredictorService from './services/property-predictor/service';
 import * as LocationService from './services/location/service';
 import * as CouncilRegisterService from './services/council-tax-register/service';
+import * as ConnectivityService from './services/connectivity/service';
+import * as PoiService from './services/poi/service';
 
 // Export types for external usage
 // Area Reference types
@@ -82,7 +84,9 @@ const routes = {
   search: SearchService.default,
   propertyPredictor: PropertyPredictorService.default,
   location: LocationService.default,
-  councilRegister: CouncilRegisterService.default
+  councilRegister: CouncilRegisterService.default,
+  connectivity: ConnectivityService.default,
+  poi: PoiService.default
 }
 
 export const property = routes.property
@@ -95,5 +99,7 @@ export const search = routes.search
 export const propertyPredictor = routes.propertyPredictor
 export const location = routes.location
 export const councilRegister = routes.councilRegister
+export const connectivity = routes.connectivity
+export const poi = routes.poi
 
 export default routes;
