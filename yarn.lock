@@ -1280,10 +1280,10 @@
   resolved "https://registry.yarnpkg.com/@vepler/schools-types/-/schools-types-1.8.2.tgz#0c072ab6ab19b548b97d9bc57de6a942498c3961"
   integrity sha512-ZFwmknWsl+jx7TBa4hoZJw+/gsHsrthRrapYflrfkr+uVJe5Gbsv2FBtKHCBRF1EuVVkZOKOPuw5xMIR9hTkRg==
 
-"@vepler/search-types@^1.1.0":
-  version "1.1.0"
-  resolved "https://registry.yarnpkg.com/@vepler/search-types/-/search-types-1.1.0.tgz#6518c2f0a79fa174e93421b90108592f9f7e0370"
-  integrity sha512-nLi4zi+DuPJxi9x0w50Hs5+wznWNDGHyysdan0/94ChVEtKujjob/iS01UmYMVYSOT5Oxkblm7hzQ1/zvwGxFg==
+"@vepler/search-types@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@vepler/search-types/-/search-types-1.6.2.tgz#2a6d6ab4de8becc4469af4d8adb52a9c1041a0e2"
+  integrity sha512-CdI3F/fzzNLM2w4Jly7TLUPRyPXq5FVm0z9geXPCT8FNZW+lhKCxbtDPxm4hfGxVt9ecv3Kej7ZstnIapge64Q==
 
 abbrev@^3.0.0:
   version "3.0.1"
