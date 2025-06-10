@@ -23,8 +23,13 @@ import * as PoiService from './services/poi/service';
 
 // Export types for external usage
 // Area Reference types
-export type { GeographicEntity, QueryByTypeParams, QueryByTypeResponse } from './services/area-reference/routes/query-by-type';
-export type { BorderAreasParams, BorderAreasResponse } from './services/area-reference/routes/border-areas';
+export type { QueryByTypeParams } from './services/area-reference/routes/query-by-type';
+export type { BorderAreasParams } from './services/area-reference/routes/border-areas';
+export type { WithinAreasParams } from './services/area-reference/routes/within-areas';
+export type { GetAreasParams } from './services/area-reference/routes/get-areas';
+
+// Re-export official area reference types
+export type { Areas, Search, Metrics } from '@vepler/area-reference-types';
 
 // Schools types
 export type { SchoolsQueryParams, SchoolsResponse } from '@vepler/schools-types/api/endpoints/schools';

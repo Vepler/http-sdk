@@ -1,38 +1,11 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { GeographicEntityBase } from '../../../types';
-
-export interface GetChildAreasParams {
-  parentCode: string;
-  childType?: string;
-  includeHierarchy?: boolean;
-  includeGeometry?: boolean;
-  limit?: number;
-  offset?: number;
-  status?: string; // Parameter is defined but ignored by the API
-}
-
-export interface ChildAreaEntity extends GeographicEntityBase {
-  geometry?: object;
-  hierarchy?: object;
-}
-
-export interface GetChildAreasResponse {
-  success: boolean;
-  result: {
-    parent: ChildAreaEntity;
-    childType: string;
-    children: ChildAreaEntity[];
-    total: number;
-    limit: number;
-    offset: number;
-  };
-}
+import { Areas } from '@vepler/area-reference-types';
 
 export async function getChildAreas(
   parentCode: string,
   childType?: string,
-  options?: Omit<GetChildAreasParams, 'parentCode' | 'childType'>
-): Promise<GetChildAreasResponse> {
+  options?: Areas.ChildrenQueryParams
+): Promise<Areas.ChildrenResponse> {
   // Construct the endpoint path
   let endpoint = `/children/${parentCode}`;
   if (childType) {

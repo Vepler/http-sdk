@@ -1,64 +1,15 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { Areas } from '@vepler/area-reference-types';
 
-// Define a simplified GeoJSON interface
-interface GeoJSONGeometry {
-  type: string;
-  coordinates: unknown[];
-}
-
-// Interface for the spatial relationship information
-interface SpatialRelationship {
-  touches_boundary: boolean;
-  distance: number;
-  distance_meters: number;
-  overlap_percentage: number;
-  description: string;
-}
-
-// Interface for the transformed area with spatial relationship info
-interface AreaWithRelationship {
-  id: string;
-  code: string;
-  name: string;
-  type: string;
-  relationship: SpatialRelationship;
-  touches_boundary?: boolean | string;
-  distance?: number | string;
-  overlap_percentage?: number | string;
-  geometry?: GeoJSONGeometry | string;
-  lat?: number | string;
-  long?: number | string;
-}
-
-// Interface for the API response structure
-interface BorderResponseResult {
-  target: {
-    code: string;
-    name: string;
-    type: string;
-  };
-  sourceType: string;
-  areas: AreaWithRelationship[];
-  count: number;
-}
-
-export interface BorderAreasParams {
+export interface BorderAreasParams extends Areas.BorderQueryParams {
   targetType: string;
   targetCode: string;
   sourceType: string;
-  limit?: number;
-  maxDistance?: number;
-  includeGeometry?: boolean;
-}
-
-export interface BorderAreasResponse {
-  success: boolean;
-  result: BorderResponseResult;
 }
 
 export async function borderAreas(
   params: BorderAreasParams
-): Promise<BorderAreasResponse> {
+): Promise<Areas.BorderResponse> {
   const {
     targetType,
     targetCode,

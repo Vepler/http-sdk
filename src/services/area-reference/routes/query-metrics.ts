@@ -1,30 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { Metrics } from '@vepler/area-reference-types';
 
-// @todo this needs to be moved into the shared types
-export interface GetPropertyByPropertyIdParams {
-  metricIds?: string;
-  geographicEntityIds?: string;
-  geographicEntityTypes?: string;
-  startYear?: number;
-  endYear?: number;
-  startMonth?: number;
-  endMonth?: number;
-  sourceServices?: string;
-  limit?: number;
-  offset?: number;
-  sortBy?: string;
-  sortOrder?: 'ASC' | 'DESC';
-  includeMetric?: boolean;
-  includeGeographicEntity?: boolean;
-  attributes?: string;
-}
-
-export interface GetAreasResponse {
-  result: object[];
-  success: boolean;
-}
-
-export async function queryMetrics(params: GetPropertyByPropertyIdParams): Promise<GetAreasResponse> {
+export async function queryMetrics(params: Metrics.GetMetricValuesQueryParams): Promise<Metrics.GetMetricValuesResponse> {
   const {
     metricIds,
     geographicEntityIds,
