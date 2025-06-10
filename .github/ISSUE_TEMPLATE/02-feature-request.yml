@@ -1,0 +1,201 @@
+name: ✨ Feature Request
+description: Suggest an idea for the PropTech SDK
+title: "[Feature]: "
+labels: ["enhancement", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for suggesting a feature for our PropTech SDK! Your ideas help us build better tools for UK property technology developers.
+
+  - type: dropdown
+    id: feature-category
+    attributes:
+      label: Feature Category
+      description: What category does this feature request fall into?
+      options:
+        - New PropTech Service/Endpoint
+        - Existing Service Enhancement
+        - Developer Experience (DX)
+        - Performance Improvement
+        - TypeScript/Type Safety
+        - Documentation
+        - Testing/Debugging Tools
+        - SDK Configuration
+        - Data Processing/Transformation
+        - Integration/Compatibility
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: related-service
+    attributes:
+      label: Related Service (if applicable)
+      description: Which PropTech service would this feature relate to?
+      options:
+        - Property
+        - Safety (Crime Data)
+        - Schools
+        - Area Reference
+        - Planning Register
+        - Demographics
+        - Location/Address Lookup
+        - Property Predictor
+        - Connectivity
+        - POI (Points of Interest)
+        - Council Tax Register
+        - Search
+        - Multiple Services
+        - SDK Core
+        - Not Service Specific
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: problem-related
+    attributes:
+      label: Is your feature request related to a problem?
+      description: Please describe if this addresses a current limitation
+      options:
+        - label: Yes, I'm always frustrated when developing PropTech applications because...
+          required: false
+        - label: No, this is a new idea to enhance PropTech development
+          required: false
+
+  - type: textarea
+    id: problem-description
+    attributes:
+      label: Problem description (if applicable)
+      description: A clear and concise description of what the problem is
+      placeholder: |
+        I'm always frustrated when trying to...
+        Current PropTech development is limited by...
+        When building property applications, I need to...
+    validations:
+      required: false
+
+  - type: textarea
+    id: solution
+    attributes:
+      label: Describe the solution you'd like
+      description: A clear and concise description of what you want to happen
+      placeholder: |
+        I would like the SDK to provide...
+        A new method/service that allows...
+        Enhanced functionality for...
+    validations:
+      required: true
+
+  - type: textarea
+    id: use-case
+    attributes:
+      label: PropTech Use Case
+      description: Describe how this would be used in PropTech applications
+      placeholder: |
+        This would help PropTech developers to...
+        Property platforms could use this to...
+        Estate agents/landlords/investors would benefit by...
+        Example: "This would allow rental platforms to automatically verify school catchment areas for family properties"
+    validations:
+      required: true
+
+  - type: textarea
+    id: api-example
+    attributes:
+      label: Proposed API Design
+      description: How would you like this feature to work from a developer perspective?
+      render: typescript
+      placeholder: |
+        // Example of how the new feature might be used
+        import { newService } from '@vepler/http-sdk';
+
+        const result = await newService.newMethod({
+          parameter1: 'value',
+          parameter2: 123
+        });
+
+        // Expected response structure
+        console.log(result); // { data: [...], metadata: {...} }
+    validations:
+      required: false
+
+  - type: textarea
+    id: alternatives
+    attributes:
+      label: Alternatives considered
+      description: Describe any alternative solutions or features you've considered
+      placeholder: |
+        I considered using...
+        Alternative approaches might be...
+        Workarounds I've tried include...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: priority
+    attributes:
+      label: Priority
+      description: How important is this feature for PropTech development?
+      options:
+        - Low - Nice to have
+        - Medium - Would improve development experience
+        - High - Important for PropTech applications
+        - Critical - Blocking PropTech development
+    validations:
+      required: true
+
+  - type: dropdown
+    id: complexity
+    attributes:
+      label: Estimated Complexity
+      description: How complex do you think this feature would be to implement?
+      options:
+        - Simple - Small addition or modification
+        - Medium - Moderate development effort
+        - Complex - Significant new functionality
+        - Very Complex - Major architectural changes
+        - I'm not sure
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: contribution
+    attributes:
+      label: Contribution
+      description: Are you willing to help implement this feature?
+      options:
+        - label: I'd be willing to submit a pull request for this feature
+          required: false
+        - label: I can help with testing and feedback
+          required: false
+        - label: I can provide PropTech domain expertise
+          required: false
+        - label: I would prefer the maintainers implement this
+          required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context, screenshots, mockups, or examples about the feature request
+      placeholder: |
+        Links to similar implementations...
+        Screenshots or mockups...
+        PropTech industry standards...
+        Performance considerations...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission checklist
+      description: Please confirm you have completed these steps
+      options:
+        - label: I have searched existing issues and feature requests for similar ideas
+          required: true
+        - label: I have described a clear PropTech use case for this feature
+          required: true
+        - label: I have considered how this would fit with existing SDK functionality
+          required: true

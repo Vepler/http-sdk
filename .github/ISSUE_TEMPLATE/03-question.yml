@@ -1,0 +1,179 @@
+name: ❓ Question
+description: Ask a question about using the PropTech SDK
+title: "[Question]: "
+labels: ["question", "support"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please search existing issues and discussions first to see if your question has already been answered.
+        For general PropTech development discussions, consider using [GitHub Discussions](https://github.com/vepler/http-sdk/discussions).
+
+  - type: input
+    id: version
+    attributes:
+      label: SDK Version
+      description: What version of @vepler/http-sdk are you using?
+      placeholder: e.g. 1.0.46
+    validations:
+      required: true
+
+  - type: dropdown
+    id: question-category
+    attributes:
+      label: Question Category
+      description: What type of question is this?
+      options:
+        - Getting Started/Setup
+        - Service Usage (how to use specific endpoints)
+        - PropTech Implementation Guidance
+        - TypeScript/Type Definitions
+        - Error Troubleshooting
+        - Best Practices
+        - Performance/Optimization
+        - Data Interpretation
+        - API Limits/Rate Limiting
+        - Integration with Frameworks (React, Vue, etc.)
+        - Property Data Specifics
+        - UK Compliance/Regulations
+        - Other
+    validations:
+      required: true
+
+  - type: dropdown
+    id: related-service
+    attributes:
+      label: Related Service (if applicable)
+      description: Which PropTech service is your question about?
+      options:
+        - Property
+        - Safety (Crime Data)
+        - Schools
+        - Area Reference
+        - Planning Register
+        - Demographics
+        - Location/Address Lookup
+        - Property Predictor
+        - Connectivity
+        - POI (Points of Interest)
+        - Council Tax Register
+        - Search
+        - Multiple Services
+        - SDK Configuration
+        - Not Service Specific
+    validations:
+      required: false
+
+  - type: textarea
+    id: question
+    attributes:
+      label: Your question
+      description: What would you like to know? Be as specific as possible.
+      placeholder: |
+        I'm trying to...
+        How do I...
+        What's the best way to...
+        Why does...
+    validations:
+      required: true
+
+  - type: textarea
+    id: context
+    attributes:
+      label: What you're trying to achieve
+      description: Describe the PropTech use case or goal you're working towards
+      placeholder: |
+        I'm building a property search platform that...
+        My estate agent application needs to...
+        I want to create a rental platform that...
+    validations:
+      required: false
+
+  - type: textarea
+    id: code-context
+    attributes:
+      label: Code context (if applicable)
+      description: Share relevant code that relates to your question
+      render: typescript
+      placeholder: |
+        import { initializeSDK, property } from '@vepler/http-sdk';
+
+        // Your current code or what you've tried
+        initializeSDK({ apiKey: 'your-api-key' });
+
+        // Question relates to this code
+    validations:
+      required: false
+
+  - type: textarea
+    id: attempted-solutions
+    attributes:
+      label: What you've tried
+      description: Describe any solutions you've already attempted
+      placeholder: |
+        I've tried...
+        I looked at...
+        I read the documentation for...
+    validations:
+      required: false
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: What environment are you working in?
+      options:
+        - Node.js
+        - Browser (React)
+        - Browser (Vue)
+        - Browser (Angular)
+        - Browser (Vanilla JS)
+        - Next.js
+        - Nuxt.js
+        - React Native
+        - Express.js
+        - Fastify
+        - Other
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: documentation-check
+    attributes:
+      label: Documentation
+      description: Have you checked the available documentation?
+      options:
+        - label: I have read the README.md
+          required: false
+        - label: I have checked the code examples in the documentation
+          required: false
+        - label: I have searched existing GitHub issues
+          required: false
+        - label: I have looked at the TypeScript type definitions
+          required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: Add any other context that might help answer your question
+      placeholder: |
+        Error messages (if any)...
+        Specific property data requirements...
+        Performance constraints...
+        PropTech compliance requirements...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: urgency
+    attributes:
+      label: Urgency
+      description: How urgent is this question?
+      options:
+        - label: This is blocking my PropTech project development
+          required: false
+        - label: This would help improve my implementation
+          required: false
+        - label: This is for learning/exploration
+          required: false

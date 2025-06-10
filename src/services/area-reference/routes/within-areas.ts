@@ -1,10 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { Geometry, GeographicEntityBase } from '../../../types';
+import { Areas } from '@vepler/area-reference-types';
 
-export interface WithinAreasParams {
-  lat: number;
-  lng: number;
-  radius?: number;
+export interface WithinAreasParams extends Omit<Areas.WithinQueryParams, 'type'> {
   /**
    * Type of area to query - can be:
    * - A single value (e.g. "lsoa21")
@@ -12,23 +9,11 @@ export interface WithinAreasParams {
    * - An array of types (e.g. ["lsoa21", "msoa21", "county"])
    */
   type: string | string[];
-  includeGeometry?: boolean;
-  status?: string;
-}
-
-export interface AreaResult extends GeographicEntityBase {
-  distance: number;
-  geometry?: Geometry;
-}
-
-// Unified response format for all queries
-export interface WithinAreasResponse {
-  results: AreaResult[];
 }
 
 export async function withinAreas(
   params: WithinAreasParams
-): Promise<WithinAreasResponse> {
+): Promise<Areas.WithinResponse> {
   const { lat, lng, radius = 1, type, includeGeometry = false, status = 'active' } = params;
 
   // Validate type parameter is provided

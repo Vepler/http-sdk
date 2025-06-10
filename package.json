@@ -1,7 +1,7 @@
 {
   "name": "@vepler/http-sdk",
   "version": "1.0.46",
-  "description": "The Official Propbar HTTP SDK.",
+  "description": "The definitive TypeScript SDK for UK property technology. Access comprehensive property data, school metrics, demographics, planning applications, and more through a single, powerful API.",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -32,9 +32,14 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
+    "@vepler/area-reference-types": "^1.42.0",
+    "@vepler/council-register-types": "^1.6.0",
     "@vepler/http-client": "^1.0.2",
-    "@vepler/logger": "^1.0.0",
+    "@vepler/locations-types": "1.6.0",
+    "@vepler/logger": "^3.0.0",
     "@vepler/planning-register-types": "^1.0.13",
+    "@vepler/property-predictor-types": "^1.10.0",
+    "@vepler/safety-types": "^3.9.5",
     "@vepler/schools-types": "^1.8.2",
     "@vepler/search-types": "^1.1.0"
   },
@@ -85,9 +90,45 @@
     "real-estate-database",
     "real-estate-api",
     "real-estate-sdk",
+    "uk-property-data",
+    "property-technology-uk",
+    "real-estate-uk",
+    "property-developers",
+    "property-startups",
+    "proptech-sdk",
+    "property-platform",
+    "rental-tech",
+    "mortgage-tech",
+    "conveyancing-tech",
+    "property-investment",
+    "landlord-tech",
+    "estate-agent-tech",
+    "uprn",
+    "postcode-api",
+    "address-lookup",
+    "property-valuation",
+    "planning-permission",
+    "school-catchments",
+    "neighbourhood-data",
+    "crime-statistics",
+    "transport-links",
+    "london-property",
+    "manchester-property",
+    "edinburgh-property",
+    "safety-data",
+    "demographics-api",
+    "connectivity-scores",
+    "planning-applications",
+    "council-tax",
     "typescript",
     "open-source",
     "npm"
   ],
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
   "packageManager": "yarn@1.22.22+sha1.ac34549e6aa8e7ead463a7407e1c7390f61a6610"
 }

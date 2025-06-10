@@ -1,23 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { Search } from '@vepler/area-reference-types';
 
-export interface GetAutocompleteParams {
-  query: string;
-  types?: string;
-}
-
-export interface LocationResult {
-  id: string;
-  name: string;
-  type: string;
-  [key: string]: string | number | boolean | null | object;
-}
-
-export interface GetAutocompleteResponse {
-  results: LocationResult[];
-  success: boolean;
-}
-
-export async function getAutocomplete(params: GetAutocompleteParams): Promise<GetAutocompleteResponse> {
+export async function getAutocomplete(params: Search.GetAutocompleteQueryParams): Promise<Search.GetAutocompleteResponse> {
   const { query, types } = params;
 
   const api = getApiInstance('area-reference');

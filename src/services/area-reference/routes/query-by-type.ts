@@ -1,37 +1,11 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { GeographicEntityBase } from '../../../types';
+import { Areas } from '@vepler/area-reference-types';
 
-export interface QueryByTypeParams {
+export interface QueryByTypeParams extends Areas.QueryAreasQueryParams {
   type: string;
-  limit?: number;
-  offset?: number;
-  includeRelationships?: boolean;
-  includeHierarchy?: boolean;
-  includeGeometry?: boolean;
-  status?: string;
 }
 
-export interface GeographicEntity extends GeographicEntityBase {
-  lat: number;
-  long: number;
-  geometry?: object;
-  hierarchy?: object;
-  breadcrumb?: object;
-  // Relationships fields if included
-}
-
-export interface QueryByTypeResponse {
-  result: GeographicEntity[];
-  meta: {
-    total: number;
-    limit: number;
-    offset: number;
-    type: string;
-  };
-  success: boolean;
-}
-
-export async function queryByType(params: QueryByTypeParams): Promise<QueryByTypeResponse> {
+export async function queryByType(params: QueryByTypeParams): Promise<Areas.QueryAreasResponse> {
   const { 
     type, 
     limit = 100, 

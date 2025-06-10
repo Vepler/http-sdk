@@ -5,11 +5,14 @@ import ApiService from '@vepler/http-client';
 interface SDKConfig {
   propertyHost?: string;
   areaReferenceHost?: string;
-  crimeHost?: string;
+  safetyHost?: string;
   roverHost?: string;
   schoolsHost?: string;
   planningRegisterHost?: string;
   searchHost?: string;
+  propertyPredictorHost?: string;
+  locatorHost?: string;
+  councilRegisterHost?: string;
   timeout?: number;
   apiKey?: string;
   logLevel?: string;
@@ -25,11 +28,14 @@ const defaultConfig = {
   production: {
     propertyHost: process.env.SVC_PROPERTY_HOST || 'https://api2.propbar.co.uk/property',
     areaReferenceHost: process.env.AREA_REFERENCE_HOST || 'https://api2.propbar.co.uk/area-reference',
-    crimeHost: process.env.CRIME_HOST || 'https://api2.propbar.co.uk/crime',
+    safetyHost: process.env.SAFETY_HOST || 'https://api2.propbar.co.uk/safety',
     roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
+    propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
+    locatorHost: process.env.SVC_LOCATIONS_HOST || 'https://api2.propbar.co.uk/locator',
+    councilRegisterHost: process.env.SVC_COUNCIL_TAX_HOST || 'https://api2.propbar.co.uk/council-tax',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'info',
     headers: {
@@ -39,11 +45,14 @@ const defaultConfig = {
   development: {
     propertyHost: process.env.SVC_PROPERTY_HOST || 'https://api2.propbar.co.uk/property',
     areaReferenceHost: process.env.AREA_REFERENCE_HOST || 'https://api2.propbar.co.uk/area-reference',
-    crimeHost: process.env.CRIME_HOST || 'https://api2.propbar.co.uk/crime',
+    safetyHost: process.env.SAFETY_HOST || 'https://api2.propbar.co.uk/safety',
     roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
     searchHost: process.env.SEARCH_HOST || 'https://api2.propbar.co.uk/search',
+    propertyPredictorHost: process.env.PROPERTY_PREDICTOR_HOST || 'https://api2.propbar.co.uk/linked-avm',
+    locatorHost: process.env.SVC_LOCATIONS_HOST || 'https://api2.propbar.co.uk/locator',
+    councilRegisterHost: process.env.SVC_COUNCIL_TAX_HOST || 'https://api2.propbar.co.uk/council-tax',
     timeout: 60000, // 60 seconds default timeout
     logLevel: 'debug',
     headers: {
@@ -84,9 +93,9 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
       host: config.areaReferenceHost || environmentConfig.areaReferenceHost,
     });
 
-    apiInstances['crime'] = ApiService.create({
+    apiInstances['safety'] = ApiService.create({
       ...commonConfig,
-      host: config.crimeHost || environmentConfig.crimeHost,
+      host: config.safetyHost || environmentConfig.safetyHost,
     });
 
     apiInstances['rover'] = ApiService.create({
@@ -107,6 +116,21 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
     apiInstances['search'] = ApiService.create({
       ...commonConfig,
       host: config.searchHost || environmentConfig.searchHost,
+    });
+
+    apiInstances['property-predictor'] = ApiService.create({
+      ...commonConfig,
+      host: config.propertyPredictorHost || environmentConfig.propertyPredictorHost,
+    });
+
+    apiInstances['locator'] = ApiService.create({
+      ...commonConfig,
+      host: config.locatorHost || environmentConfig.locatorHost,
+    });
+    
+    apiInstances['council-register'] = ApiService.create({
+      ...commonConfig,
+      host: config.councilRegisterHost || environmentConfig.councilRegisterHost,
     });
 
     initialisedConfig = commonConfig;

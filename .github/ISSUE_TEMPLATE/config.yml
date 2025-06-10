@@ -1,0 +1,14 @@
+blank_issues_enabled: false
+contact_links:
+  - name: 📖 Documentation
+    url: https://github.com/vepler/http-sdk#readme
+    about: Please check our comprehensive documentation before opening an issue
+  - name: 💬 Community Discussions
+    url: https://github.com/vepler/http-sdk/discussions
+    about: Ask questions and discuss PropTech development with the community
+  - name: 🔒 Security Issues
+    url: https://github.com/vepler/http-sdk/security/advisories
+    about: Please report security vulnerabilities privately through our security advisory system
+  - name: 📧 Commercial Support
+    url: mailto:support@vepler.com
+    about: Get professional support for enterprise PropTech implementations

@@ -1,7 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { JsonObject } from '../../../types';
 
-interface DemographicsQueryParams {
+export interface DemographicsQueryParams {
   geography_type: string;
   geography_codes: string;
   format?: 'array' | 'object';

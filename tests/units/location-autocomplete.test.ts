@@ -1,6 +1,7 @@
 import { initializeSDK, getApiInstance } from '../../src/config';
 import areaReferenceAPI from '../../src/services/area-reference/service';
-import { getAutocomplete, LocationResult } from '../../src/services/area-reference/routes/get-autocomplete';
+import { getAutocomplete } from '../../src/services/area-reference/routes/get-autocomplete';
+import { Search } from '@vepler/area-reference-types';
 
 // Mock the API class
 const mockQueryFn = jest.fn();
@@ -24,13 +25,14 @@ describe('Area Reference Autocomplete API', () => {
     // Reset all mocks
     jest.clearAllMocks();
 
-    // Default mock implementation for query
+    // Default mock implementation for query (using new response structure)
     mockQueryFn.mockResolvedValue({
-      results: [
-        { id: 'loc1', name: 'London', type: 'city' },
-        { id: 'loc2', name: 'Liverpool', type: 'city' }
+      suggestions: [
+        { id: 'loc1', text: 'London', type: 'city', type_display_name: 'City', score: 1.0, related_locations: [], entity_references: [], meta: { is_postcode: false, has_related_locations: false, query_type: 'place' } },
+        { id: 'loc2', text: 'Liverpool', type: 'city', type_display_name: 'City', score: 0.9, related_locations: [], entity_references: [], meta: { is_postcode: false, has_related_locations: false, query_type: 'place' } }
       ],
-      success: true
+      total: 2,
+      query_analysis: { likely_type: 'place', deduplication: 'none' }
     });
   });
 
@@ -78,13 +80,15 @@ describe('Area Reference Autocomplete API', () => {
     mockQueryFn.mockImplementation((endpoint, params) => {
       if (params.query === 'London') {
         return Promise.resolve({
-          results: [{ id: 'loc1', name: 'London', type: 'city' }],
-          success: true
+          suggestions: [{ id: 'loc1', text: 'London', type: 'city', type_display_name: 'City', score: 1.0, related_locations: [], entity_references: [], meta: { is_postcode: false, has_related_locations: false, query_type: 'place' } }],
+          total: 1,
+          query_analysis: { likely_type: 'place', deduplication: 'none' }
         });
       } else if (params.query === 'Manchester') {
         return Promise.resolve({
-          results: [{ id: 'loc2', name: 'Manchester', type: 'city' }],
-          success: true
+          suggestions: [{ id: 'loc2', text: 'Manchester', type: 'city', type_display_name: 'City', score: 1.0, related_locations: [], entity_references: [], meta: { is_postcode: false, has_related_locations: false, query_type: 'place' } }],
+          total: 1,
+          query_analysis: { likely_type: 'place', deduplication: 'none' }
         });
       }
     });
@@ -102,8 +106,8 @@ describe('Area Reference Autocomplete API', () => {
     expect(manchesterResult).toBeDefined();
 
     if (londonResult && manchesterResult) {
-      expect(londonResult.results[0].name).toBe('London');
-      expect(manchesterResult.results[0].name).toBe('Manchester');
+      expect(londonResult.suggestions[0].text).toBe('London');
+      expect(manchesterResult.suggestions[0].text).toBe('Manchester');
     }
   });
 });
