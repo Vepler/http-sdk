@@ -80,11 +80,36 @@ export type {
 
 // Council Register types
 export type {
-  GetPropertyRequest,
-  GetPropertyResponse,
-  PropertyDetail,
-  PropertyTaxBandDetail
+  PropertyRequestParams,
+  PropertyResponse,
+  PropertyInfo,
+  PropertyTaxBand
 } from '@vepler/council-register-types';
+
+// Property types (local)
+export type { 
+  GetPropertyByPropertyIdParams,
+  PropertyEntity,
+  PropertyResponse as PropertyServiceResponse
+} from './services/property/routes/get-property';
+
+export type {
+  QueryPropertyResult,
+  GetPropertyBySourceParams
+} from './services/property/routes/query-property';
+
+// Demographics types (local)
+export type {
+  DemographicsQueryParams,
+  GetDemographicsResponse
+} from './services/demographics/routes/query-demographics';
+
+// Connectivity types (local)
+export type {
+  GetConnectivityScoresParams,
+  ConnectivityScore,
+  GetConnectivityScoresResponse
+} from './services/connectivity/routes/get-connectivity-scores';
 
 export {
   initSDK as initializeSDK,

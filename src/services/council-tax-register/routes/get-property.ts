@@ -1,7 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import {
-  GetPropertyRequest,
-  GetPropertyResponse
+  PropertyRequestParams,
+  PropertyResponse
 } from '@vepler/council-register-types';
 
 /**
@@ -10,8 +10,8 @@ import {
  * @param params - Request parameters containing location IDs
  * @returns Promise with property and tax band data
  */
-export async function getProperty(params: GetPropertyRequest): Promise<GetPropertyResponse> {
-  const { locationId, attemptLookup } = params;
+export async function getProperty(params: PropertyRequestParams): Promise<PropertyResponse> {
+  const { locationId } = params;
 
   // Validate if locationId is provided
   if (!locationId) {
@@ -33,8 +33,7 @@ export async function getProperty(params: GetPropertyRequest): Promise<GetProper
   const endpoint = '/property';
 
   const queryParams: Record<string, string | boolean | undefined> = {
-    locationId: locationIdParam,
-    attemptLookup
+    locationId: locationIdParam
   };
 
   return await api.query(
