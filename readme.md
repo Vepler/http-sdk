@@ -81,7 +81,7 @@ The Vepler SDK powers the next generation of property technology applications:
 ### **Geographic & Demographic Data**
 | Service | Purpose | Key Methods |
 |---------|---------|-------------|
-| **Area Reference** | Geographic boundaries and area data | `within` `children` `border` `metrics.query` |
+| **Area Reference** | Geographic boundaries and area data | `within` `children` `border` `metrics.query` `resolver.resolve` `resolver.getTypes` `resolver.checkCapability` |
 | **Demographics** | Population and demographic analysis | `queryDemographics` |
 | **Safety** | Crime statistics and safety metrics | `geography.getMetrics` `crime.getData` `neighborhoodWatch.getByLocation` |
 
@@ -173,6 +173,24 @@ const areaMetrics = await areaReference.metrics.query({
 const areasByType = await areaReference.query.byType({
   type: 'county',
   limit: 10
+});
+
+// Geographic resolution - resolve input geography to target tiers
+const resolution = await areaReference.resolver.resolve({
+  inputCode: 'E08000003',
+  supportedTiers: 'lsoa21,msoa21',
+  maxChildren: 100,
+  allowParentFallback: false
+});
+
+// Get all supported geography types
+const geographyTypes = await areaReference.resolver.getTypes();
+
+// Check if geography can be resolved to target tiers
+const capability = await areaReference.resolver.checkCapability({
+  inputType: 'msoa21',
+  supportedTiers: 'lsoa21',
+  includeExplanation: true
 });
 ```
 

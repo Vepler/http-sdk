@@ -5,6 +5,7 @@ import { getAutocomplete } from './routes/get-autocomplete';
 import { getChildAreas } from './routes/get-child-areas';
 import { queryByType } from './routes/query-by-type';
 import { borderAreas } from './routes/border-areas';
+import { resolveGeography, getGeographyTypes, checkResolutionCapability } from './routes/resolve-geography';
 
 export default {
   get: getAreas,
@@ -19,5 +20,10 @@ export default {
   },
   query: {
     byType: queryByType
+  },
+  resolver: {
+    resolve: resolveGeography,
+    getTypes: getGeographyTypes,
+    checkCapability: checkResolutionCapability
   }
 }

@@ -27,9 +27,14 @@ export type { QueryByTypeParams } from './services/area-reference/routes/query-b
 export type { BorderAreasParams } from './services/area-reference/routes/border-areas';
 export type { WithinAreasParams } from './services/area-reference/routes/within-areas';
 export type { GetAreasParams } from './services/area-reference/routes/get-areas';
+export type { 
+  ResolveGeographyParams,
+  GetGeographyTypesParams,
+  CheckResolutionCapabilityParams
+} from './services/area-reference/routes/resolve-geography';
 
 // Re-export official area reference types
-export type { Areas, Search, Metrics } from '@vepler/area-reference-types';
+export type { Areas, Search, Metrics, Geographic } from '@vepler/area-reference-types';
 
 // Safety types
 export type { 
