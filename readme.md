@@ -27,7 +27,7 @@ npm install @vepler/http-sdk
 ```
 
 ```typescript
-import { initializeSDK, property, schools, areaReference } from '@vepler/http-sdk';
+import { initializeSDK, property, schools, areaReference, safety } from '@vepler/http-sdk';
 
 // Initialize once
 initializeSDK({ apiKey: 'your-api-key-here' });
@@ -62,10 +62,10 @@ The Vepler SDK powers the next generation of property technology applications:
 | **Use Case** | **Services Used** | **Example** |
 |-------------|-------------------|-------------|
 | 🏠 **Property Search Platforms** | Property + Area Reference + Schools | Build comprehensive property listings with local amenities |
-| 📈 **Market Analytics Dashboards** | Demographics + Crime + Property Predictor | Create data-driven investment analysis tools |
+| 📈 **Market Analytics Dashboards** | Demographics + Safety + Property Predictor | Create data-driven investment analysis tools |
 | 🏫 **School Catchment Finders** | Schools + Area Reference + Location | Help families find homes near top-rated schools |
 | 🏗️ **Planning & Development Tools** | Planning Register + Area Reference + Demographics | Track development opportunities and planning applications |
-| 🔍 **Location Intelligence Apps** | POI + Connectivity + Demographics + Crime | Build comprehensive neighbourhood analysis tools |
+| 🔍 **Location Intelligence Apps** | POI + Connectivity + Demographics + Safety | Build comprehensive neighbourhood analysis tools |
 
 ---
 
@@ -83,7 +83,7 @@ The Vepler SDK powers the next generation of property technology applications:
 |---------|---------|-------------|
 | **Area Reference** | Geographic boundaries and area data | `within` `children` `border` `metrics.query` |
 | **Demographics** | Population and demographic analysis | `queryDemographics` |
-| **Crime** | Crime statistics and safety metrics | `queryGeographyMetrics` |
+| **Safety** | Crime statistics and safety metrics | `geography.getMetrics` `crime.getData` `neighborhoodWatch.getByLocation` |
 
 ### **Education & Amenities**
 | Service | Purpose | Key Methods |
@@ -176,7 +176,7 @@ const areasByType = await areaReference.query.byType({
 });
 ```
 
-#### **Demographics & Crime**
+#### **Demographics & Safety**
 ```typescript
 // Get demographic data
 const demographics = await rover.queryDemographics({
@@ -184,10 +184,24 @@ const demographics = await rover.queryDemographics({
   metricIds: ['pop_total', 'age_median']
 });
 
-// Crime statistics
-const crimeData = await crime.queryGeographyMetrics({
-  geographicEntityIds: ['E01000001'],
-  metricIds: ['crime_rate', 'safety_score']
+// Crime and safety statistics
+const safetyData = await safety.geography.getMetrics({
+  geographicCodes: 'E01000001',
+  periods: '2023-01,2023-02'
+});
+
+// Get crime data
+const crimeData = await safety.crime.getData({
+  area: 'E01000001',
+  dateFrom: '2023-01',
+  dateTo: '2023-12'
+});
+
+// Neighbourhood watch information
+const neighbourhoodWatch = await safety.neighborhoodWatch.getByLocation({
+  lat: 51.5074,
+  lng: -0.1278,
+  radius: 1000
 });
 ```
 
