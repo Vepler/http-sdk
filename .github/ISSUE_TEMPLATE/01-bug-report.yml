@@ -1,0 +1,178 @@
+name: 🐛 Bug Report
+description: File a bug report to help us improve the PropTech SDK
+title: "[Bug]: "
+labels: ["bug", "triage"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Thanks for taking the time to fill out this bug report! This helps us maintain high quality for UK PropTech developers.
+
+  - type: input
+    id: version
+    attributes:
+      label: SDK Version
+      description: What version of @vepler/http-sdk are you running?
+      placeholder: e.g. 1.0.46
+    validations:
+      required: true
+
+  - type: dropdown
+    id: environment
+    attributes:
+      label: Environment
+      description: What environment are you running in?
+      options:
+        - Node.js
+        - Browser (Chrome/Edge)
+        - Browser (Firefox)
+        - Browser (Safari)
+        - React Native
+        - Next.js
+        - Nuxt.js
+        - Other (specify in description)
+    validations:
+      required: true
+
+  - type: input
+    id: node-version
+    attributes:
+      label: Node.js Version (if applicable)
+      description: What Node.js version are you using?
+      placeholder: e.g. 20.10.0
+    validations:
+      required: false
+
+  - type: dropdown
+    id: service
+    attributes:
+      label: Affected Service
+      description: Which PropTech service is affected?
+      options:
+        - Property
+        - Safety (Crime Data)
+        - Schools
+        - Area Reference
+        - Planning Register
+        - Demographics
+        - Location/Address Lookup
+        - Property Predictor
+        - Connectivity
+        - POI (Points of Interest)
+        - Council Tax Register
+        - Search
+        - Multiple Services
+        - SDK Configuration
+        - Other
+    validations:
+      required: true
+
+  - type: textarea
+    id: bug-description
+    attributes:
+      label: Describe the bug
+      description: A clear and concise description of what the bug is
+      placeholder: |
+        The SDK throws an error when...
+        Expected behaviour vs actual behaviour...
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproduction
+    attributes:
+      label: Steps to reproduce
+      description: Steps to reproduce the behaviour
+      placeholder: |
+        1. Initialize SDK with `initializeSDK({ apiKey: '...' })`
+        2. Call service method `property.getProperty(...)`
+        3. Error occurs when...
+        4. See error
+    validations:
+      required: true
+
+  - type: textarea
+    id: expected
+    attributes:
+      label: Expected behaviour
+      description: A clear and concise description of what you expected to happen
+      placeholder: The API call should return property data successfully...
+    validations:
+      required: true
+
+  - type: textarea
+    id: code-sample
+    attributes:
+      label: Code sample
+      description: Minimal TypeScript/JavaScript code that demonstrates the issue
+      render: typescript
+      placeholder: |
+        import { initializeSDK, property } from '@vepler/http-sdk';
+
+        initializeSDK({ apiKey: 'your-api-key' });
+
+        // Code that reproduces the bug
+        const result = await property.getProperty({
+          propertyIds: ['12345678']
+        });
+    validations:
+      required: false
+
+  - type: textarea
+    id: error-message
+    attributes:
+      label: Error message/stack trace
+      description: Full error message and stack trace if available
+      render: shell
+      placeholder: |
+        Error: ...
+        at ...
+        at ...
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: api-testing
+    attributes:
+      label: API Endpoint Testing
+      description: Have you tested the underlying API endpoint directly?
+      options:
+        - label: I have tested the API endpoint directly and it works
+          required: false
+        - label: I have tested the API endpoint directly and it also fails
+          required: false
+        - label: I have not tested the API endpoint directly
+          required: false
+
+  - type: textarea
+    id: additional-context
+    attributes:
+      label: Additional context
+      description: |
+        Add any other context about the problem here, such as:
+        - Network conditions
+        - API key permissions
+        - Property data specifics (without sharing sensitive data)
+        - Rate limiting issues
+      placeholder: |
+        - Using corporate network with proxy
+        - API key has limited permissions
+        - Only affects certain property types
+        - Intermittent issue during peak hours
+    validations:
+      required: false
+
+  - type: checkboxes
+    id: checklist
+    attributes:
+      label: Pre-submission checklist
+      description: Please confirm you have completed these steps
+      options:
+        - label: I have searched existing issues for similar problems
+          required: true
+        - label: I have tested with the latest version of the SDK
+          required: true
+        - label: I have included a minimal code example that reproduces the issue
+          required: false
+        - label: I have removed any sensitive data (API keys, property addresses, etc.) from this report
+          required: true
