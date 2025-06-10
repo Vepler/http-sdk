@@ -1,43 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-
-export interface QueryGeographyMetricsParams {
-  geographicCodes: string;
-  periods?: string;
-  startDate?: string;
-  endDate?: string;
-  mergeAreas?: boolean;
-  includeTimeSeries?: boolean;
-  months?: number;
-}
-
-export interface CategoryMetrics {
-  category: string;
-  count: number;
-  rate: number;
-  score: number;
-}
-
-export interface AreaMetricsResponse {
-  geographicCode: string;
-  name: string;
-  population: number;
-  period: string;
-  totalCrimeCount: number;
-  totalCrimeRate: number;
-  totalCrimeScore: number;
-  categories: CategoryMetrics[];
-  timeSeriesData: {
-    period: string;
-    categories: {
-      [category: string]: number;
-    };
-  }[];
-}
-
-export interface QueryGeographyMetricsResponse {
-  result: AreaMetricsResponse[];
-  success: boolean;
-}
+import { GetMetricsQueryParams, GetMetricsResponse } from '@vepler/safety-types';
 
 const datePattern = /^\d{4}-\d{2}$/;
 
@@ -100,7 +62,7 @@ export const queryGeographyMetricsValidation = {
   ]
 };
 
-export async function queryGeographyMetrics(params: QueryGeographyMetricsParams): Promise<QueryGeographyMetricsResponse> {
+export async function queryGeographyMetrics(params: GetMetricsQueryParams): Promise<GetMetricsResponse[]> {
   const {
     geographicCodes,
     periods,
@@ -116,7 +78,7 @@ export async function queryGeographyMetrics(params: QueryGeographyMetricsParams)
     throw new Error('Either "periods" or both "startDate" and "endDate" must be provided');
   }
 
-  const api = getApiInstance('crime');
+  const api = getApiInstance('safety');
   const endpoint = `/geography/metrics`;
   
   return await api.query(

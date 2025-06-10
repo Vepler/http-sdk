@@ -5,7 +5,7 @@ import ApiService from '@vepler/http-client';
 interface SDKConfig {
   propertyHost?: string;
   areaReferenceHost?: string;
-  crimeHost?: string;
+  safetyHost?: string;
   roverHost?: string;
   schoolsHost?: string;
   planningRegisterHost?: string;
@@ -28,7 +28,7 @@ const defaultConfig = {
   production: {
     propertyHost: process.env.SVC_PROPERTY_HOST || 'https://api2.propbar.co.uk/property',
     areaReferenceHost: process.env.AREA_REFERENCE_HOST || 'https://api2.propbar.co.uk/area-reference',
-    crimeHost: process.env.CRIME_HOST || 'https://api2.propbar.co.uk/crime',
+    safetyHost: process.env.SAFETY_HOST || 'https://api2.propbar.co.uk/safety',
     roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
@@ -45,7 +45,7 @@ const defaultConfig = {
   development: {
     propertyHost: process.env.SVC_PROPERTY_HOST || 'https://api2.propbar.co.uk/property',
     areaReferenceHost: process.env.AREA_REFERENCE_HOST || 'https://api2.propbar.co.uk/area-reference',
-    crimeHost: process.env.CRIME_HOST || 'https://api2.propbar.co.uk/crime',
+    safetyHost: process.env.SAFETY_HOST || 'https://api2.propbar.co.uk/safety',
     roverHost: process.env.SVC_ROVER_HOST || 'https://api2.propbar.co.uk/rover',
     schoolsHost: process.env.SCHOOLS_HOST || 'https://api2.propbar.co.uk/schools',
     planningRegisterHost: process.env.PLANNING_REGISTER_HOST || 'https://api2.propbar.co.uk/planning-register',
@@ -93,9 +93,9 @@ export const initializeSDK = (config: SDKConfig = defaultConfig.production, env:
       host: config.areaReferenceHost || environmentConfig.areaReferenceHost,
     });
 
-    apiInstances['crime'] = ApiService.create({
+    apiInstances['safety'] = ApiService.create({
       ...commonConfig,
-      host: config.crimeHost || environmentConfig.crimeHost,
+      host: config.safetyHost || environmentConfig.safetyHost,
     });
 
     apiInstances['rover'] = ApiService.create({
