@@ -33,12 +33,12 @@ export async function queryDemographics(
   return await api.query(
     endpoint,
     {
-      geography_codes: geographyCodes,
+      geographyCodes,
       format,
       topics,
-      census_period: censusPeriod,
-      hierarchy_level: hierarchyLevel,
-      include_metadata: includeMetadata
+      censusPeriod,
+      hierarchyLevel,
+      includeMetadata
     },
     {
       apiKey: initialisedConfig.apiKey
