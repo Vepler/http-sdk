@@ -10,10 +10,11 @@ export async function getApplicationById(
   const { applicationId } = params;
 
   const api = getApiInstance('planning-register');
-  const endpoint = `/application/${applicationId}`;
+  const endpoint = `/application`;
 
   return await api.get(
     endpoint,
+    applicationId,
     {
       apiKey: initialisedConfig.apiKey,
     }
