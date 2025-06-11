@@ -1,5 +1,6 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { Geographic } from '@vepler/area-reference-types';
+import { filterDefinedParams } from '../../../utils';
 
 export interface ResolveGeographyParams extends Geographic.ResolveGeographyQueryParams {}
 
@@ -9,8 +10,6 @@ export async function resolveGeography(
   const {
     inputCode,
     supportedTiers,
-    maxChildren,
-    allowParentFallback
   } = params;
 
   // Validate required parameters
@@ -26,12 +25,7 @@ export async function resolveGeography(
 
   return await api.query(
     endpoint,
-    {
-      inputCode,
-      supportedTiers,
-      maxChildren,
-      allowParentFallback
-    },
+    filterDefinedParams(params, ['inputCode', 'supportedTiers']),
     {
       apiKey: initialisedConfig.apiKey
     }
@@ -50,7 +44,7 @@ export async function getGeographyTypes(
 
   return await api.query(
     endpoint,
-    params || {},
+    filterDefinedParams(params || {}, []),
     {
       apiKey: initialisedConfig.apiKey
     }
@@ -65,7 +59,6 @@ export async function checkResolutionCapability(
   const {
     inputType,
     supportedTiers,
-    includeExplanation
   } = params;
 
   // Validate required parameters
@@ -81,11 +74,7 @@ export async function checkResolutionCapability(
 
   return await api.query(
     endpoint,
-    {
-      inputType,
-      supportedTiers,
-      includeExplanation
-    },
+    filterDefinedParams(params, ['inputType', 'supportedTiers']),
     {
       apiKey: initialisedConfig.apiKey
     }
