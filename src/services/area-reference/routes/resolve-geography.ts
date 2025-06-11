@@ -2,7 +2,11 @@ import { getApiInstance, initialisedConfig } from '../../../config';
 import { Geographic } from '@vepler/area-reference-types';
 import { filterDefinedParams } from '../../../utils';
 
-export interface ResolveGeographyParams extends Geographic.ResolveGeographyQueryParams {}
+export interface ResolveGeographyParams extends Geographic.ResolveGeographyQueryParams {
+  spatialStrategy?: 'strict' | 'centroid' | 'intersection' | 'weighted';
+  intersectionThreshold?: number;
+  maxChildren?: number;
+}
 
 export async function resolveGeography(
   params: ResolveGeographyParams
@@ -10,6 +14,9 @@ export async function resolveGeography(
   const {
     inputCode,
     supportedTiers,
+    spatialStrategy,
+    intersectionThreshold,
+    maxChildren,
   } = params;
 
   // Validate required parameters
@@ -20,12 +27,29 @@ export async function resolveGeography(
     throw new Error('The "supportedTiers" parameter must be provided');
   }
 
+  // Validate spatialStrategy-specific parameters
+  if (spatialStrategy === 'weighted' && intersectionThreshold === undefined) {
+    throw new Error('The "intersectionThreshold" parameter is required when spatialStrategy is "weighted"');
+  }
+  if (intersectionThreshold !== undefined && (intersectionThreshold < 0.1 || intersectionThreshold > 0.9)) {
+    throw new Error('The "intersectionThreshold" parameter must be between 0.1 and 0.9');
+  }
+  if (maxChildren !== undefined && (maxChildren < 1 || maxChildren > 500000)) {
+    throw new Error('The "maxChildren" parameter must be between 1 and 500,000');
+  }
+
   const api = getApiInstance('area-reference');
   const endpoint = '/geographic/resolve';
 
   return await api.query(
     endpoint,
-    filterDefinedParams(params, ['inputCode', 'supportedTiers']),
+    filterDefinedParams(params, [
+      'inputCode', 
+      'supportedTiers', 
+      'spatialStrategy', 
+      'intersectionThreshold', 
+      'maxChildren'
+    ]),
     {
       apiKey: initialisedConfig.apiKey
     }
