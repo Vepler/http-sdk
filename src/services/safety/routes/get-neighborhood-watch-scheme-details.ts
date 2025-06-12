@@ -1,5 +1,8 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { GetSchemeDetailsQueryParams, NeighborhoodWatchSchemeResponse } from '@vepler/safety-types';
+import {
+  GetSchemeDetailsQueryParams,
+  NeighborhoodWatchSchemeResponse,
+} from '@vepler/safety-types';
 
 export async function getNeighborhoodWatchSchemeDetails(
   provider: string,
@@ -18,14 +21,14 @@ export async function getNeighborhoodWatchSchemeDetails(
 
   const api = getApiInstance('safety');
   const endpoint = `/neighborhood-watch/${provider}/${key}`;
-  
+
   return await api.query(
     endpoint,
     {
-      includeBoundary
+      includeBoundary,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

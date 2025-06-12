@@ -1,7 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import {
   GetApplicationParams,
-  GetApplicationResponse
+  GetApplicationResponse,
 } from '@vepler/planning-register-types';
 
 export async function getApplicationById(
@@ -12,11 +12,7 @@ export async function getApplicationById(
   const api = getApiInstance('planning-register');
   const endpoint = `/application`;
 
-  return await api.get(
-    endpoint,
-    applicationId,
-    {
-      apiKey: initialisedConfig.apiKey,
-    }
-  );
+  return await api.get(endpoint, applicationId, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

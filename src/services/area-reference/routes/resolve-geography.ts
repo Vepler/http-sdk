@@ -2,7 +2,8 @@ import { getApiInstance, initialisedConfig } from '../../../config';
 import { Geographic } from '@vepler/area-reference-types';
 import { filterDefinedParams } from '../../../utils';
 
-export interface ResolveGeographyParams extends Geographic.ResolveGeographyQueryParams {
+export interface ResolveGeographyParams
+  extends Geographic.ResolveGeographyQueryParams {
   spatialStrategy?: 'strict' | 'centroid' | 'intersection' | 'weighted';
   intersectionThreshold?: number;
   maxChildren?: number;
@@ -29,13 +30,22 @@ export async function resolveGeography(
 
   // Validate spatialStrategy-specific parameters
   if (spatialStrategy === 'weighted' && intersectionThreshold === undefined) {
-    throw new Error('The "intersectionThreshold" parameter is required when spatialStrategy is "weighted"');
+    throw new Error(
+      'The "intersectionThreshold" parameter is required when spatialStrategy is "weighted"'
+    );
   }
-  if (intersectionThreshold !== undefined && (intersectionThreshold < 0.1 || intersectionThreshold > 0.9)) {
-    throw new Error('The "intersectionThreshold" parameter must be between 0.1 and 0.9');
+  if (
+    intersectionThreshold !== undefined &&
+    (intersectionThreshold < 0.1 || intersectionThreshold > 0.9)
+  ) {
+    throw new Error(
+      'The "intersectionThreshold" parameter must be between 0.1 and 0.9'
+    );
   }
   if (maxChildren !== undefined && (maxChildren < 1 || maxChildren > 500000)) {
-    throw new Error('The "maxChildren" parameter must be between 1 and 500,000');
+    throw new Error(
+      'The "maxChildren" parameter must be between 1 and 500,000'
+    );
   }
 
   const api = getApiInstance('area-reference');
@@ -44,14 +54,14 @@ export async function resolveGeography(
   return await api.query(
     endpoint,
     filterDefinedParams(params, [
-      'inputCode', 
-      'supportedTiers', 
-      'spatialStrategy', 
-      'intersectionThreshold', 
-      'maxChildren'
+      'inputCode',
+      'supportedTiers',
+      'spatialStrategy',
+      'intersectionThreshold',
+      'maxChildren',
     ]),
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }
@@ -66,24 +76,18 @@ export async function getGeographyTypes(
   const api = getApiInstance('area-reference');
   const endpoint = '/geographic/types';
 
-  return await api.query(
-    endpoint,
-    filterDefinedParams(params || {}, []),
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, filterDefinedParams(params || {}, []), {
+    apiKey: initialisedConfig.apiKey,
+  });
 }
 
-export type CheckResolutionCapabilityParams = Geographic.CheckResolutionCapabilityQueryParams;
+export type CheckResolutionCapabilityParams =
+  Geographic.CheckResolutionCapabilityQueryParams;
 
 export async function checkResolutionCapability(
   params: CheckResolutionCapabilityParams
 ): Promise<Geographic.CheckResolutionCapabilityResponse> {
-  const {
-    inputType,
-    supportedTiers,
-  } = params;
+  const { inputType, supportedTiers } = params;
 
   // Validate required parameters
   if (!inputType) {
@@ -100,7 +104,7 @@ export async function checkResolutionCapability(
     endpoint,
     filterDefinedParams(params, ['inputType', 'supportedTiers']),
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

@@ -12,14 +12,14 @@ export default {
   crime: {
     getData: getCrimeData,
     getAreaStats: getAreaStats,
-    getCategoryStats: getCategoryStats
+    getCategoryStats: getCategoryStats,
   },
   geography: {
-    getMetrics: queryGeographyMetrics
+    getMetrics: queryGeographyMetrics,
   },
   neighborhoodWatch: {
     getByLocation: getNeighborhoodWatchByLocation,
     getByArea: getNeighborhoodWatchByArea,
-    getSchemeDetails: getNeighborhoodWatchSchemeDetails
-  }
-}
+    getSchemeDetails: getNeighborhoodWatchSchemeDetails,
+  },
+};

@@ -1,17 +1,25 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { GetAreaStatsQueryParams, GetAreaStatsResponse } from '@vepler/safety-types';
+import {
+  GetAreaStatsQueryParams,
+  GetAreaStatsResponse,
+} from '@vepler/safety-types';
 
-export async function getAreaStats(params: GetAreaStatsQueryParams): Promise<GetAreaStatsResponse> {
-  const { areaId, periods, startDate, endDate, categories, countryCode } = params;
+export async function getAreaStats(
+  params: GetAreaStatsQueryParams
+): Promise<GetAreaStatsResponse> {
+  const { areaId, periods, startDate, endDate, categories, countryCode } =
+    params;
 
   // Validate that either periods OR (startDate AND endDate) is provided
   if (!periods && !(startDate && endDate)) {
-    throw new Error('Either "periods" or both "startDate" and "endDate" must be provided');
+    throw new Error(
+      'Either "periods" or both "startDate" and "endDate" must be provided'
+    );
   }
 
   const api = getApiInstance('safety');
   const endpoint = '/area/stats';
-  
+
   return await api.query(
     endpoint,
     {
@@ -20,10 +28,10 @@ export async function getAreaStats(params: GetAreaStatsQueryParams): Promise<Get
       startDate,
       endDate,
       categories,
-      countryCode
+      countryCode,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

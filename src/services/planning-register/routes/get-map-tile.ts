@@ -8,12 +8,8 @@ export async function getMapTile(params: GetTilesParams): Promise<ArrayBuffer> {
   const endpoint = `/tiles`;
   const slug = `${z}/${x}/${y}`;
 
-  return await api.get(
-    endpoint,
-    slug,
-    {
-      apiKey: initialisedConfig.apiKey,
-      responseType: 'arraybuffer'
-    }
-  );
+  return await api.get(endpoint, slug, {
+    apiKey: initialisedConfig.apiKey,
+    responseType: 'arraybuffer',
+  });
 }

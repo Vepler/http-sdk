@@ -16,7 +16,7 @@ export async function borderAreas(
     sourceType,
     limit = 10,
     maxDistance = 5000,
-    includeGeometry = false
+    includeGeometry = false,
   } = params;
 
   // Validate required parameters
@@ -41,7 +41,7 @@ export async function borderAreas(
       includeGeometry,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

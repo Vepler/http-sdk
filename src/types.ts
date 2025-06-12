@@ -3,14 +3,23 @@
  */
 
 // Generic query parameters type for API requests
-export type QueryParams = Record<string, string | number | boolean | string[] | number[] | undefined>;
+export type QueryParams = Record<
+  string,
+  string | number | boolean | string[] | number[] | undefined
+>;
 
 // Generic JSON object type for unstructured data
 export interface JsonObject {
   [key: string]: JsonValue;
 }
 
-export type JsonValue = string | number | boolean | null | JsonObject | JsonValue[];
+export type JsonValue =
+  | string
+  | number
+  | boolean
+  | null
+  | JsonObject
+  | JsonValue[];
 
 // Geometry type for GeoJSON-like data
 export interface Geometry {

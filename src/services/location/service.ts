@@ -6,5 +6,5 @@ import { autocompleteStreet } from './routes/autocomplete-street';
 
 export default {
   autocomplete: autocompleteLocation,
-  autocompleteStreet: autocompleteStreet
-}
+  autocompleteStreet: autocompleteStreet,
+};

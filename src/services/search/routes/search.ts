@@ -1,5 +1,8 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { UnifiedSearchInput, UnifiedSearchResponse } from '@vepler/search-types';
+import {
+  UnifiedSearchInput,
+  UnifiedSearchResponse,
+} from '@vepler/search-types';
 
 /**
  * Unified Search API
@@ -10,13 +13,10 @@ import { UnifiedSearchInput, UnifiedSearchResponse } from '@vepler/search-types'
  * @param params Search query parameters
  * @returns Promise containing search results
  */
-export async function search(params: UnifiedSearchInput): Promise<UnifiedSearchResponse> {
-  const {
-    query,
-    limit = 10,
-    offset = 0,
-    source
-  } = params;
+export async function search(
+  params: UnifiedSearchInput
+): Promise<UnifiedSearchResponse> {
+  const { query, limit = 10, offset = 0, source } = params;
 
   // Validate required parameters
   if (!query) {
@@ -28,7 +28,7 @@ export async function search(params: UnifiedSearchInput): Promise<UnifiedSearchR
 
   const queryParams: Record<string, string | number> = {
     query,
-    limit
+    limit,
   };
 
   if (offset !== undefined) {
@@ -39,11 +39,7 @@ export async function search(params: UnifiedSearchInput): Promise<UnifiedSearchR
     queryParams.source = source;
   }
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey,
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

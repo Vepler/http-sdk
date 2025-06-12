@@ -1,7 +1,8 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { Areas } from '@vepler/area-reference-types';
 
-export interface WithinAreasParams extends Omit<Areas.WithinQueryParams, 'type'> {
+export interface WithinAreasParams
+  extends Omit<Areas.WithinQueryParams, 'type'> {
   /**
    * Type of area to query - can be:
    * - A single value (e.g. "lsoa21")
@@ -14,7 +15,14 @@ export interface WithinAreasParams extends Omit<Areas.WithinQueryParams, 'type'>
 export async function withinAreas(
   params: WithinAreasParams
 ): Promise<Areas.WithinResponse> {
-  const { lat, lng, radius = 1, type, includeGeometry = false, status = 'active' } = params;
+  const {
+    lat,
+    lng,
+    radius = 1,
+    type,
+    includeGeometry = false,
+    status = 'active',
+  } = params;
 
   // Validate type parameter is provided
   if (!type) {
@@ -39,7 +47,7 @@ export async function withinAreas(
       status,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

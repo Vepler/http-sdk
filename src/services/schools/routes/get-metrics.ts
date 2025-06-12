@@ -1,5 +1,8 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { MetricsResponse, MetricsQueryOptions } from '@vepler/schools-types/api/endpoints/metrics';
+import {
+  MetricsResponse,
+  MetricsQueryOptions,
+} from '@vepler/schools-types/api/endpoints/metrics';
 
 export async function getMetrics(
   params: MetricsQueryOptions
@@ -16,7 +19,7 @@ export async function getMetrics(
     priorAttainment,
     pupilCharacteristic,
     limit,
-    offset
+    offset,
   } = params;
 
   // Validate required parameters
@@ -25,7 +28,9 @@ export async function getMetrics(
   }
 
   if (!metricCodes && !profile) {
-    throw new Error('Either "metricCodes" or "profile" parameter must be provided');
+    throw new Error(
+      'Either "metricCodes" or "profile" parameter must be provided'
+    );
   }
 
   const api = getApiInstance('schools');
@@ -34,40 +39,39 @@ export async function getMetrics(
   // Map the query options to API query params
   // Need to use a record type since we're adding properties that aren't in MetricsQueryParams
   const queryParams: Record<string, string | number | boolean> = {
-    schoolIds: Array.isArray(schoolIds) ? schoolIds.join(',') : String(schoolIds)
+    schoolIds: Array.isArray(schoolIds)
+      ? schoolIds.join(',')
+      : String(schoolIds),
   };
 
   if (metricCodes) {
-    queryParams.metricCodes = Array.isArray(metricCodes) 
-      ? metricCodes.join(',') 
+    queryParams.metricCodes = Array.isArray(metricCodes)
+      ? metricCodes.join(',')
       : metricCodes;
   }
 
   if (academicYears) {
-    queryParams.academicYears = Array.isArray(academicYears) 
-      ? academicYears.join(',') 
+    queryParams.academicYears = Array.isArray(academicYears)
+      ? academicYears.join(',')
       : academicYears;
   }
-  
+
   if (profile) {
-    queryParams.profile = Array.isArray(profile) 
-      ? profile.join(',') 
-      : profile;
+    queryParams.profile = Array.isArray(profile) ? profile.join(',') : profile;
   }
   if (cohortType) queryParams.cohortType = cohortType;
   if (period) queryParams.period = period;
-  if (periodNumber !== undefined && periodNumber !== null) queryParams.periodNumber = periodNumber;
-  if (includeMetadata !== undefined) queryParams.includeMetadata = includeMetadata;
+  if (periodNumber !== undefined && periodNumber !== null)
+    queryParams.periodNumber = periodNumber;
+  if (includeMetadata !== undefined)
+    queryParams.includeMetadata = includeMetadata;
   if (priorAttainment) queryParams.priorAttainment = priorAttainment;
-  if (pupilCharacteristic) queryParams.pupilCharacteristic = pupilCharacteristic;
+  if (pupilCharacteristic)
+    queryParams.pupilCharacteristic = pupilCharacteristic;
   if (limit) queryParams.limit = limit;
   if (offset) queryParams.offset = offset;
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

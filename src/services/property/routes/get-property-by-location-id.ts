@@ -11,7 +11,9 @@ export interface PropertyResponse {
   success: boolean;
 }
 
-export async function getPropertyById(params: GetPropertyParams): Promise<PropertyResponse> {
+export async function getPropertyById(
+  params: GetPropertyParams
+): Promise<PropertyResponse> {
   const { locationIds, attributes = [], limit } = params;
 
   const api = getApiInstance('property');
@@ -27,11 +29,7 @@ export async function getPropertyById(params: GetPropertyParams): Promise<Proper
     queryParams.limit = limit.toString();
   }
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey,
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

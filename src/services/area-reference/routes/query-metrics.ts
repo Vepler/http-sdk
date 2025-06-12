@@ -1,7 +1,9 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { Metrics } from '@vepler/area-reference-types';
 
-export async function queryMetrics(params: Metrics.GetMetricValuesQueryParams): Promise<Metrics.GetMetricValuesResponse> {
+export async function queryMetrics(
+  params: Metrics.GetMetricValuesQueryParams
+): Promise<Metrics.GetMetricValuesResponse> {
   const {
     metricIds,
     geographicEntityIds,
@@ -22,7 +24,7 @@ export async function queryMetrics(params: Metrics.GetMetricValuesQueryParams): 
 
   const api = getApiInstance('area-reference');
   const endpoint = `/metric-values`;
-  
+
   return await api.query(
     endpoint,
     {
@@ -43,7 +45,7 @@ export async function queryMetrics(params: Metrics.GetMetricValuesQueryParams): 
       attributes,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

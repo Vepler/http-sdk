@@ -24,7 +24,7 @@ export async function queryDemographics(
     topics,
     censusPeriod,
     hierarchyLevel,
-    includeMetadata = false
+    includeMetadata = false,
   } = queryParams;
 
   const api = getApiInstance('rover');
@@ -38,10 +38,10 @@ export async function queryDemographics(
       topics,
       censusPeriod,
       hierarchyLevel,
-      includeMetadata
+      includeMetadata,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

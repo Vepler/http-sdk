@@ -5,5 +5,5 @@ import { getMapTile } from './routes/get-map-tile';
 export default {
   queryApplications,
   getApplicationById,
-  getMapTile
-}
+  getMapTile,
+};

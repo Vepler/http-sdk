@@ -17,24 +17,20 @@ export async function getChildAreas(
     includeHierarchy = false,
     includeGeometry = false,
     limit = 100,
-    offset = 0
+    offset = 0,
   } = options || {};
 
   const queryParams = {
     includeHierarchy,
     includeGeometry,
     limit,
-    offset
+    offset,
   };
 
   // Get API instance and make the request
   const api = getApiInstance('area-reference');
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

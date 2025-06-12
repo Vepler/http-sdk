@@ -1,21 +1,21 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { 
-  StreetAutocompleteQueryParams, 
-  SuccessResponse, 
-  StreetAutocompleteResult 
+import {
+  StreetAutocompleteQueryParams,
+  SuccessResponse,
+  StreetAutocompleteResult,
 } from '@vepler/locations-types';
 
 export async function autocompleteStreet(
   params: StreetAutocompleteQueryParams
 ): Promise<SuccessResponse<StreetAutocompleteResult[]>> {
-  const { 
+  const {
     q,
     limit = 10,
     offset = 0,
     postcodePriority,
     streetPriority = true,
     town,
-    locality
+    locality,
   } = params;
 
   // Validate required parameters
@@ -29,7 +29,7 @@ export async function autocompleteStreet(
   const queryParams: StreetAutocompleteQueryParams = {
     q,
     limit,
-    offset
+    offset,
   };
 
   // Add optional parameters if provided
@@ -46,11 +46,7 @@ export async function autocompleteStreet(
     queryParams.locality = locality;
   }
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

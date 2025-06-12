@@ -1,17 +1,31 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { GetCrimeDataQueryParams, GetCrimeDataResponse } from '@vepler/safety-types';
+import {
+  GetCrimeDataQueryParams,
+  GetCrimeDataResponse,
+} from '@vepler/safety-types';
 
-export async function getCrimeData(params: GetCrimeDataQueryParams): Promise<GetCrimeDataResponse[]> {
-  const { geographicCodes, periods, startDate, endDate, categories, countryCode } = params;
+export async function getCrimeData(
+  params: GetCrimeDataQueryParams
+): Promise<GetCrimeDataResponse[]> {
+  const {
+    geographicCodes,
+    periods,
+    startDate,
+    endDate,
+    categories,
+    countryCode,
+  } = params;
 
   // Validate that either periods OR (startDate AND endDate) is provided
   if (!periods && !(startDate && endDate)) {
-    throw new Error('Either "periods" or both "startDate" and "endDate" must be provided');
+    throw new Error(
+      'Either "periods" or both "startDate" and "endDate" must be provided'
+    );
   }
 
   const api = getApiInstance('safety');
   const endpoint = '/';
-  
+
   return await api.query(
     endpoint,
     {
@@ -20,10 +34,10 @@ export async function getCrimeData(params: GetCrimeDataQueryParams): Promise<Get
       startDate,
       endDate,
       categories,
-      countryCode
+      countryCode,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

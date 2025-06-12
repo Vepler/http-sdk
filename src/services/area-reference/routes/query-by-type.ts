@@ -5,20 +5,22 @@ export interface QueryByTypeParams extends Areas.QueryAreasQueryParams {
   type: string;
 }
 
-export async function queryByType(params: QueryByTypeParams): Promise<Areas.QueryAreasResponse> {
-  const { 
-    type, 
-    limit = 100, 
-    offset = 0, 
+export async function queryByType(
+  params: QueryByTypeParams
+): Promise<Areas.QueryAreasResponse> {
+  const {
+    type,
+    limit = 100,
+    offset = 0,
     includeRelationships = false,
     includeHierarchy = false,
     includeGeometry = false,
-    status = 'active'
+    status = 'active',
   } = params;
 
   const api = getApiInstance('area-reference');
   const endpoint = `/query/${type}`;
-  
+
   return await api.query(
     endpoint,
     {
@@ -27,10 +29,10 @@ export async function queryByType(params: QueryByTypeParams): Promise<Areas.Quer
       includeRelationships,
       includeHierarchy,
       includeGeometry,
-      status
+      status,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

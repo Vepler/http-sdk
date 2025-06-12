@@ -5,7 +5,11 @@ import { getAutocomplete } from './routes/get-autocomplete';
 import { getChildAreas } from './routes/get-child-areas';
 import { queryByType } from './routes/query-by-type';
 import { borderAreas } from './routes/border-areas';
-import { resolveGeography, getGeographyTypes, checkResolutionCapability } from './routes/resolve-geography';
+import {
+  resolveGeography,
+  getGeographyTypes,
+  checkResolutionCapability,
+} from './routes/resolve-geography';
 
 export default {
   get: getAreas,
@@ -13,17 +17,17 @@ export default {
   children: getChildAreas,
   border: borderAreas,
   metrics: {
-    query: queryMetrics
+    query: queryMetrics,
   },
   locations: {
-    autocomplete: getAutocomplete
+    autocomplete: getAutocomplete,
   },
   query: {
-    byType: queryByType
+    byType: queryByType,
   },
   resolver: {
     resolve: resolveGeography,
     getTypes: getGeographyTypes,
-    checkCapability: checkResolutionCapability
-  }
-}
+    checkCapability: checkResolutionCapability,
+  },
+};

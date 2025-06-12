@@ -1,7 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { 
-  MetricsTimeSeriesQueryOptions, 
-  MetricsTimeSeriesResponse 
+import {
+  MetricsTimeSeriesQueryOptions,
+  MetricsTimeSeriesResponse,
 } from '@vepler/schools-types/api/endpoints/metrics-timeseries';
 
 export async function getTimeSeriesMetrics(
@@ -14,7 +14,7 @@ export async function getTimeSeriesMetrics(
     profile,
     cohortType,
     contextualFactors,
-    granularity
+    granularity,
   } = params;
 
   // Validate required parameters
@@ -23,7 +23,9 @@ export async function getTimeSeriesMetrics(
   }
 
   if (!metricCodes && !profile) {
-    throw new Error('Either "metricCodes" or "profile" parameter must be provided');
+    throw new Error(
+      'Either "metricCodes" or "profile" parameter must be provided'
+    );
   }
 
   const api = getApiInstance('schools');
@@ -32,31 +34,29 @@ export async function getTimeSeriesMetrics(
   // We need to construct query params from the options
   // Since there's no direct API query params type, we'll construct a compatible object
   const queryParams: Record<string, string> = {
-    schoolId: String(schoolId)
+    schoolId: String(schoolId),
   };
 
   // Convert metricCodes to comma-separated string if it's an array
   if (metricCodes) {
-    queryParams.metricCodes = Array.isArray(metricCodes) 
-      ? metricCodes.join(',') 
+    queryParams.metricCodes = Array.isArray(metricCodes)
+      ? metricCodes.join(',')
       : metricCodes;
   }
 
   // Convert academicYears to comma-separated string if it's an array
   if (academicYears) {
-    queryParams.academicYears = Array.isArray(academicYears) 
-      ? academicYears.join(',') 
+    queryParams.academicYears = Array.isArray(academicYears)
+      ? academicYears.join(',')
       : academicYears;
   }
 
   if (profile) {
-    queryParams.profile = Array.isArray(profile) 
-      ? profile.join(',') 
-      : profile;
+    queryParams.profile = Array.isArray(profile) ? profile.join(',') : profile;
   }
   if (cohortType) queryParams.cohortType = cohortType;
   if (granularity) queryParams.granularity = granularity;
-  
+
   // Add contextual factors if provided
   if (contextualFactors) {
     if (contextualFactors.priorAttainment) {
@@ -67,11 +67,7 @@ export async function getTimeSeriesMetrics(
     }
   }
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

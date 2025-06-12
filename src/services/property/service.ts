@@ -5,5 +5,5 @@ import { queryProperty } from './routes/query-property';
 export default {
   getProperty,
   getPropertyById,
-  queryProperty
-}
+  queryProperty,
+};

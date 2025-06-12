@@ -4,7 +4,7 @@ export interface QueryPropertyResult {
   result: object[];
   size: number;
   totalSize: number;
-  success: boolean
+  success: boolean;
 }
 
 export interface GetPropertyBySourceParams {
@@ -13,29 +13,30 @@ export interface GetPropertyBySourceParams {
   offset?: number;
   area?: Array<
     | {
-    type: 'point';
-    radius: number;
-    coordinates: [number, number];
-  }
+        type: 'point';
+        radius: number;
+        coordinates: [number, number];
+      }
     | {
-    type: 'polygon';
-    coordinates: [number, number][];
-  }
+        type: 'polygon';
+        coordinates: [number, number][];
+      }
     | {
-    type: 'multipolygon';
-    coordinates: [number, number][][];
-  }
+        type: 'multipolygon';
+        coordinates: [number, number][][];
+      }
     | {
-    type: 'postcode';
-    value: string;
-  }
+        type: 'postcode';
+        value: string;
+      }
     | {
-    type: 'outcode';
-    value: string;
-  }
+        type: 'outcode';
+        value: string;
+      }
     | {
-    locationId: string;
-  }>
+        locationId: string;
+      }
+  >;
   attributes?: string[];
   query?: Array<{
     operator: 'AND' | 'OR';
@@ -49,14 +50,16 @@ export interface GetPropertyBySourceParams {
   }>;
 }
 
-export async function queryProperty(params: GetPropertyBySourceParams): Promise<QueryPropertyResult> {
+export async function queryProperty(
+  params: GetPropertyBySourceParams
+): Promise<QueryPropertyResult> {
   const {
     sourceIds,
     limit = 25,
     offset = 0,
     area,
     attributes = null,
-    query
+    query,
   } = params;
 
   const api = getApiInstance('property');

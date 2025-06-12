@@ -16,7 +16,7 @@ export default {
   metrics: {
     get: getMetrics,
     timeSeries: getTimeSeriesMetrics,
-    geographic: getGeographicMetrics
+    geographic: getGeographicMetrics,
   },
-  autocomplete: autocompleteSchools
-}
+  autocomplete: autocompleteSchools,
+};

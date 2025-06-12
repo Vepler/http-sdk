@@ -1,7 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { 
-  SchoolsQueryParams, 
-  SchoolsResponse
+import {
+  SchoolsQueryParams,
+  SchoolsResponse,
 } from '@vepler/schools-types/api/endpoints/schools';
 
 export async function getSchools(
@@ -16,7 +16,7 @@ export async function getSchools(
     urn,
     slug,
     area,
-    filter
+    filter,
   } = params;
 
   const api = getApiInstance('schools');
@@ -25,7 +25,7 @@ export async function getSchools(
   // Prepare the request body - reusing SchoolsQueryParams type
   const requestBody: SchoolsQueryParams = {
     page,
-    limit
+    limit,
   };
 
   if (name) requestBody.name = name;
@@ -36,11 +36,7 @@ export async function getSchools(
   if (sort) requestBody.sort = sort;
   if (fields) requestBody.fields = fields;
 
-  return await api.post(
-    endpoint,
-    requestBody,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.post(endpoint, requestBody, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

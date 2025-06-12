@@ -1,7 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import {
   IMultiTargetPredictionRequest,
-  IMultiTargetPredictionResponse
+  IMultiTargetPredictionResponse,
 } from '@vepler/property-predictor-types';
 
 /**
@@ -13,7 +13,9 @@ import {
  * @param params Prediction parameters
  * @returns Promise containing prediction results
  */
-export async function predictMultiTarget(params: IMultiTargetPredictionRequest): Promise<IMultiTargetPredictionResponse> {
+export async function predictMultiTarget(
+  params: IMultiTargetPredictionRequest
+): Promise<IMultiTargetPredictionResponse> {
   const {
     target,
     propertyType,
@@ -28,7 +30,7 @@ export async function predictMultiTarget(params: IMultiTargetPredictionRequest):
     transactionType = 'sale',
     detailed = false,
     longitude,
-    latitude
+    latitude,
   } = params;
 
   // Validate required parameters
@@ -38,7 +40,9 @@ export async function predictMultiTarget(params: IMultiTargetPredictionRequest):
 
   // Either postcode or coordinates must be provided
   if (!postcode && !(longitude && latitude)) {
-    throw new Error('Either "postcode" or both "longitude" and "latitude" must be provided');
+    throw new Error(
+      'Either "postcode" or both "longitude" and "latitude" must be provided'
+    );
   }
 
   const api = getApiInstance('property-predictor');
@@ -59,14 +63,10 @@ export async function predictMultiTarget(params: IMultiTargetPredictionRequest):
     transactionType,
     detailed,
     longitude,
-    latitude
+    latitude,
   };
 
-  return await api.post(
-    endpoint,
-    payload,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.post(endpoint, payload, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

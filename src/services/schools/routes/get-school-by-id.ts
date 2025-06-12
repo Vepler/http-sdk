@@ -1,5 +1,8 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { SchoolByIdQueryParams, SchoolByIdResponse } from '@vepler/schools-types/api/endpoints/schools-by-id';
+import {
+  SchoolByIdQueryParams,
+  SchoolByIdResponse,
+} from '@vepler/schools-types/api/endpoints/schools-by-id';
 
 export interface GetSchoolByIdParams extends SchoolByIdQueryParams {
   id: number;
@@ -24,11 +27,7 @@ export async function getSchoolById(
     queryParams.includeReports = includeReports;
   }
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

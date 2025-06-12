@@ -1,15 +1,13 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { SchoolAutocompleteQueryParams, SchoolAutocompleteResponse } from '@vepler/schools-types/api/endpoints/search';
+import {
+  SchoolAutocompleteQueryParams,
+  SchoolAutocompleteResponse,
+} from '@vepler/schools-types/api/endpoints/search';
 
 export async function autocompleteSchools(
   params: SchoolAutocompleteQueryParams
 ): Promise<SchoolAutocompleteResponse> {
-  const { 
-    prefix, 
-    limit = 10, 
-    status,
-    type
-  } = params;
+  const { prefix, limit = 10, status, type } = params;
 
   // Validate required parameters
   if (!prefix) {
@@ -21,17 +19,13 @@ export async function autocompleteSchools(
 
   const queryParams: SchoolAutocompleteQueryParams = {
     prefix,
-    limit
+    limit,
   };
 
   if (status) queryParams.status = status;
   if (type) queryParams.type = type;
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

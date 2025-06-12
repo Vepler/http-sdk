@@ -1,12 +1,19 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { GetByLocationQueryParams, GetByLocationResponse } from '@vepler/safety-types';
+import {
+  GetByLocationQueryParams,
+  GetByLocationResponse,
+} from '@vepler/safety-types';
 
-export async function getNeighborhoodWatchByLocation(params: GetByLocationQueryParams): Promise<GetByLocationResponse> {
+export async function getNeighborhoodWatchByLocation(
+  params: GetByLocationQueryParams
+): Promise<GetByLocationResponse> {
   const { lng, lat, radius } = params;
 
   // Validate required parameters
   if (typeof lng !== 'number' || typeof lat !== 'number') {
-    throw new Error('Both "lng" and "lat" parameters must be provided as numbers');
+    throw new Error(
+      'Both "lng" and "lat" parameters must be provided as numbers'
+    );
   }
 
   if (radius > 5000) {
@@ -15,16 +22,16 @@ export async function getNeighborhoodWatchByLocation(params: GetByLocationQueryP
 
   const api = getApiInstance('safety');
   const endpoint = '/neighborhood-watch/location';
-  
+
   return await api.query(
     endpoint,
     {
       lng,
       lat,
-      radius
+      radius,
     },
     {
-      apiKey: initialisedConfig.apiKey
+      apiKey: initialisedConfig.apiKey,
     }
   );
 }

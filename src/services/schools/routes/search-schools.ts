@@ -1,17 +1,13 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { SchoolSearchQueryParams, SchoolSearchResponse } from '@vepler/schools-types/api/endpoints/search';
+import {
+  SchoolSearchQueryParams,
+  SchoolSearchResponse,
+} from '@vepler/schools-types/api/endpoints/search';
 
 export async function searchSchools(
   params: SchoolSearchQueryParams
 ): Promise<SchoolSearchResponse> {
-  const { 
-    query, 
-    limit = 20, 
-    status = 'open',
-    type,
-    page,
-    rating
-  } = params;
+  const { query, limit = 20, status = 'open', type, page, rating } = params;
 
   // Validate required parameters
   if (!query) {
@@ -23,7 +19,7 @@ export async function searchSchools(
 
   const queryParams: SchoolSearchQueryParams = {
     query,
-    limit
+    limit,
   };
 
   if (type) queryParams.type = type;
@@ -31,11 +27,7 @@ export async function searchSchools(
   if (page) queryParams.page = page;
   if (rating) queryParams.rating = rating;
 
-  return await api.query(
-    endpoint,
-    queryParams,
-    {
-      apiKey: initialisedConfig.apiKey
-    }
-  );
+  return await api.query(endpoint, queryParams, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }
