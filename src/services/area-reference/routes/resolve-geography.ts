@@ -75,7 +75,7 @@ export async function getGeographyTypes(
   );
 }
 
-export interface CheckResolutionCapabilityParams extends Geographic.CheckResolutionCapabilityQueryParams {}
+export type CheckResolutionCapabilityParams = Geographic.CheckResolutionCapabilityQueryParams;
 
 export async function checkResolutionCapability(
   params: CheckResolutionCapabilityParams

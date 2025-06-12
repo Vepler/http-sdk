@@ -1,42 +1,10 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import type { 
+  GetNearestPOIQueryParams, 
+  GetNearestPOIResponse 
+} from '@vepler/area-reference-types/routes/poi';
 
-// POI service uses the area-reference API for all endpoints
-
-export interface GetNearestPoiParams {
-  lat: number;
-  lng: number;
-  types: string;
-  limit?: number;
-  radius?: number;
-}
-
-export interface PoiEntity {
-  id: string;
-  name: string;
-  type: string;
-  code: string;
-  location: {
-    lat: number;
-    lng: number;
-  };
-  distance: number;
-}
-
-export interface GetNearestPoiResponse {
-  query: {
-    location: {
-      lat: number;
-      lng: number;
-    };
-    radius: number;
-    limit: number;
-    types: string;
-  };
-  result: PoiEntity[];
-  count: number;
-}
-
-export async function getNearestPoi(params: GetNearestPoiParams): Promise<GetNearestPoiResponse> {
+export async function getNearestPoi(params: GetNearestPOIQueryParams): Promise<GetNearestPOIResponse> {
   const { 
     lat,
     lng,
@@ -50,10 +18,10 @@ export async function getNearestPoi(params: GetNearestPoiParams): Promise<GetNea
   
   const queryParams: Record<string, string | number> = {
     lat,
-    lng,
-    types
+    lng
   };
   
+  if (types !== undefined) queryParams.types = types;
   if (limit !== undefined) queryParams.limit = limit;
   if (radius !== undefined) queryParams.radius = radius;
   
