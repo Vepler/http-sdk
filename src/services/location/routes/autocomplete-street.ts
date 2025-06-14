@@ -1,13 +1,19 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import {
-  StreetAutocompleteQueryParams,
+  AutocompleteQueryParams,
   SuccessResponse,
-  StreetAutocompleteResult,
+  AutocompleteResult,
 } from '@vepler/locations-types';
+
+// Extended interface for street autocomplete with additional parameters
+interface StreetAutocompleteQueryParams extends AutocompleteQueryParams {
+  town?: string;
+  locality?: string;
+}
 
 export async function autocompleteStreet(
   params: StreetAutocompleteQueryParams
-): Promise<SuccessResponse<StreetAutocompleteResult[]>> {
+): Promise<SuccessResponse<AutocompleteResult[]>> {
   const {
     q,
     limit = 10,

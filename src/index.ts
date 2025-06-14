@@ -113,8 +113,6 @@ export type {
   AutocompleteQueryParams,
   SuccessResponse,
   AutocompleteResult,
-  StreetAutocompleteQueryParams,
-  StreetAutocompleteResult,
 } from '@vepler/locations-types';
 
 // Council Register types
