@@ -1312,10 +1312,10 @@
   resolved "https://registry.npmjs.org/@vepler/schools-types/-/schools-types-1.8.2.tgz"
   integrity sha512-ZFwmknWsl+jx7TBa4hoZJw+/gsHsrthRrapYflrfkr+uVJe5Gbsv2FBtKHCBRF1EuVVkZOKOPuw5xMIR9hTkRg==
 
-"@vepler/search-types@^1.1.0":
-  version "1.7.0"
-  resolved "https://registry.npmjs.org/@vepler/search-types/-/search-types-1.7.0.tgz"
-  integrity sha512-wrYadV3Hs+v5nnqgDp2QEEhFAHSUrmXmP9Qd0kilX3RKLZ1Xt4AccKfc5iBEuxAwpME8TGxX29yUC/kO9ebmQw==
+"@vepler/search-types@^1.8.3":
+  version "1.8.3"
+  resolved "https://registry.yarnpkg.com/@vepler/search-types/-/search-types-1.8.3.tgz#ccccaa500461eeb36b69774280584321cbd1881b"
+  integrity sha512-nN63riA82b8O8WafzrWmdQHZrXFm52ZJ6h1chUfUjyx1JnUuJ+b5qmbILzfu4XPIG9TPhortMl3kfZHX3Q+bSQ==
 
 abbrev@^3.0.0:
   version "3.0.1"
