@@ -1255,10 +1255,10 @@
   resolved "https://registry.npmjs.org/@ungap/structured-clone/-/structured-clone-1.3.0.tgz"
   integrity sha512-WmoN8qaIAo7WTYWbAZuG8PYEhn5fkz7dZrqTBZ7dtt//lL2Gwms1IcnQ5yHqjDfX8Ft5j4YzDM23f87zBfDe9g==
 
-"@vepler/area-reference-types@^1.42.0":
-  version "1.43.1"
-  resolved "https://registry.npmjs.org/@vepler/area-reference-types/-/area-reference-types-1.43.1.tgz"
-  integrity sha512-qDlySEAVphI9JPcDIVjpDupLgSQBLOVxtoS6cOgccW1TtPg0RglWqE5YnG2ThkFGHu/KvNzLFPq7YPrNmjJXiA==
+"@vepler/area-reference-types@^1.50.0":
+  version "1.50.0"
+  resolved "https://registry.yarnpkg.com/@vepler/area-reference-types/-/area-reference-types-1.50.0.tgz#f10f00cdb1106ea0804bd52db727a7ec7f978acf"
+  integrity sha512-SQ5h7l+M1PBdseDgj86Bc7LgeHeokUqGRlPOINDIZt4l62y8Y+/ZpB5Whdqh/aUU8f5s5b8ujcRpmrXe6/n2cA==
 
 "@vepler/council-register-types@^1.6.0":
   version "1.6.0"
