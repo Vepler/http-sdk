@@ -1273,10 +1273,10 @@
     "@vepler/logger" "^1.0.0"
     axios "^1.6.8"
 
-"@vepler/locations-types@1.6.0":
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/@vepler/locations-types/-/locations-types-1.6.0.tgz"
-  integrity sha512-QXUL7FgifUROnkB+qF45aGqxtk/RxXObl7Dyxr2pcHpfA8ywR4idaTcchzvN9E6tIoLvm819DIdDDTfcqlcqSg==
+"@vepler/locations-types@1.12.0":
+  version "1.12.0"
+  resolved "https://registry.yarnpkg.com/@vepler/locations-types/-/locations-types-1.12.0.tgz#9ffedb566961bb63c79f9558fccc2843134776d8"
+  integrity sha512-s7IyIGsyLiQRMFqu2cOf5oAVOMANzNUX+5JLfRlMPmJi2FKzMbwPxmY4q1TjNPwwp+XDq2vBVIdDyYoCcAxw4g==
 
 "@vepler/logger@^1.0.0":
   version "1.1.0"
