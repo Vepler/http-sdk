@@ -36,7 +36,6 @@ export type {
 // Re-export official area reference types
 export type {
   Areas,
-  Search,
   Metrics,
   Geographic,
 } from '@vepler/area-reference-types';
@@ -111,8 +110,10 @@ export type {
 // Location types
 export type {
   AutocompleteQueryParams,
+  AddressSearchResponse,
   SuccessResponse,
   AutocompleteResult,
+  IAddressResponse,
   CanonicalAutocompleteQueryParams,
   CanonicalSuccessResponse,
   CanonicalAutocompleteResult,
