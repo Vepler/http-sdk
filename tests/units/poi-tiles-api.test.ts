@@ -10,7 +10,7 @@ describe('Validate POI Tiles API', () => {
 
   it('Fetch POI tiles', async () => {
     const result = await poiAPI.tiles({
-      tiles: '10/512/512,10/513/512',
+      tiles: '10/511/340,10/512/340',
       format: 'geojson',
       limit: 100
     });
@@ -34,9 +34,9 @@ describe('Validate POI Tiles API', () => {
 
   it('Fetch POI tiles with category filter', async () => {
     const result = await poiAPI.tiles({
-      tiles: '10/512/512',
+      tiles: '10/511/340',
       format: 'geojson',
-      categories: 'cafe,restaurant',
+      categories: 'FERRY,BUS',
       limit: 50,
       includeMetadata: true
     });
