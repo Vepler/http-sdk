@@ -152,6 +152,16 @@ export type {
   GetConnectivityScoresResponse,
 } from './services/connectivity/routes/get-connectivity-scores';
 
+// POI types
+export type {
+  GetPOITilesQueryParams,
+  GetPOITilesMetadata,
+  GetPOITilesGeoJSONResponse,
+  TileCoordinate,
+  GetNearestPOIQueryParams,
+  GetNearestPOIResponse,
+} from '@vepler/area-reference-types/routes/poi';
+
 export { initSDK as initializeSDK, reset };
 
 const routes = {
