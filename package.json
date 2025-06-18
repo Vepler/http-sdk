@@ -39,7 +39,7 @@
     "@vepler/logger": "^3.0.0",
     "@vepler/planning-register-types": "^1.1.5",
     "@vepler/property-predictor-types": "^1.14.0",
-    "@vepler/safety-types": "^3.9.6",
+    "@vepler/safety-types": "^3.10.4",
     "@vepler/schools-types": "^1.8.2",
     "@vepler/search-types": "^1.8.6",
     "pino": "^9.6.0"

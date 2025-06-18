@@ -1347,10 +1347,10 @@
   resolved "https://registry.npmjs.org/@vepler/property-predictor-types/-/property-predictor-types-1.14.0.tgz"
   integrity sha512-R+iCEegOK/lrJAZayQXg0BETzQ8eLVlCuCjaItu9SfNUesbvaQI2PZG84BBo5yr/Krlcb48I3BJu2PQHssvXnA==
 
-"@vepler/safety-types@^3.9.6":
-  version "3.10.0"
-  resolved "https://registry.npmjs.org/@vepler/safety-types/-/safety-types-3.10.0.tgz"
-  integrity sha512-HJE81wrQfVGGHiLyLhkW/c6yjDqTLJSdAxe59FslJtiSBoPMHGm3GZByD88OJ+MQaq6ypGa+lW/PNqiHRpyVIw==
+"@vepler/safety-types@^3.10.4":
+  version "3.10.4"
+  resolved "https://registry.npmjs.org/@vepler/safety-types/-/safety-types-3.10.4.tgz"
+  integrity sha512-d+mVe9+l25hnSI/xd2NJlBmXlzNx24nh4mxkDgYi5/3oZR4CoxKrQjYQr4jFjlGHZgyBiB5OAI62njhBzVEq4A==
 
 "@vepler/schools-types@^1.8.2":
   version "1.8.2"
