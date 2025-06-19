@@ -54,7 +54,7 @@ export async function coverage(
   if (coverageValue) queryParams.append('coverageValue', coverageValue);
   if (aggregation) queryParams.append('aggregation', aggregation);
   
-  const endpoint = `/areas/coverage?${queryParams.toString()}`;
+  const endpoint = `/coverage?${queryParams.toString()}`;
 
   return await api.get(endpoint, '', {
     apiKey: initialisedConfig.apiKey,
