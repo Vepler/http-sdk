@@ -42,21 +42,21 @@ export async function coverage(
   }
 
   const api = getApiInstance('area-reference');
-  const endpoint = '/areas/coverage';
+  
+  // Build query parameters
+  const queryParams = new URLSearchParams();
+  queryParams.append('sourceCode', sourceCode);
+  queryParams.append('sourceType', sourceType);
+  
+  if (targetCode) queryParams.append('targetCode', targetCode);
+  if (targetType) queryParams.append('targetType', targetType);
+  if (coverageType) queryParams.append('coverageType', coverageType);
+  if (coverageValue) queryParams.append('coverageValue', coverageValue);
+  if (aggregation) queryParams.append('aggregation', aggregation);
+  
+  const endpoint = `/areas/coverage?${queryParams.toString()}`;
 
-  return await api.query(
-    endpoint,
-    {
-      sourceCode,
-      sourceType,
-      targetCode,
-      targetType,
-      coverageType,
-      coverageValue,
-      aggregation,
-    },
-    {
-      apiKey: initialisedConfig.apiKey,
-    }
-  );
+  return await api.get(endpoint, '', {
+    apiKey: initialisedConfig.apiKey,
+  });
 }
