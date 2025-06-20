@@ -21,16 +21,19 @@ export async function queryByType(
   const api = getApiInstance('area-reference');
   const endpoint = `/query/${type}`;
 
+  // Explicitly exclude 'type' from query parameters to prevent HTTP client bug
+  const queryParameters = {
+    limit,
+    offset,
+    includeRelationships,
+    includeHierarchy,
+    includeGeometry,
+    status,
+  };
+
   return await api.query(
     endpoint,
-    {
-      limit,
-      offset,
-      includeRelationships,
-      includeHierarchy,
-      includeGeometry,
-      status,
-    },
+    queryParameters,
     {
       apiKey: initialisedConfig.apiKey,
     }

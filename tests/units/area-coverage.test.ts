@@ -1,43 +1,20 @@
-import { initializeSDK } from '../../src/config';
+import { initializeSDK, reset } from '../../src/config';
 import areaReferenceAPI from '../../src/services/area-reference/service';
 
-// Mock the HTTP client to avoid API calls in CI
-jest.mock('@vepler/http-client', () => {
-  return {
-    create: jest.fn().mockImplementation(() => {
-      return {
-        query: jest.fn().mockImplementation((endpoint, params) => {
-          if (endpoint === '/coverage') {
-            // Mock successful response for the working test data
-            if (params.sourceCode === 'E63007706' && params.sourceType === 'built_up_area_250') {
-              return Promise.resolve({
-                sourceCode: params.sourceCode,
-                sourceType: params.sourceType,
-                coverageType: params.coverageType,
-                coverageValue: params.coverageValue,
-                totalArea: 1000000,
-                coverage: [
-                  {
-                    identifier: 'test_coverage',
-                    area: 500000,
-                    percentage: 50
-                  }
-                ]
-              });
-            }
-          }
-          return Promise.reject(new Error('Endpoint not mocked'));
-        })
-      };
-    })
-  };
-});
-
-describe('Validate Area Reference Coverage API', () => {
+describe('Area Reference Coverage E2E Tests', () => {
   beforeAll(() => {
+    if (!process.env.API_KEY) {
+      console.log('Skipping E2E tests: No API key available');
+      return;
+    }
+    
     initializeSDK({
-      apiKey: 'test-api-key'
+      apiKey: process.env.API_KEY
     });
+  });
+
+  afterAll(() => {
+    reset();
   });
 
   describe('Parameter validation', () => {
@@ -102,7 +79,12 @@ describe('Validate Area Reference Coverage API', () => {
   });
 
   describe('Geography-to-geography coverage', () => {
-    it('should calculate ward to constituency overlap', async () => {
+    it('should calculate built up area coverage', async () => {
+      if (!process.env.API_KEY) {
+        console.log('Skipping test: No API key available');
+        return;
+      }
+
       try {
         const result = await areaReferenceAPI.coverage({
           sourceCode: 'E63007706',
@@ -127,17 +109,17 @@ describe('Validate Area Reference Coverage API', () => {
           expect(firstResult.percentage).toBeLessThanOrEqual(100);
         }
       } catch (error: any) {
-        // If endpoint is not deployed yet, skip this test
+        // Check for parameter pollution bug specifically
         if (error?.status === 400 && error?.data?.message === 'Invalid request query input') {
-          console.warn('Coverage endpoint not available yet, skipping integration test');
-          return;
+          throw new Error('Parameter pollution detected in coverage endpoint - coverage parameters being sent incorrectly');
         }
         // If geography not found, this means the endpoint is working but test data doesn't exist
         if (error?.status === 404 && error?.data?.message?.includes('Source geography not found')) {
           console.warn('Test geography codes not found in system, but endpoint is working correctly');
           return;
         }
-        console.error('Geography-to-geography API Error:', error);
+        console.error('Geography-to-geography API Error:', error.message);
+        // Re-throw other errors to fail the test if something is genuinely broken
         throw error;
       }
     });
@@ -145,6 +127,11 @@ describe('Validate Area Reference Coverage API', () => {
 
   describe('Geography-to-type coverage', () => {
     it('should calculate flood risk coverage for a ward', async () => {
+      if (!process.env.API_KEY) {
+        console.log('Skipping test: No API key available');
+        return;
+      }
+
       try {
         const result = await areaReferenceAPI.coverage({
           sourceCode: 'E63007706',
@@ -169,22 +156,26 @@ describe('Validate Area Reference Coverage API', () => {
           expect(firstResult.percentage).toBeLessThanOrEqual(100);
         }
       } catch (error: any) {
-        // If endpoint is not deployed yet, skip this test
+        // Check for parameter pollution bug specifically
         if (error?.status === 400 && error?.data?.message === 'Invalid request query input') {
-          console.warn('Coverage endpoint not available yet, skipping integration test');
-          return;
+          throw new Error('Parameter pollution detected in coverage endpoint');
         }
         // If geography not found, this means the endpoint is working but test data doesn't exist
         if (error?.status === 404 && error?.data?.message?.includes('Source geography not found')) {
           console.warn('Test geography codes not found in system, but endpoint is working correctly');
           return;
         }
-        console.error('Geography-to-type API Error:', error);
+        console.error('Geography-to-type API Error:', error.message);
         throw error;
       }
     });
 
     it('should calculate coverage with specific value filter', async () => {
+      if (!process.env.API_KEY) {
+        console.log('Skipping test: No API key available');
+        return;
+      }
+
       try {
         const result = await areaReferenceAPI.coverage({
           sourceCode: 'E63007706',
@@ -203,22 +194,26 @@ describe('Validate Area Reference Coverage API', () => {
         expect(result.totalArea).toBeGreaterThan(0);
         expect(Array.isArray(result.coverage)).toBeTruthy();
       } catch (error: any) {
-        // If endpoint is not deployed yet, skip this test
+        // Check for parameter pollution bug specifically
         if (error?.status === 400 && error?.data?.message === 'Invalid request query input') {
-          console.warn('Coverage endpoint not available yet, skipping integration test');
-          return;
+          throw new Error('Parameter pollution detected in coverage endpoint with value filter');
         }
         // If geography not found, this means the endpoint is working but test data doesn't exist
         if (error?.status === 404 && error?.data?.message?.includes('Source geography not found')) {
           console.warn('Test geography codes not found in system, but endpoint is working correctly');
           return;
         }
-        console.error('Filtered coverage API Error:', error);
+        console.error('Filtered coverage API Error:', error.message);
         throw error;
       }
     });
 
     it('should calculate coverage with breakdown aggregation', async () => {
+      if (!process.env.API_KEY) {
+        console.log('Skipping test: No API key available');
+        return;
+      }
+
       try {
         const result = await areaReferenceAPI.coverage({
           sourceCode: 'E63007706',
@@ -243,17 +238,16 @@ describe('Validate Area Reference Coverage API', () => {
           expect(totalPercentage).toBeLessThanOrEqual(100);
         }
       } catch (error: any) {
-        // If endpoint is not deployed yet, skip this test
+        // Check for parameter pollution bug specifically
         if (error?.status === 400 && error?.data?.message === 'Invalid request query input') {
-          console.warn('Coverage endpoint not available yet, skipping integration test');
-          return;
+          throw new Error('Parameter pollution detected in coverage endpoint with breakdown aggregation');
         }
         // If geography not found, this means the endpoint is working but test data doesn't exist
         if (error?.status === 404 && error?.data?.message?.includes('Source geography not found')) {
           console.warn('Test geography codes not found in system, but endpoint is working correctly');
           return;
         }
-        console.error('Breakdown aggregation API Error:', error);
+        console.error('Breakdown aggregation API Error:', error.message);
         throw error;
       }
     });
