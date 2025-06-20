@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { createRequiredParameterError } from '../../../utils/errors';
 import {
   CanonicalAutocompleteQueryParams,
   CanonicalSuccessResponse,
@@ -12,7 +13,7 @@ export async function autocompleteLocation(
 
   // Validate required parameters
   if (!q) {
-    throw new Error('The "q" parameter must be provided');
+    throw new Error(createRequiredParameterError('q'));
   }
 
   const api = getApiInstance('locator');

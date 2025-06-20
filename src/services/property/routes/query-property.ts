@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { filterUndefined, processArrayParameter } from '../../../utils/validation';
 
 export interface QueryPropertyResult {
   result: object[];
@@ -58,25 +59,23 @@ export async function queryProperty(
     limit = 25,
     offset = 0,
     area,
-    attributes = null,
+    attributes,
     query,
   } = params;
 
   const api = getApiInstance('property');
   const endpoint = `/query`;
 
-  return await api.post(
-    endpoint,
-    {
-      sourceIds,
-      limit,
-      offset,
-      area: area ? area : undefined,
-      attributes: attributes ? attributes.join(',') : undefined,
-      query: query ? query : undefined,
-    },
-    {
-      apiKey: initialisedConfig.apiKey,
-    }
-  );
+  const requestBody = filterUndefined({
+    sourceIds,
+    limit,
+    offset,
+    area,
+    attributes: processArrayParameter(attributes),
+    query,
+  });
+
+  return await api.post(endpoint, requestBody, {
+    apiKey: initialisedConfig.apiKey,
+  });
 }

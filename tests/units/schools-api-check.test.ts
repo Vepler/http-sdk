@@ -433,7 +433,7 @@ describe('Schools API', () => {
       const params: any = {};
 
       await expect(schools.getSchoolById(params)).rejects.toThrow(
-        'The "id" parameter must be provided'
+        'Parameter "id" is required'
       );
     });
   });
@@ -468,7 +468,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.search(params)).rejects.toThrow(
-        'The "query" parameter must be provided'
+        'Parameter "query" is required'
       );
     });
   });
@@ -501,7 +501,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.autocomplete(params)).rejects.toThrow(
-        'The "prefix" parameter must be provided'
+        'Parameter "prefix" is required'
       );
     });
   });
@@ -537,7 +537,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.metrics.get(params)).rejects.toThrow(
-        'The "schoolIds" parameter must be provided'
+        'Parameter "schoolIds" is required'
       );
     });
 
@@ -547,7 +547,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.metrics.get(params)).rejects.toThrow(
-        'Either "metricCodes" or "profile" parameter must be provided'
+        'Either metricCodes or profile must be provided'
       );
     });
 
@@ -599,7 +599,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.metrics.timeSeries(params)).rejects.toThrow(
-        'The "schoolId" parameter must be provided'
+        'Parameter "schoolId" is required'
       );
     });
 
@@ -609,7 +609,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.metrics.timeSeries(params)).rejects.toThrow(
-        'Either "metricCodes" or "profile" parameter must be provided'
+        'Either metricCodes or profile must be provided'
       );
     });
   });
@@ -652,7 +652,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.metrics.geographic(params)).rejects.toThrow(
-        'Either "metricCodes" or "profile" parameter must be provided'
+        'Either metricCodes or profile must be provided'
       );
     });
 
@@ -662,7 +662,7 @@ describe('Schools API', () => {
       };
 
       await expect(schools.metrics.geographic(params)).rejects.toThrow(
-        'The "geography" parameter must be provided'
+        'Parameter "geography" is required'
       );
     });
 

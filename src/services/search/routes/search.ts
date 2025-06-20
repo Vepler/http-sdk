@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { createRequiredParameterError } from '../../../utils/errors';
 import {
   UnifiedSearchInput,
   UnifiedSearchResponse,
@@ -20,7 +21,7 @@ export async function search(
 
   // Validate required parameters
   if (!query) {
-    throw new Error('The "query" parameter must be provided');
+    throw new Error(createRequiredParameterError('query'));
   }
 
   const api = getApiInstance('search');

@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { createRequiredParameterError, createEitherOrParameterError } from '../../../utils/errors';
 import {
   MetricsGeographicRequestBody,
   MetricsGeographicResponse,
@@ -23,13 +24,11 @@ export async function getGeographicMetrics(
 
   // Validate required parameters
   if (!metricCodes && !profile) {
-    throw new Error(
-      'Either "metricCodes" or "profile" parameter must be provided'
-    );
+    throw new Error(createEitherOrParameterError('metricCodes', 'profile'));
   }
 
   if (!geography) {
-    throw new Error('The "geography" parameter must be provided');
+    throw new Error(createRequiredParameterError('geography'));
   }
 
   const api = getApiInstance('schools');

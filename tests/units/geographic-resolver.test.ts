@@ -79,12 +79,12 @@ describe('Geographic Resolver E2E Tests', () => {
       await expect(areaReference.resolver.resolve({
         inputCode: '',
         supportedTiers: 'lsoa21'
-      })).rejects.toThrow('The "inputCode" parameter must be provided');
+      })).rejects.toThrow('Parameter "inputCode" is required');
 
       await expect(areaReference.resolver.resolve({
         inputCode: 'E08000003',
         supportedTiers: ''
-      })).rejects.toThrow('The "supportedTiers" parameter must be provided');
+      })).rejects.toThrow('Parameter "supportedTiers" is required');
     });
   });
 
@@ -178,12 +178,12 @@ describe('Geographic Resolver E2E Tests', () => {
       await expect(areaReference.resolver.checkCapability({
         inputType: '',
         supportedTiers: 'lsoa21'
-      })).rejects.toThrow('The "inputType" parameter must be provided');
+      })).rejects.toThrow('Parameter "inputType" is required');
 
       await expect(areaReference.resolver.checkCapability({
         inputType: 'msoa21',
         supportedTiers: ''
-      })).rejects.toThrow('The "supportedTiers" parameter must be provided');
+      })).rejects.toThrow('Parameter "supportedTiers" is required');
     });
 
     it('should work without optional parameters', async () => {

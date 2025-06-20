@@ -1,5 +1,11 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
 import { Areas } from '@vepler/area-reference-types';
+import {
+  createRequiredParameterError,
+  createMutuallyExclusiveError,
+  createEitherOrParameterError,
+  createConditionalParameterError,
+} from '../../../utils/errors';
 
 export async function coverage(
   params: Areas.CoverageQueryParams
@@ -15,8 +21,11 @@ export async function coverage(
   } = params;
 
   // Validate required parameters
-  if (!sourceCode || !sourceType) {
-    throw new Error('sourceCode and sourceType are required parameters');
+  if (!sourceCode) {
+    throw new Error(createRequiredParameterError('sourceCode'));
+  }
+  if (!sourceType) {
+    throw new Error(createRequiredParameterError('sourceType'));
   }
 
   // Validate mutually exclusive parameters
@@ -24,21 +33,28 @@ export async function coverage(
   const hasCoverageParams = coverageType || coverageValue;
 
   if (hasTargetParams && hasCoverageParams) {
-    throw new Error('targetCode/targetType and coverageType/coverageValue are mutually exclusive');
+    throw new Error(
+      createMutuallyExclusiveError(
+        'targetCode/targetType',
+        'coverageType/coverageValue'
+      )
+    );
   }
 
   if (!hasTargetParams && !hasCoverageParams) {
-    throw new Error('Either targetCode/targetType or coverageType must be provided');
+    throw new Error(
+      createEitherOrParameterError('targetCode/targetType', 'coverageType')
+    );
   }
 
   // Validate targetType is provided when targetCode is provided
   if (targetCode && !targetType) {
-    throw new Error('targetType is required when targetCode is provided');
+    throw new Error(createConditionalParameterError('targetCode', 'targetType'));
   }
 
   // Validate coverageValue can only be used with coverageType
   if (coverageValue && !coverageType) {
-    throw new Error('coverageValue can only be used with coverageType');
+    throw new Error(createConditionalParameterError('coverageValue', 'coverageType'));
   }
 
   const api = getApiInstance('area-reference');

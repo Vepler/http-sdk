@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { createRequiredParameterError, createConditionalParameterError } from '../../../utils/errors';
 import { Geographic } from '@vepler/area-reference-types';
 import { filterDefinedParams } from '../../../utils';
 
@@ -22,10 +23,10 @@ export async function resolveGeography(
 
   // Validate required parameters
   if (!inputCode) {
-    throw new Error('The "inputCode" parameter must be provided');
+    throw new Error(createRequiredParameterError('inputCode'));
   }
   if (!supportedTiers) {
-    throw new Error('The "supportedTiers" parameter must be provided');
+    throw new Error(createRequiredParameterError('supportedTiers'));
   }
 
   // Validate spatialStrategy-specific parameters
@@ -91,10 +92,10 @@ export async function checkResolutionCapability(
 
   // Validate required parameters
   if (!inputType) {
-    throw new Error('The "inputType" parameter must be provided');
+    throw new Error(createRequiredParameterError('inputType'));
   }
   if (!supportedTiers) {
-    throw new Error('The "supportedTiers" parameter must be provided');
+    throw new Error(createRequiredParameterError('supportedTiers'));
   }
 
   const api = getApiInstance('area-reference');

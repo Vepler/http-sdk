@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { createRequiredParameterError, createEitherOrParameterError } from '../../../utils/errors';
 import {
   MetricsTimeSeriesQueryOptions,
   MetricsTimeSeriesResponse,
@@ -19,13 +20,11 @@ export async function getTimeSeriesMetrics(
 
   // Validate required parameters
   if (!schoolId) {
-    throw new Error('The "schoolId" parameter must be provided');
+    throw new Error(createRequiredParameterError('schoolId'));
   }
 
   if (!metricCodes && !profile) {
-    throw new Error(
-      'Either "metricCodes" or "profile" parameter must be provided'
-    );
+    throw new Error(createEitherOrParameterError('metricCodes', 'profile'));
   }
 
   const api = getApiInstance('schools');

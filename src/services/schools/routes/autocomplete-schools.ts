@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { createRequiredParameterError } from '../../../utils/errors';
 import {
   SchoolAutocompleteQueryParams,
   SchoolAutocompleteResponse,
@@ -11,7 +12,7 @@ export async function autocompleteSchools(
 
   // Validate required parameters
   if (!prefix) {
-    throw new Error('The "prefix" parameter must be provided');
+    throw new Error(createRequiredParameterError('prefix'));
   }
 
   const api = getApiInstance('schools');

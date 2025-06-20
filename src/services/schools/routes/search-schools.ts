@@ -1,4 +1,5 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
+import { createRequiredParameterError } from '../../../utils/errors';
 import {
   SchoolSearchQueryParams,
   SchoolSearchResponse,
@@ -11,7 +12,7 @@ export async function searchSchools(
 
   // Validate required parameters
   if (!query) {
-    throw new Error('The "query" parameter must be provided');
+    throw new Error(createRequiredParameterError('query'));
   }
 
   const api = getApiInstance('schools');

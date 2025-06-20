@@ -24,7 +24,7 @@ describe('Area Reference Coverage E2E Tests', () => {
           sourceType: 'ward',
           coverageType: 'flood_risk'
         } as any)
-      ).rejects.toThrow('sourceCode and sourceType are required parameters');
+      ).rejects.toThrow('Parameter "sourceCode" is required');
     });
 
     it('should throw error when sourceType is missing', async () => {
@@ -33,7 +33,7 @@ describe('Area Reference Coverage E2E Tests', () => {
           sourceCode: 'E05000001',
           coverageType: 'flood_risk'
         } as any)
-      ).rejects.toThrow('sourceCode and sourceType are required parameters');
+      ).rejects.toThrow('Parameter "sourceType" is required');
     });
 
     it('should throw error when both target and coverage params are provided', async () => {
@@ -64,7 +64,7 @@ describe('Area Reference Coverage E2E Tests', () => {
           sourceType: 'ward',
           targetCode: 'E14000530'
         })
-      ).rejects.toThrow('targetType is required when targetCode is provided');
+      ).rejects.toThrow('Parameter "targetType" is required when "targetCode" is provided');
     });
 
     it('should throw error when coverageValue is used without coverageType', async () => {
@@ -74,7 +74,7 @@ describe('Area Reference Coverage E2E Tests', () => {
           sourceType: 'ward',
           coverageValue: 'high'
         })
-      ).rejects.toThrow('coverageValue can only be used with coverageType');
+      ).rejects.toThrow('Parameter "coverageType" is required when "coverageValue" is provided');
     });
   });
 
