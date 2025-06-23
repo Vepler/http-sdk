@@ -1260,10 +1260,10 @@
   resolved "https://registry.npmjs.org/@vepler/area-reference-types/-/area-reference-types-1.43.1.tgz"
   integrity sha512-qDlySEAVphI9JPcDIVjpDupLgSQBLOVxtoS6cOgccW1TtPg0RglWqE5YnG2ThkFGHu/KvNzLFPq7YPrNmjJXiA==
 
-"@vepler/council-register-types@^1.6.0":
-  version "1.6.0"
-  resolved "https://registry.npmjs.org/@vepler/council-register-types/-/council-register-types-1.6.0.tgz"
-  integrity sha512-nkVyBr+knu3FPJ4ILesESFZfcIcSbzTcExlFVoK0vlMY0djzKXuJCMJYAgzcQlHXaxAp8ALbYQlY9vebcnKh9w==
+"@vepler/council-register-types@^1.6.2":
+  version "1.6.2"
+  resolved "https://registry.yarnpkg.com/@vepler/council-register-types/-/council-register-types-1.6.2.tgz#ae98c6900381be7e8271c9ab35dbe210af212f53"
+  integrity sha512-z2qEh7KLcE5amfuMdXgJv/xWalBcHUr8hYGlBuELVVudNbyqjLR+KON/pww7ZZVAjCvJNJ9YnQYmsOab5aLU8Q==
 
 "@vepler/http-client@^1.0.2":
   version "1.0.2"
