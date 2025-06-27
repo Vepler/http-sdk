@@ -3,22 +3,44 @@ import { createRequiredParameterError, createConditionalParameterError } from '.
 import { Geographic } from '@vepler/area-reference-types';
 import { filterDefinedParams } from '../../../utils';
 
+export type CoverageQualityType = 'primary' | 'secondary' | 'minimal';
+
+export interface TargetGeographyWithCoverage {
+  code: string;
+  coveragePercentage?: number;
+  containmentType?: CoverageQualityType;
+}
+
+export interface EnhancedResolvedGeography extends Geographic.ResolvedGeography {
+  targetGeographies?: TargetGeographyWithCoverage[];
+}
+
+export interface EnhancedResolveGeographyResponse extends Omit<Geographic.ResolveGeographyResponse, 'result'> {
+  result: EnhancedResolvedGeography;
+}
+
 export interface ResolveGeographyParams
   extends Geographic.ResolveGeographyQueryParams {
   spatialStrategy?: 'strict' | 'centroid' | 'intersection' | 'weighted';
   intersectionThreshold?: number;
   maxChildren?: number;
+  minCoveragePercentage?: number;
+  primaryOnly?: boolean;
+  includeCoverageInfo?: boolean;
 }
 
 export async function resolveGeography(
   params: ResolveGeographyParams
-): Promise<Geographic.ResolveGeographyResponse> {
+): Promise<EnhancedResolveGeographyResponse> {
   const {
     inputCode,
     supportedTiers,
     spatialStrategy,
     intersectionThreshold,
     maxChildren,
+    minCoveragePercentage,
+    primaryOnly,
+    includeCoverageInfo,
   } = params;
 
   // Validate required parameters
@@ -48,6 +70,11 @@ export async function resolveGeography(
       'The "maxChildren" parameter must be between 1 and 500,000'
     );
   }
+  if (minCoveragePercentage !== undefined && (minCoveragePercentage < 0 || minCoveragePercentage > 100)) {
+    throw new Error(
+      'The "minCoveragePercentage" parameter must be between 0 and 100'
+    );
+  }
 
   const api = getApiInstance('area-reference');
   const endpoint = '/geographic/resolve';
@@ -60,6 +87,9 @@ export async function resolveGeography(
       'spatialStrategy',
       'intersectionThreshold',
       'maxChildren',
+      'minCoveragePercentage',
+      'primaryOnly',
+      'includeCoverageInfo',
     ]),
     {
       apiKey: initialisedConfig.apiKey,

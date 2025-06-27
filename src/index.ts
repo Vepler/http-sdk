@@ -31,6 +31,10 @@ export type {
   ResolveGeographyParams,
   GetGeographyTypesParams,
   CheckResolutionCapabilityParams,
+  CoverageQualityType,
+  TargetGeographyWithCoverage,
+  EnhancedResolvedGeography,
+  EnhancedResolveGeographyResponse,
 } from './services/area-reference/routes/resolve-geography';
 
 // Re-export official area reference types
