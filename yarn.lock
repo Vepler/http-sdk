@@ -1301,9 +1301,9 @@
     eslint-visitor-keys "^4.2.0"
 
 "@vepler/area-reference-types@^1.55.1":
-  version "1.56.1"
-  resolved "https://registry.npmjs.org/@vepler/area-reference-types/-/area-reference-types-1.56.1.tgz"
-  integrity sha512-BtPi3uL8QyTCyjR1DyDFb0SMizkCTwOloZpZdazxJuzHB1meo8zLti5PgmQnJcENi7T+4hx8OW3zGsAro9bWWA==
+  version "1.64.0"
+  resolved "https://registry.npmjs.org/@vepler/area-reference-types/-/area-reference-types-1.64.0.tgz"
+  integrity sha512-0jRteK7enTaY8TCCGzKrXZTbU0XFlT3EEIhsdzuo8IQzOUab+wbiBe9ZlEBQbJdKYmcC79C9y6pTMYUSFHGikg==
 
 "@vepler/council-register-types@^1.6.1":
   version "1.6.2"
@@ -1319,9 +1319,9 @@
     axios "^1.6.8"
 
 "@vepler/locations-types@^1.13.0":
-  version "1.14.2"
-  resolved "https://registry.npmjs.org/@vepler/locations-types/-/locations-types-1.14.2.tgz"
-  integrity sha512-o/kSsPNeWPqCHeDg3rbytZpZRoYklitouL/PJdU5mJ9pgOUJ6HRPWxInkYdoeeTQffNawMkPWiZH8k/KXBJXzg==
+  version "1.15.0"
+  resolved "https://registry.npmjs.org/@vepler/locations-types/-/locations-types-1.15.0.tgz"
+  integrity sha512-XkSMLDnn/gkXkXp62JtGwgOq0JuMtKleBJdxx0OQvWgUxptF16VLrvDdnZjdyxdc8EHt2oxuLvLhqSoXN1nyRQ==
 
 "@vepler/logger@^1.0.0":
   version "1.1.0"
@@ -1343,14 +1343,14 @@
   integrity sha512-6ZT+adywBIFMPOIwhT6DNslxRCBmfyIDFwysmZOoKuJZe3mJ6LlXpLwB8P3Uo8iFRwosqTfGQJN+zqqB1s85Fw==
 
 "@vepler/property-predictor-types@^1.14.0":
-  version "1.14.0"
-  resolved "https://registry.npmjs.org/@vepler/property-predictor-types/-/property-predictor-types-1.14.0.tgz"
-  integrity sha512-R+iCEegOK/lrJAZayQXg0BETzQ8eLVlCuCjaItu9SfNUesbvaQI2PZG84BBo5yr/Krlcb48I3BJu2PQHssvXnA==
+  version "1.15.2"
+  resolved "https://registry.npmjs.org/@vepler/property-predictor-types/-/property-predictor-types-1.15.2.tgz"
+  integrity sha512-nZouUyeuOHxuZKhhie7wVG5u/bEcQd787xB8GgRkjAWBFz194GYTfBJfoUGzz9hHdoXKWt20FmZ+wyQ6RMOmwA==
 
 "@vepler/safety-types@^3.10.4":
-  version "3.11.0"
-  resolved "https://registry.npmjs.org/@vepler/safety-types/-/safety-types-3.11.0.tgz"
-  integrity sha512-2vZuCDn4jwfi5MTleEeM3/m5MJgtMNOF+dLJE4F85RlHsrSa5LdRywK34g1lYwcIYp7WPiedId9V2f49YGb7fQ==
+  version "3.13.0"
+  resolved "https://registry.npmjs.org/@vepler/safety-types/-/safety-types-3.13.0.tgz"
+  integrity sha512-tm+zfy9SWb6Qgg7JE+t+10p0e6RvzGAkMUlxAX/tSigYzp9DqcRSOqJ1p0cgxRmrLM9/uS0FTl4Za/PtVvYSAw==
 
 "@vepler/schools-types@^1.8.2":
   version "1.8.2"
@@ -1358,9 +1358,9 @@
   integrity sha512-ZFwmknWsl+jx7TBa4hoZJw+/gsHsrthRrapYflrfkr+uVJe5Gbsv2FBtKHCBRF1EuVVkZOKOPuw5xMIR9hTkRg==
 
 "@vepler/search-types@^1.8.6":
-  version "1.9.0"
-  resolved "https://registry.npmjs.org/@vepler/search-types/-/search-types-1.9.0.tgz"
-  integrity sha512-FT71Dc7g2HuEzZ+34CzA9yCIkC9+ewDBH1zSgaNr0n8BCCPxDZI9SsaYQuaXsbISmsxrdjid4YEfU8cQbPco3w==
+  version "1.10.4"
+  resolved "https://registry.npmjs.org/@vepler/search-types/-/search-types-1.10.4.tgz"
+  integrity sha512-81tPbr556EKpAksm3t4sQ1hZXhPCMvIEDonvLZrCuZc+azg/a2GjDGrqdNkS1LgPQMyHzKpH4FFB4xuWU6GfMA==
 
 abbrev@^2.0.0:
   version "2.0.0"
