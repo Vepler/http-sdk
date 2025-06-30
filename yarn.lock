@@ -1297,10 +1297,10 @@
   resolved "https://registry.npmjs.org/@vepler/planning-register-types/-/planning-register-types-1.1.5.tgz"
   integrity sha512-6ZT+adywBIFMPOIwhT6DNslxRCBmfyIDFwysmZOoKuJZe3mJ6LlXpLwB8P3Uo8iFRwosqTfGQJN+zqqB1s85Fw==
 
-"@vepler/property-predictor-types@^1.10.0":
-  version "1.12.0"
-  resolved "https://registry.npmjs.org/@vepler/property-predictor-types/-/property-predictor-types-1.12.0.tgz"
-  integrity sha512-L5Bh42328OeY87tQ6Cl56UfAkow/gL5PN46KvsTaxbUbJZDVA5My/ottMd5YgZsbco3dmYbL7h3+ldMmwCCchg==
+"@vepler/property-predictor-types@^1.15.2":
+  version "1.15.2"
+  resolved "https://registry.yarnpkg.com/@vepler/property-predictor-types/-/property-predictor-types-1.15.2.tgz#a3ab5c1eee79e457837245fc4d52419fb2662863"
+  integrity sha512-nZouUyeuOHxuZKhhie7wVG5u/bEcQd787xB8GgRkjAWBFz194GYTfBJfoUGzz9hHdoXKWt20FmZ+wyQ6RMOmwA==
 
 "@vepler/safety-types@^3.9.5":
   version "3.9.5"
