@@ -1301,9 +1301,9 @@
     eslint-visitor-keys "^4.2.0"
 
 "@vepler/area-reference-types@^1.55.1":
-  version "1.64.0"
-  resolved "https://registry.npmjs.org/@vepler/area-reference-types/-/area-reference-types-1.64.0.tgz"
-  integrity sha512-0jRteK7enTaY8TCCGzKrXZTbU0XFlT3EEIhsdzuo8IQzOUab+wbiBe9ZlEBQbJdKYmcC79C9y6pTMYUSFHGikg==
+  version "1.66.0"
+  resolved "https://registry.npmjs.org/@vepler/area-reference-types/-/area-reference-types-1.66.0.tgz"
+  integrity sha512-eLbBIqvPxCgyd9cAomVYQZDITuvSbyVEs96E8ZohZNby0Y0Ro73CnMb9RlZcT4uwrvmQxeQTe7F+absNxn8QTw==
 
 "@vepler/council-register-types@^1.6.1":
   version "1.6.2"
@@ -1348,9 +1348,9 @@
   integrity sha512-nZouUyeuOHxuZKhhie7wVG5u/bEcQd787xB8GgRkjAWBFz194GYTfBJfoUGzz9hHdoXKWt20FmZ+wyQ6RMOmwA==
 
 "@vepler/safety-types@^3.10.4":
-  version "3.13.0"
-  resolved "https://registry.npmjs.org/@vepler/safety-types/-/safety-types-3.13.0.tgz"
-  integrity sha512-tm+zfy9SWb6Qgg7JE+t+10p0e6RvzGAkMUlxAX/tSigYzp9DqcRSOqJ1p0cgxRmrLM9/uS0FTl4Za/PtVvYSAw==
+  version "3.14.0"
+  resolved "https://registry.npmjs.org/@vepler/safety-types/-/safety-types-3.14.0.tgz"
+  integrity sha512-H3OZ6Gv5t6gLn+P3tTsrKgU8goLq2pcY2Lm88T2L1DJ4jYc4vK8FIFzZUNQRZKnIv5OSaIaIVzi7Pf26VaPRAw==
 
 "@vepler/schools-types@^1.8.2":
   version "1.8.2"
