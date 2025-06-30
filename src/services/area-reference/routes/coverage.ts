@@ -12,49 +12,38 @@ export async function coverage(
 ): Promise<Areas.CoverageResponse> {
   const {
     sourceCode,
-    sourceType,
     targetCode,
-    targetType,
     coverageType,
-    coverageValue,
-    aggregation = 'total',
+    intersectsWith,
   } = params;
 
   // Validate required parameters
   if (!sourceCode) {
     throw new Error(createRequiredParameterError('sourceCode'));
   }
-  if (!sourceType) {
-    throw new Error(createRequiredParameterError('sourceType'));
-  }
 
-  // Validate mutually exclusive parameters
-  const hasTargetParams = targetCode || targetType;
-  const hasCoverageParams = coverageType || coverageValue;
-
-  if (hasTargetParams && hasCoverageParams) {
+  // Validate mutually exclusive parameters: either targetCode OR coverageType must be specified
+  if (targetCode && coverageType) {
     throw new Error(
-      createMutuallyExclusiveError(
-        'targetCode/targetType',
-        'coverageType/coverageValue'
-      )
+      createMutuallyExclusiveError('targetCode', 'coverageType')
     );
   }
 
-  if (!hasTargetParams && !hasCoverageParams) {
+  if (!targetCode && !coverageType) {
     throw new Error(
-      createEitherOrParameterError('targetCode/targetType', 'coverageType')
+      createEitherOrParameterError('targetCode', 'coverageType')
     );
   }
 
-  // Validate targetType is provided when targetCode is provided
-  if (targetCode && !targetType) {
-    throw new Error(createConditionalParameterError('targetCode', 'targetType'));
+  // Validate intersectsWith can only be used with coverageType (not with targetCode)
+  if (intersectsWith && !coverageType) {
+    throw new Error(createConditionalParameterError('intersectsWith', 'coverageType'));
   }
 
-  // Validate coverageValue can only be used with coverageType
-  if (coverageValue && !coverageType) {
-    throw new Error(createConditionalParameterError('coverageValue', 'coverageType'));
+  if (intersectsWith && targetCode) {
+    throw new Error(
+      createMutuallyExclusiveError('intersectsWith', 'targetCode')
+    );
   }
 
   const api = getApiInstance('area-reference');
@@ -64,12 +53,9 @@ export async function coverage(
     endpoint,
     {
       sourceCode,
-      sourceType,
       targetCode,
-      targetType,
       coverageType,
-      coverageValue,
-      aggregation,
+      intersectsWith,
     },
     {
       apiKey: initialisedConfig.apiKey,
