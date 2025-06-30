@@ -41,7 +41,7 @@
     "@vepler/property-predictor-types": "^1.10.0",
     "@vepler/safety-types": "^3.9.5",
     "@vepler/schools-types": "^1.8.2",
-    "@vepler/search-types": "^1.1.0"
+    "@vepler/search-types": "^1.10.4"
   },
   "devDependencies": {
     "@semantic-release/commit-analyzer": "^13.0.1",
