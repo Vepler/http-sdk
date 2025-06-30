@@ -22,6 +22,17 @@ export async function coverage(
     throw new Error(createRequiredParameterError('sourceCode'));
   }
 
+  // Validate intersectsWith can only be used with coverageType (not with targetCode)
+  if (intersectsWith && targetCode) {
+    throw new Error(
+      createMutuallyExclusiveError('intersectsWith', 'targetCode')
+    );
+  }
+
+  if (intersectsWith && !coverageType) {
+    throw new Error(createConditionalParameterError('intersectsWith', 'coverageType'));
+  }
+
   // Validate mutually exclusive parameters: either targetCode OR coverageType must be specified
   if (targetCode && coverageType) {
     throw new Error(
@@ -32,17 +43,6 @@ export async function coverage(
   if (!targetCode && !coverageType) {
     throw new Error(
       createEitherOrParameterError('targetCode', 'coverageType')
-    );
-  }
-
-  // Validate intersectsWith can only be used with coverageType (not with targetCode)
-  if (intersectsWith && !coverageType) {
-    throw new Error(createConditionalParameterError('intersectsWith', 'coverageType'));
-  }
-
-  if (intersectsWith && targetCode) {
-    throw new Error(
-      createMutuallyExclusiveError('intersectsWith', 'targetCode')
     );
   }
 
