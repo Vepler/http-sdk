@@ -32,7 +32,7 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@vepler/area-reference-types": "^1.42.0",
+    "@vepler/area-reference-types": "^1.71.0",
     "@vepler/council-register-types": "^1.6.0",
     "@vepler/http-client": "^1.0.2",
     "@vepler/locations-types": "1.6.0",
