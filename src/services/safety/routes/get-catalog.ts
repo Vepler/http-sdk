@@ -7,7 +7,7 @@ import {
 export async function getCatalog(
   params: GetCatalogQueryParams = {}
 ): Promise<GetCatalogResponse[]> {
-  const { countryCode, onlyAvailable } = params;
+  const { country, onlyAvailable } = params;
 
   const api = getApiInstance('safety');
   const endpoint = '/catalog';
@@ -15,7 +15,7 @@ export async function getCatalog(
   return await api.query(
     endpoint,
     {
-      countryCode,
+      country,
       onlyAvailable,
     },
     {
