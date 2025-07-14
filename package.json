@@ -33,7 +33,7 @@
   },
   "dependencies": {
     "@vepler/area-reference-types": "^1.42.0",
-    "@vepler/council-register-types": "^1.6.0",
+    "@vepler/council-register-types": "^1.6.3",
     "@vepler/http-client": "^1.0.2",
     "@vepler/locations-types": "1.6.0",
     "@vepler/logger": "^3.0.0",
