@@ -12,7 +12,7 @@ export async function getNeighborhoodWatchByArea(
   }
 
   const api = getApiInstance('safety');
-  const endpoint = '/neighborhood-watch/area';
+  const endpoint = '/api/neighborhood-watch/area';
 
   return await api.query(
     endpoint,

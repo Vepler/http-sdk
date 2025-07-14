@@ -20,7 +20,7 @@ export async function getNeighborhoodWatchSchemeDetails(
   }
 
   const api = getApiInstance('safety');
-  const endpoint = `/neighborhood-watch/${provider}/${key}`;
+  const endpoint = `/api/neighborhood-watch/${provider}/${key}`;
 
   return await api.query(
     endpoint,

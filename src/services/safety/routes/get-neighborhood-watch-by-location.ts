@@ -21,7 +21,7 @@ export async function getNeighborhoodWatchByLocation(
   }
 
   const api = getApiInstance('safety');
-  const endpoint = '/neighborhood-watch/location';
+  const endpoint = '/api/neighborhood-watch/location';
 
   return await api.query(
     endpoint,
