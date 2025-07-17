@@ -85,7 +85,7 @@ export async function queryGeographyMetrics(
   }
 
   const api = getApiInstance('safety');
-  const endpoint = `/geography/metrics`;
+  const endpoint = `/api/geography/metrics`;
 
   return await api.query(
     endpoint,
