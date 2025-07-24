@@ -19,7 +19,7 @@ export async function getTimeSeriesMetrics(
 
   // Validate that either metricCodes or profile is provided
   if (!metricCodes && !profile) {
-    throw createEitherOrParameterError('metricCodes', 'profile');
+    throw new Error(createEitherOrParameterError('metricCodes', 'profile'));
   }
 
   const api = getApiInstance('schools');
