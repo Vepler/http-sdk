@@ -228,7 +228,6 @@ describe('Schools API', () => {
       const { schools } = require('../../src');
       
       const params: MetricsTimeSeriesQueryOptions = {
-        schoolId: 601,
         metricCodes: ['attendance_overall']
       };
       

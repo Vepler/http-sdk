@@ -17,6 +17,11 @@ export async function getTimeSeriesMetrics(
     granularity,
   } = params;
 
+  // Validate that either metricCodes or profile is provided
+  if (!metricCodes && !profile) {
+    throw createEitherOrParameterError('metricCodes', 'profile');
+  }
+
   const api = getApiInstance('schools');
   const endpoint = '/metrics/timeseries';
 

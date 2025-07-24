@@ -569,7 +569,6 @@ describe('Schools API', () => {
   describe('Get Time Series Metrics', () => {
     it('should retrieve metrics data in time series format', async () => {
       const params: MetricsTimeSeriesQueryOptions = {
-        schoolId: 601,
         metricCodes: ['attendance_overall'],
         academicYears: ['2018-2019', '2019-2020', '2020-2021', '2021-2022', '2022-2023']
       };
@@ -593,20 +592,8 @@ describe('Schools API', () => {
       expect(firstResult?.metrics[0].series[2].year).toBe('2020-2021');
     });
 
-    it('should throw an error if schoolId parameter is not provided', async () => {
-      const params: any = {
-        metricCodes: ['attendance_overall']
-      };
-
-      await expect(schools.metrics.timeSeries(params)).rejects.toThrow(
-        'Parameter "schoolId" is required'
-      );
-    });
-
     it('should throw an error if metricCodes parameter is not provided', async () => {
-      const params: any = {
-        schoolId: 601
-      };
+      const params: any = {};
 
       await expect(schools.metrics.timeSeries(params)).rejects.toThrow(
         'Either metricCodes or profile must be provided'

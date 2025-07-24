@@ -3,9 +3,7 @@ import { initializeSDK, h3 } from '../../src';
 // Initialize the SDK with test configuration
 initializeSDK({
   apiKey: process.env.VEPLER_API_KEY || 'test-key',
-  baseUrls: {
-    'area-reference': process.env.VEPLER_AREA_REFERENCE_URL || 'http://localhost:3000',
-  },
+  areaReferenceHost: process.env.VEPLER_AREA_REFERENCE_URL || 'http://localhost:3000',
 });
 
 describe('H3 Aggregations API', () => {
@@ -108,7 +106,7 @@ describe('H3 Aggregations API', () => {
       expect(response.results).toHaveLength(3);
       
       // Check that each result has the correct ID
-      const resultIds = response.results.map(r => r.id);
+      const resultIds = response.results.map((r: any) => r.id);
       expect(resultIds).toContain('location-1');
       expect(resultIds).toContain('location-2');
       expect(resultIds).toContain('location-3');
