@@ -15,7 +15,6 @@ export async function getCatalog(
   return await api.query(
     endpoint,
     {
-      country,
       onlyAvailable,
     },
     {

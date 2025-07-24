@@ -10,7 +10,7 @@ export interface GetH3AggregationsParams {
 
 export async function getH3Aggregations(
   params: GetH3AggregationsParams
-): Promise<H3.GetH3AggregationsResponse> {
+): Promise<any> {
   const {
     locations,
     resolution = 9,
@@ -22,7 +22,7 @@ export async function getH3Aggregations(
   const api = getApiInstance('area-reference');
   const endpoint = '/h3/aggregations';
 
-  const requestBody: H3.GetH3AggregationsRequest = {
+  const requestBody: any = {
     locations,
     resolution,
     components,

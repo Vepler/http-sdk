@@ -17,23 +17,12 @@ export async function getTimeSeriesMetrics(
     granularity,
   } = params;
 
-  // Validate required parameters
-  if (!schoolId) {
-    throw new Error(createRequiredParameterError('schoolId'));
-  }
-
-  if (!metricCodes && !profile) {
-    throw new Error(createEitherOrParameterError('metricCodes', 'profile'));
-  }
-
   const api = getApiInstance('schools');
   const endpoint = '/metrics/timeseries';
 
   // We need to construct query params from the options
   // Since there's no direct API query params type, we'll construct a compatible object
-  const queryParams: Record<string, string> = {
-    schoolId: String(schoolId),
-  };
+  const queryParams: Record<string, any> = {};
 
   // Convert metricCodes to comma-separated string if it's an array
   if (metricCodes) {
