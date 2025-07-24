@@ -20,6 +20,7 @@ import * as LocationService from './services/location/service';
 import * as CouncilRegisterService from './services/council-tax-register/service';
 import * as ConnectivityService from './services/connectivity/service';
 import * as PoiService from './services/poi/service';
+import * as H3Service from './services/h3/service';
 
 // Export types for external usage
 // Area Reference types
@@ -42,6 +43,7 @@ export type {
   Areas,
   Metrics,
   Geographic,
+  H3,
 } from '@vepler/area-reference-types';
 
 // Safety types
@@ -123,6 +125,16 @@ export type {
   CanonicalAutocompleteResult,
 } from '@vepler/locations-types';
 
+// Address Lookup types (local until available in @vepler/locations-types)
+export type {
+  AddressLookupRequest,
+  AddressLookupResponse,
+  AddressLookupOptions,
+  AddressMatch,
+  ProcessingStep,
+  AddressLookupMetadata,
+} from './services/location/routes/address-lookup';
+
 // Council Register types
 export type {
   PropertyRequestParams,
@@ -166,6 +178,9 @@ export type {
   GetNearestPOIResponse,
 } from '@vepler/area-reference-types/routes/poi';
 
+// H3 types
+export type { GetH3AggregationsParams } from './services/h3/routes/get-h3-aggregations';
+
 export { initSDK as initializeSDK, reset };
 
 const routes = {
@@ -181,6 +196,7 @@ const routes = {
   councilRegister: CouncilRegisterService.default,
   connectivity: ConnectivityService.default,
   poi: PoiService.default,
+  h3: H3Service.default,
 };
 
 export const property = routes.property;
@@ -195,5 +211,6 @@ export const location = routes.location;
 export const councilRegister = routes.councilRegister;
 export const connectivity = routes.connectivity;
 export const poi = routes.poi;
+export const h3 = routes.h3;
 
 export default routes;

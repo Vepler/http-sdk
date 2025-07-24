@@ -21,12 +21,14 @@ export interface EnhancedResolveGeographyResponse extends Omit<Geographic.Resolv
 
 export interface ResolveGeographyParams
   extends Geographic.ResolveGeographyQueryParams {
+  inputType?: string;
   spatialStrategy?: 'strict' | 'centroid' | 'intersection' | 'weighted';
   intersectionThreshold?: number;
   maxChildren?: number;
   minCoveragePercentage?: number;
   primaryOnly?: boolean;
   includeCoverageInfo?: boolean;
+  allowParentFallback?: boolean;
 }
 
 export async function resolveGeography(
@@ -34,6 +36,7 @@ export async function resolveGeography(
 ): Promise<EnhancedResolveGeographyResponse> {
   const {
     inputCode,
+    inputType,
     supportedTiers,
     spatialStrategy,
     intersectionThreshold,
@@ -41,6 +44,7 @@ export async function resolveGeography(
     minCoveragePercentage,
     primaryOnly,
     includeCoverageInfo,
+    allowParentFallback,
   } = params;
 
   // Validate required parameters
@@ -83,6 +87,7 @@ export async function resolveGeography(
     endpoint,
     filterDefinedParams(params, [
       'inputCode',
+      'inputType',
       'supportedTiers',
       'spatialStrategy',
       'intersectionThreshold',
@@ -90,6 +95,7 @@ export async function resolveGeography(
       'minCoveragePercentage',
       'primaryOnly',
       'includeCoverageInfo',
+      'allowParentFallback',
     ]),
     {
       apiKey: initialisedConfig.apiKey,

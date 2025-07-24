@@ -1338,9 +1338,9 @@
     axios "^1.6.8"
 
 "@vepler/locations-types@^1.13.0":
-  version "1.15.0"
-  resolved "https://registry.yarnpkg.com/@vepler/locations-types/-/locations-types-1.15.0.tgz#7b5bc9bcda5e8748f342d2a698f8bb0a47edd0c5"
-  integrity sha512-XkSMLDnn/gkXkXp62JtGwgOq0JuMtKleBJdxx0OQvWgUxptF16VLrvDdnZjdyxdc8EHt2oxuLvLhqSoXN1nyRQ==
+  version "1.17.0"
+  resolved "https://registry.yarnpkg.com/@vepler/locations-types/-/locations-types-1.17.0.tgz#e1379b0492f2add89a98ad069d50206be8485b35"
+  integrity sha512-EX8T9TwwrPRkx+J/eCxBz2edyKXJexmEclZjkgnvdbVmIT90WIsFU41Fe8GUT4/OL7jRUnxK7B0vx8NCVRcVSw==
 
 "@vepler/logger@^1.0.0":
   version "1.1.0"
