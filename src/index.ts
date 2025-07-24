@@ -43,7 +43,6 @@ export type {
   Areas,
   Metrics,
   Geographic,
-  H3,
 } from '@vepler/area-reference-types';
 
 // Safety types

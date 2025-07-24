@@ -272,7 +272,7 @@ export async function addressLookup(
   // Extended timeout for LLM processing
   const requestOptions = {
     apiKey: initialisedConfig.apiKey,
-    timeout: Math.max(requestBody.options.timeout || 120000, 150000) // At least 2.5 minutes
+    timeout: Math.max(requestBody.options?.timeout || 120000, 150000) // At least 2.5 minutes
   };
 
   return await api.post(endpoint, requestBody, requestOptions);

@@ -9,7 +9,6 @@ export async function getTimeSeriesMetrics(
   params: MetricsTimeSeriesQueryOptions
 ): Promise<MetricsTimeSeriesResponse> {
   const {
-    schoolId,
     metricCodes,
     academicYears,
     profile,

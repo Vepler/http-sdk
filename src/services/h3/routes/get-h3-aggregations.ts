@@ -1,8 +1,7 @@
 import { getApiInstance, initialisedConfig } from '../../../config';
-import { H3 } from '@vepler/area-reference-types';
 
 export interface GetH3AggregationsParams {
-  locations: H3.H3LocationInput[];
+  locations: any[];
   resolution?: number;
   components?: Array<'relationships' | 'coverage' | 'metrics'>;
   forceRefresh?: boolean;
