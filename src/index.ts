@@ -124,15 +124,16 @@ export type {
   CanonicalAutocompleteResult,
 } from '@vepler/locations-types';
 
-// Address Lookup types (local until available in @vepler/locations-types)
+// Address Lookup types - now available in @vepler/locations-types
 export type {
   AddressLookupRequest,
   AddressLookupResponse,
+  AddressLookupResult,
   AddressLookupOptions,
   AddressMatch,
   ProcessingStep,
   AddressLookupMetadata,
-} from './services/location/routes/address-lookup';
+} from '@vepler/locations-types';
 
 // Council Register types
 export type {

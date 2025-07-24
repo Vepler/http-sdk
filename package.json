@@ -32,16 +32,16 @@
     "semantic-release": "semantic-release"
   },
   "dependencies": {
-    "@vepler/area-reference-types": "^1.55.1",
-    "@vepler/council-register-types": "^1.6.1",
+    "@vepler/area-reference-types": "^1.80.1",
+    "@vepler/council-register-types": "^1.6.3",
     "@vepler/http-client": "^1.0.2",
-    "@vepler/locations-types": "^1.13.0",
+    "@vepler/locations-types": "^1.19.0",
     "@vepler/logger": "^3.0.0",
-    "@vepler/planning-register-types": "^1.1.5",
-    "@vepler/property-predictor-types": "^1.14.0",
-    "@vepler/safety-types": "^3.10.4",
-    "@vepler/schools-types": "^1.8.2",
-    "@vepler/search-types": "^1.8.6",
+    "@vepler/planning-register-types": "^1.1.6",
+    "@vepler/property-predictor-types": "^1.15.2",
+    "@vepler/safety-types": "^3.17.1",
+    "@vepler/schools-types": "^1.11.1",
+    "@vepler/search-types": "^1.10.4",
     "pino": "^9.6.0"
   },
   "devDependencies": {
