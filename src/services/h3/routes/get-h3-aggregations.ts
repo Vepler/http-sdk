@@ -30,15 +30,9 @@ export async function getH3Aggregations(
     refreshCoverageTypes
   };
 
-  return await api.request(
+  return await api.post(
     endpoint,
-    {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-      },
-      body: JSON.stringify(requestBody),
-    },
+    requestBody,
     {
       apiKey: initialisedConfig.apiKey,
     }
