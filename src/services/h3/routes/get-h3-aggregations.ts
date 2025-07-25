@@ -20,7 +20,7 @@ export async function getH3Aggregations(
   } = params;
 
   const api = getApiInstance('area-reference');
-  const endpoint = '/h3/aggregations';
+  const endpoint = '/aggregations';
 
   const requestBody: any = {
     locations,
